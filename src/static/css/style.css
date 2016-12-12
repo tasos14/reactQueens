@@ -87,12 +87,31 @@ html, body{
   }
 }
 
-@media screen and (max-width: 435px) and (max-height: 640px){
+@media screen and (max-width: 555px) and (max-height: 640px){
   #board-container{
     margin: 40px -8px !important;
   }
+
   .txt{
-    margin-top: -74px;
+    display: none;
+  }
+}
+
+@media screen and (max-width: 460px){
+  #board-container{
+    margin: 40px -8px !important;
+  }
+
+  h1.title {
+    font-size: 50px !important;
+  }
+
+  #instructions {
+    margin-top: 5px;
+  }
+
+  .txt {
+    display: none;
   }
 }
 
@@ -133,14 +152,14 @@ h1.title {
 }
 
 #instructions{
-  padding-top: 0.5em;
+
 }
   /*#instructions .restart-button{
     margin-top: -0.5em;
   }*/
 
 .txt{
-
+  float: left;
 }
 
 .restart-button {
@@ -148,7 +167,6 @@ h1.title {
   background: #8f7a66;
   border-radius: 3px;
   padding: 0 20px;
-  margin-top: -3.2em;
   text-decoration: none;
   color: #f9f6f2;
   height: 40px;
@@ -164,12 +182,11 @@ h1.title {
   position: relative;
   display: block;
   float: right;
-  margin-top: -2.7em;
-  margin-right: 6.8em;
+  margin-right: 0.1em;
 }
 
 .dropdown-menu{
-  margin: 9px 5px 0px;
+  margin-top: 1px;
   position: absolute;
   display: none;
   min-width: 74px;
@@ -185,7 +202,6 @@ h1.title {
   background: #8f7a66;
   border-radius: 3px;
   padding: 0 20px;
-  margin: -9px 5px;
   text-decoration: none;
   color: #f9f6f2;
   height: 40px;

@@ -238,14 +238,15 @@ var App = React.createClass({
             Place all the queens on the board so that <br />
               no two queens threaten each other !
           </div>
-            <button className="restart-button" onClick={this.newGame}>New game</button>
+          
+          <button className="restart-button" onClick={this.newGame}>New game</button>
 
-            <div className="dropdown">
-              <button type="button" className="dropdown-toggle grid-button" data-toggle="dropdown">
-                Grid
-              </button>
-              <GridSizes onClick={this.changeGridSize} />
-            </div>
+          <div className="dropdown">
+            <button type="button" className="dropdown-toggle grid-button" data-toggle="dropdown">
+              Grid
+            </button>
+            <GridSizes onClick={this.changeGridSize} />
+          </div>
         </div>
 
         <div id="board-container">
