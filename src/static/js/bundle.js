@@ -3049,10 +3049,10 @@
             return i.formatPattern;
         }
     });
-    var u = n(157), s = r(u), l = n(82), c = r(l), p = n(151), d = r(p), f = n(170), h = r(f), v = n(152), m = r(v), g = n(153), y = r(g), b = n(83), _ = r(b), C = n(155), E = r(C), w = n(150), x = r(w), P = n(154), R = r(P), k = n(156), T = r(k), S = n(169), O = r(S), M = n(35), N = r(M), A = n(158), I = r(A), D = r(a), L = n(167), U = r(L), j = n(89), F = r(j), B = n(160), H = r(B), q = n(161), V = r(q), W = n(165), K = r(W), z = n(85), Q = r(z);
+    var u = n(157), s = r(u), l = n(82), c = r(l), p = n(151), d = r(p), f = n(170), h = r(f), v = n(152), m = r(v), g = n(153), y = r(g), b = n(83), _ = r(b), C = n(155), E = r(C), w = n(150), x = r(w), P = n(154), R = r(P), k = n(156), T = r(k), O = n(169), S = r(O), M = n(35), N = r(M), A = n(158), I = r(A), D = r(a), L = n(167), U = r(L), j = n(89), F = r(j), B = n(160), H = r(B), q = n(161), V = r(q), W = n(165), K = r(W), z = n(85), Q = r(z);
     t.Router = s.default, t.Link = c.default, t.IndexLink = d.default, t.withRouter = h.default, 
     t.IndexRedirect = m.default, t.IndexRoute = y.default, t.Redirect = _.default, t.Route = E.default, 
-    t.History = x.default, t.Lifecycle = R.default, t.RouteContext = T.default, t.useRoutes = O.default, 
+    t.History = x.default, t.Lifecycle = R.default, t.RouteContext = T.default, t.useRoutes = S.default, 
     t.RouterContext = N.default, t.RoutingContext = I.default, t.PropTypes = D.default, 
     t.match = U.default, t.useRouterHistory = F.default, t.applyRouterMiddleware = H.default, 
     t.browserHistory = V.default, t.hashHistory = K.default, t.createMemoryHistory = Q.default;
@@ -3209,17 +3209,17 @@
             }
         }
         function r(e) {
-            1 === ++S && (O = t(T));
+            1 === ++O && (S = t(T));
             var n = T.listenBefore(e);
             return function() {
-                n(), 0 === --S && O();
+                n(), 0 === --O && S();
             };
         }
         function o(e) {
-            1 === ++S && (O = t(T));
+            1 === ++O && (S = t(T));
             var n = T.listen(e);
             return function() {
-                n(), 0 === --S && O();
+                n(), 0 === --O && S();
             };
         }
         function l(e) {
@@ -3235,10 +3235,10 @@
             return "#" + T.createHref(e);
         }
         function E(e) {
-            1 === ++S && (O = t(T)), T.registerTransitionHook(e);
+            1 === ++O && (S = t(T)), T.registerTransitionHook(e);
         }
         function w(e) {
-            T.unregisterTransitionHook(e), 0 === --S && O();
+            T.unregisterTransitionHook(e), 0 === --O && S();
         }
         function x(e, t) {
             T.pushState(e, t);
@@ -3254,7 +3254,7 @@
             getCurrentLocation: e,
             finishTransition: n,
             saveState: y.saveState
-        })), S = 0, O = void 0;
+        })), O = 0, S = void 0;
         g.supportsGoWithoutReloadUsingHash();
         return c({}, T, {
             listenBefore: r,
@@ -3388,12 +3388,12 @@
                 return t !== e;
             });
         }
-        function S(e, t) {
+        function O(e, t) {
             "string" == typeof t && (t = p.parsePath(t)), l(u({
                 state: e
             }, t));
         }
-        function O(e, t) {
+        function S(e, t) {
             "string" == typeof t && (t = p.parsePath(t)), h(u({
                 state: e
             }, t));
@@ -3417,8 +3417,8 @@
             setState: b.default(P, "setState is deprecated; use location.key to save state instead"),
             registerTransitionHook: b.default(k, "registerTransitionHook is deprecated; use listenBefore instead"),
             unregisterTransitionHook: b.default(T, "unregisterTransitionHook is deprecated; use the callback returned from listenBefore instead"),
-            pushState: b.default(S, "pushState is deprecated; use push instead"),
-            replaceState: b.default(O, "replaceState is deprecated; use replace instead")
+            pushState: b.default(O, "pushState is deprecated; use push instead"),
+            replaceState: b.default(S, "replaceState is deprecated; use replace instead")
         };
     }
     t.__esModule = !0;
@@ -4130,7 +4130,7 @@
         return t ? t._hostContainerInfo._topLevelWrapper : null;
     }
     var f = n(2), h = n(26), v = n(27), m = n(40), g = (n(20), n(6)), y = n(198), b = n(201), _ = n(14), C = n(103), E = n(31), w = (n(11), 
-    n(214)), x = n(28), P = n(67), R = n(15), k = n(34), T = n(118), S = (n(1), n(43)), O = n(73), M = (n(3), 
+    n(214)), x = n(28), P = n(67), R = n(15), k = n(34), T = n(118), O = (n(1), n(43)), S = n(73), M = (n(3), 
     v.ID_ATTRIBUTE_NAME), N = v.ROOT_ATTRIBUTE_NAME, A = 1, I = 9, D = 11, L = {}, U = 1, j = function() {
         this.rootID = U++;
     };
@@ -4168,7 +4168,7 @@
             var c = d(n);
             if (c) {
                 var p = c._currentElement, h = p.props;
-                if (O(h, t)) {
+                if (S(h, t)) {
                     var v = c._renderedComponent.getPublicInstance(), m = r && function() {
                         r.call(v);
                     };
@@ -4205,7 +4205,7 @@
             if (t.nodeType === I ? f("43") : void 0, i.useCreateElement) {
                 for (;t.lastChild; ) t.removeChild(t.lastChild);
                 h.insertTreeBefore(t, e, null);
-            } else S(t, e), g.precacheNode(n, t.firstChild);
+            } else O(t, e), g.precacheNode(n, t.firstChild);
         }
     };
     e.exports = F;
@@ -4859,173 +4859,199 @@
     };
 }, function(e, t, n) {
     "use strict";
-    var r = n(5), o = n(144).default, a = n(146), i = n(124), u = r.createClass({
-        displayName: "App",
-        getInitialState: function() {
-            return {
-                gridSize: 4,
-                moves: 0,
-                cols: [],
-                rows: [],
-                redBlocks: [],
-                activeQueens: 0,
-                gameOver: !1
-            };
-        },
-        componentWillMount: function() {
-            if (null == localStorage.state) {
-                for (var e = this.state.gridSize, t = [], n = [], r = [], o = 0, a = 0; a < e; a++) {
-                    t.push(0), n.push(0);
-                    for (var i = 0; i < e; i++) r.push(0);
-                }
-                this.setState({
-                    cols: t,
-                    rows: n,
-                    redBlocks: r,
-                    activeQueens: o
-                });
-            } else {
-                var u = JSON.parse(localStorage.getItem("state"));
-                this.setState({
-                    gridSize: u.gridSize,
-                    cols: u.cols,
-                    rows: u.rows,
-                    redBlocks: u.redBlocks,
-                    moves: u.moves,
-                    activeQueens: u.activeQueens
-                });
+    function r(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
+    }
+    function o(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function a(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    function i(e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+        e.prototype = Object.create(t && t.prototype, {
+            constructor: {
+                value: e,
+                enumerable: !1,
+                writable: !0,
+                configurable: !0
             }
-        },
-        componentDidUpdate: function(e, t) {
-            var n, r = this;
-            this.state.activeQueens != this.state.gridSize || this.state.gameOver || i.post("/", {
-                size: this.state.gridSize,
-                queens: this.state.cols
-            }).then(function(e) {
-                n = e.data, n && !r.state.gameOver && (console.log(n), r.setState({
-                    gameOver: n
-                }));
-            }).catch(function(e) {
-                console.log("Error: \n" + e);
-            }), localStorage.state = JSON.stringify(this.state);
-        },
-        changeGridSize: function(e) {
-            this.setState({
-                gridSize: e
-            }), this.newGame(e);
-        },
-        newGame: function(e) {
-            for (var t = isNaN(e) ? this.state.gridSize : e, n = [], r = [], o = [], a = 0; a < t; a++) {
-                n.push(0), r.push(0);
-                for (var i = 0; i < t; i++) o.push(0);
-            }
-            this.setState({
-                moves: 0,
-                cols: n,
-                rows: r,
-                redBlocks: o,
-                activeQueens: 0,
-                gameOver: !1
-            });
-        },
-        increaceMoves: function() {
-            var e = this.state.moves + 1;
-            this.setState({
-                moves: e
-            });
-        },
-        moveQueen: function(e) {
-            var t, n, r = this.state.cols, o = this.state.rows;
-            if (this.increaceMoves(), 2 === e.length ? (t = Number(e.charAt(0)), n = Number(e.charAt(1))) : (t = Number(e.charAt(1)), 
-            n = Number(e.charAt(2))), 0 === r[n - 1]) r[n - 1] = t, o[t - 1] = n, this.drawRedBlocks(t, n), 
-            this.state.activeQueens++; else if (r[n - 1] === t) r[n - 1] = 0, o[t - 1] = 0, 
-            this.removeRedBlocks(t, n), this.state.activeQueens--; else {
-                var a = r[n - 1];
-                r[n - 1] = t, o[t - 1] = n, this.removeRedBlocks(a, n);
-            }
-            this.setState({
-                cols: r,
-                rows: o
-            });
-        },
-        drawRedBlocks: function(e, t) {
-            var n, r = this.state.gridSize, o = this.state.redBlocks;
-            this.state.cols;
-            e--, t--;
-            for (var a = 0; a < r; a++) {
-                n = Math.abs(a - t), o[r * e + a] = 1, o[r * a + t] = 1;
-                for (var i = 0; i < r; i++) i !== e - n && i !== e + n || (o[r * i + a] = 1);
-            }
-            o[r * e + t] = 0, this.setState({
-                redBlocks: o
-            });
-        },
-        removeRedBlocks: function(e, t) {
-            var n = this.state.gridSize, r = this.state.redBlocks, o = this.state.cols;
-            e--, t--;
-            for (var a = 0; a < n; a++) {
-                r[n * e + a] = 0, r[n * a + t] = 0;
-                for (var i = 0; i < n; i++) r[n * i + a] = 0;
-            }
-            for (var a = 0; a < n; a++) 0 !== o[a] && this.drawRedBlocks(o[a], a + 1);
-            this.setState({
-                redBlocks: r
-            });
-        },
-        render: function() {
-            return r.createElement("div", {
-                id: "content"
-            }, r.createElement("div", {
-                id: "heading",
-                className: "row"
-            }, r.createElement("h1", {
-                className: "title"
-            }, "n-Queens"), r.createElement("div", {
-                className: "moves"
-            }, r.createElement("h4", null, "Moves"), r.createElement("h4", null, this.state.moves))), r.createElement("div", {
-                id: "instructions",
-                className: "row"
-            }, r.createElement("div", {
-                className: "txt"
-            }, "Place all the queens on the board so that ", r.createElement("br", null), "no two queens threaten each other !"), r.createElement("button", {
-                className: "restart-button",
-                onClick: this.newGame
-            }, "New game"), r.createElement("div", {
-                className: "dropdown"
-            }, r.createElement("button", {
-                type: "button",
-                className: "dropdown-toggle grid-button",
-                "data-toggle": "dropdown"
-            }, "Grid"), r.createElement(a, {
-                onClick: this.changeGridSize
-            }))), r.createElement("div", {
-                id: "board-container"
-            }, r.createElement(o, {
-                size: this.state.gridSize,
-                onTileClick: this.moveQueen,
-                rows: this.state.rows,
-                cols: this.state.cols,
-                redBlocks: this.state.redBlocks,
-                activeQueens: this.state.activeQueens,
-                moves: this.state.moves,
-                newGame: this.newGame,
-                gameOver: this.state.gameOver
-            })), r.createElement("p", {
-                className: "how-to"
-            }, r.createElement("strong", {
-                className: "important"
-            }, "How to play:"), " Click on each tile to place a ", r.createElement("strong", null, "queen"), "on it. The game ends when all queens are placed to the board and no two queens share the same row, column, or diagonal."), r.createElement("hr", null), r.createElement("p", null, r.createElement("strong", null, "Note:"), " This game was built using React and SWI-Prolog Pengines."), r.createElement("hr", null), r.createElement("p", null, r.createElement("strong", null, "More:"), " About the n-Queens puzzle ", r.createElement("a", {
-                href: "https://en.wikipedia.org/wiki/Eight_queens_puzzle",
-                target: "_blank"
-            }, "here"), "."), r.createElement("hr", null), r.createElement("p", null, "Created by ", r.createElement("a", {
-                href: "github.com/tasos14"
-            }, "tasos14"), ", inspired by ", r.createElement("a", {
-                href: "http://ng2048.github.io/",
-                target: "_blank"
-            }, "ng-2048"), "."));
-        }
+        }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+    }
+    Object.defineProperty(t, "__esModule", {
+        value: !0
     });
-    e.exports = u;
+    var u = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var r = t[n];
+                r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
+                Object.defineProperty(e, r.key, r);
+            }
+        }
+        return function(t, n, r) {
+            return n && e(t.prototype, n), r && e(t, r), t;
+        };
+    }(), s = n(5), l = r(s), c = n(144), p = r(c), d = n(146), f = r(d), h = n(124), v = r(h), m = function(e) {
+        function t(e) {
+            o(this, t);
+            var n = a(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
+            if (n.componentDidUpdate = function(e, t) {
+                var r = void 0, o = n;
+                n.state.activeQueens != n.state.gridSize || n.state.gameOver || v.default.post("/", {
+                    size: n.state.gridSize,
+                    queens: n.state.cols
+                }).then(function(e) {
+                    r = e.data, r && !o.state.gameOver && (console.log(r), o.setState({
+                        gameOver: r
+                    }));
+                }).catch(function(e) {
+                    console.log("Error: \n" + e);
+                }), localStorage.state = JSON.stringify(n.state);
+            }, n.changeGridSize = function(e) {
+                n.setState({
+                    gridSize: e
+                }), n.newGame(e);
+            }, n.newGame = function(e) {
+                for (var t = isNaN(e) ? n.state.gridSize : e, r = [], o = [], a = [], i = 0; i < t; i++) {
+                    r.push(0), o.push(0);
+                    for (var u = 0; u < t; u++) a.push(0);
+                }
+                n.setState({
+                    moves: 0,
+                    cols: r,
+                    rows: o,
+                    redBlocks: a,
+                    activeQueens: 0,
+                    gameOver: !1
+                });
+            }, n.increaceMoves = function() {
+                var e = n.state.moves + 1;
+                n.setState({
+                    moves: e
+                });
+            }, n.moveQueen = function(e) {
+                var t = void 0, r = void 0, o = n.state.cols, a = n.state.rows;
+                if (n.increaceMoves(), 2 === e.length ? (t = Number(e.charAt(0)), r = Number(e.charAt(1))) : (t = Number(e.charAt(1)), 
+                r = Number(e.charAt(2))), 0 === o[r - 1]) o[r - 1] = t, a[t - 1] = r, n.drawRedBlocks(t, r), 
+                n.state.activeQueens++; else if (o[r - 1] === t) o[r - 1] = 0, a[t - 1] = 0, n.removeRedBlocks(t, r), 
+                n.state.activeQueens--; else {
+                    var i = o[r - 1];
+                    o[r - 1] = t, a[t - 1] = r, n.removeRedBlocks(i, r);
+                }
+                n.setState({
+                    cols: o,
+                    rows: a
+                });
+            }, n.drawRedBlocks = function(e, t) {
+                var r = void 0, o = n.state.gridSize, a = n.state.redBlocks;
+                n.state.cols;
+                e--, t--;
+                for (var i = 0; i < o; i++) {
+                    r = Math.abs(i - t), a[o * e + i] = 1, a[o * i + t] = 1;
+                    for (var u = 0; u < o; u++) u !== e - r && u !== e + r || (a[o * u + i] = 1);
+                }
+                a[o * e + t] = 0, n.setState({
+                    redBlocks: a
+                });
+            }, n.removeRedBlocks = function(e, t) {
+                var r = n.state.gridSize, o = n.state.redBlocks, a = n.state.cols;
+                e--, t--;
+                for (var i = 0; i < r; i++) {
+                    o[r * e + i] = 0, o[r * i + t] = 0;
+                    for (var u = 0; u < r; u++) o[r * u + i] = 0;
+                }
+                for (var s = 0; s < r; s++) 0 !== a[s] && n.drawRedBlocks(a[s], s + 1);
+                n.setState({
+                    redBlocks: o
+                });
+            }, null == localStorage.state) {
+                for (var r = 4, i = [], u = [], s = [], l = 0, c = 0; c < r; c++) {
+                    i.push(0), u.push(0);
+                    for (var p = 0; p < r; p++) s.push(0);
+                }
+                n.state = {
+                    gridSize: 4,
+                    moves: 0,
+                    cols: i,
+                    rows: u,
+                    redBlocks: s,
+                    activeQueens: l
+                };
+            } else {
+                var d = JSON.parse(localStorage.getItem("state"));
+                n.state = {
+                    gridSize: d.gridSize,
+                    cols: d.cols,
+                    rows: d.rows,
+                    redBlocks: d.redBlocks,
+                    moves: d.moves,
+                    activeQueens: d.activeQueens
+                };
+            }
+            return n;
+        }
+        return i(t, e), u(t, [ {
+            key: "render",
+            value: function() {
+                return l.default.createElement("div", {
+                    id: "content"
+                }, l.default.createElement("div", {
+                    id: "heading",
+                    className: "row"
+                }, l.default.createElement("h1", {
+                    className: "title"
+                }, "n-Queens"), l.default.createElement("div", {
+                    className: "moves"
+                }, l.default.createElement("h4", null, "Moves"), l.default.createElement("h4", null, this.state.moves))), l.default.createElement("div", {
+                    id: "instructions",
+                    className: "row"
+                }, l.default.createElement("div", {
+                    className: "txt"
+                }, "Place all the queens on the board so that ", l.default.createElement("br", null), "no two queens threaten each other !"), l.default.createElement("button", {
+                    className: "restart-button",
+                    onClick: this.newGame
+                }, "New game"), l.default.createElement("div", {
+                    className: "dropdown"
+                }, l.default.createElement("button", {
+                    type: "button",
+                    className: "dropdown-toggle grid-button",
+                    "data-toggle": "dropdown"
+                }, "Grid"), l.default.createElement(f.default, {
+                    onClick: this.changeGridSize
+                }))), l.default.createElement("div", {
+                    id: "board-container"
+                }, l.default.createElement(p.default, {
+                    size: this.state.gridSize,
+                    onTileClick: this.moveQueen,
+                    rows: this.state.rows,
+                    cols: this.state.cols,
+                    redBlocks: this.state.redBlocks,
+                    activeQueens: this.state.activeQueens,
+                    moves: this.state.moves,
+                    newGame: this.newGame,
+                    gameOver: this.state.gameOver
+                })), l.default.createElement("p", {
+                    className: "how-to"
+                }, l.default.createElement("strong", {
+                    className: "important"
+                }, "How to play:"), " Click on each tile to place a ", l.default.createElement("strong", null, "queen"), "on it. The game ends when all queens are placed to the board and no two queens share the same row, column, or diagonal."), l.default.createElement("hr", null), l.default.createElement("p", null, l.default.createElement("strong", null, "Note:"), " This game was built using React and SWI-Prolog Pengines."), l.default.createElement("hr", null), l.default.createElement("p", null, l.default.createElement("strong", null, "More:"), " About the n-Queens puzzle ", l.default.createElement("a", {
+                    href: "https://en.wikipedia.org/wiki/Eight_queens_puzzle",
+                    target: "_blank"
+                }, "here"), "."), l.default.createElement("hr", null), l.default.createElement("p", null, "Created by ", l.default.createElement("a", {
+                    href: "github.com/tasos14"
+                }, "tasos14"), ", inspired by ", l.default.createElement("a", {
+                    href: "http://ng2048.github.io/",
+                    target: "_blank"
+                }, "ng-2048"), "."));
+            }
+        } ]), t;
+    }(l.default.Component);
+    t.default = m;
 }, function(e, t, n) {
     "use strict";
     function r(e) {
@@ -5290,25 +5316,68 @@
     t.default = c;
 }, function(e, t, n) {
     "use strict";
-    var r = n(5), o = r.createClass({
-        displayName: "GridSizes",
-        handleClick: function(e) {
-            var t = parseInt(e.target.id);
-            this.props.onClick(t);
-        },
-        render: function() {
-            for (var e = [], t = 4; t < 9; t++) e.push(r.createElement("li", {
-                key: "grid" + t
-            }, r.createElement("a", {
-                onClick: this.handleClick,
-                id: t
-            }, t + "x" + t)));
-            return r.createElement("ul", {
-                className: "dropdown-menu"
-            }, e);
-        }
+    function r(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
+    }
+    function o(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function a(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    function i(e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+        e.prototype = Object.create(t && t.prototype, {
+            constructor: {
+                value: e,
+                enumerable: !1,
+                writable: !0,
+                configurable: !0
+            }
+        }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+    }
+    Object.defineProperty(t, "__esModule", {
+        value: !0
     });
-    e.exports = o;
+    var u = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var r = t[n];
+                r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
+                Object.defineProperty(e, r.key, r);
+            }
+        }
+        return function(t, n, r) {
+            return n && e(t.prototype, n), r && e(t, r), t;
+        };
+    }(), s = n(5), l = r(s), c = function(e) {
+        function t(e) {
+            o(this, t);
+            var n = a(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
+            return n.handleClick = function(e) {
+                var t = parseInt(e.target.id);
+                n.props.onClick(t);
+            }, n;
+        }
+        return i(t, e), u(t, [ {
+            key: "render",
+            value: function() {
+                for (var e = [], t = 4; t < 9; t++) e.push(l.default.createElement("li", {
+                    key: "grid" + t
+                }, l.default.createElement("a", {
+                    onClick: this.handleClick,
+                    id: t
+                }, t + "x" + t)));
+                return l.default.createElement("ul", {
+                    className: "dropdown-menu"
+                }, e);
+            }
+        } ]), t;
+    }(l.default.Component);
+    t.default = c;
 }, function(e, t, n) {
     "use strict";
     function r(e) {
@@ -6512,13 +6581,13 @@
     function a(e) {
         switch (e) {
           case T.topCompositionStart:
-            return S.compositionStart;
+            return O.compositionStart;
 
           case T.topCompositionEnd:
-            return S.compositionEnd;
+            return O.compositionEnd;
 
           case T.topCompositionUpdate:
-            return S.compositionUpdate;
+            return O.compositionUpdate;
         }
     }
     function i(e, t) {
@@ -6547,9 +6616,9 @@
     }
     function l(e, t, n, r) {
         var o, l;
-        if (E ? o = a(e) : M ? u(e, n) && (o = S.compositionEnd) : i(e, n) && (o = S.compositionStart), 
+        if (E ? o = a(e) : M ? u(e, n) && (o = O.compositionEnd) : i(e, n) && (o = O.compositionStart), 
         !o) return null;
-        P && (M || o !== S.compositionStart ? o === S.compositionEnd && M && (l = M.getData()) : M = m.getPooled(r));
+        P && (M || o !== O.compositionStart ? o === O.compositionEnd && M && (l = M.getData()) : M = m.getPooled(r));
         var c = g.getPooled(o, t, n, r);
         if (l) c.data = l; else {
             var p = s(n);
@@ -6564,11 +6633,11 @@
 
           case T.topKeyPress:
             var n = t.which;
-            return n !== R ? null : (O = !0, k);
+            return n !== R ? null : (S = !0, k);
 
           case T.topTextInput:
             var r = t.data;
-            return r === k && O ? null : r;
+            return r === k && S ? null : r;
 
           default:
             return null;
@@ -6599,12 +6668,12 @@
     function d(e, t, n, r) {
         var o;
         if (o = x ? c(e, n) : p(e, n), !o) return null;
-        var a = y.getPooled(S.beforeInput, t, n, r);
+        var a = y.getPooled(O.beforeInput, t, n, r);
         return a.data = o, h.accumulateTwoPhaseDispatches(a), a;
     }
     var f = n(16), h = n(30), v = n(9), m = n(189), g = n(227), y = n(230), b = n(21), _ = [ 9, 13, 27, 32 ], C = 229, E = v.canUseDOM && "CompositionEvent" in window, w = null;
     v.canUseDOM && "documentMode" in document && (w = document.documentMode);
-    var x = v.canUseDOM && "TextEvent" in window && !w && !r(), P = v.canUseDOM && (!E || w && w > 8 && w <= 11), R = 32, k = String.fromCharCode(R), T = f.topLevelTypes, S = {
+    var x = v.canUseDOM && "TextEvent" in window && !w && !r(), P = v.canUseDOM && (!E || w && w > 8 && w <= 11), R = 32, k = String.fromCharCode(R), T = f.topLevelTypes, O = {
         beforeInput: {
             phasedRegistrationNames: {
                 bubbled: b({
@@ -6649,8 +6718,8 @@
             },
             dependencies: [ T.topBlur, T.topCompositionUpdate, T.topKeyDown, T.topKeyPress, T.topKeyUp, T.topMouseDown ]
         }
-    }, O = !1, M = null, N = {
-        eventTypes: S,
+    }, S = !1, M = null, N = {
+        eventTypes: O,
         extractEvents: function(e, t, n, r) {
             return [ l(e, t, n, r), d(e, t, n, r) ];
         }
@@ -6699,7 +6768,7 @@
         return "select" === t || "input" === t && "file" === e.type;
     }
     function o(e) {
-        var t = x.getPooled(O.change, N, e, P(e));
+        var t = x.getPooled(S.change, N, e, P(e));
         _.accumulateTwoPhaseDispatches(t), w.batchedUpdates(a, t);
     }
     function a(e) {
@@ -6712,10 +6781,10 @@
         M && (M.detachEvent("onchange", o), M = null, N = null);
     }
     function s(e, t) {
-        if (e === S.topChange) return t;
+        if (e === O.topChange) return t;
     }
     function l(e, t, n) {
-        e === S.topFocus ? (u(), i(t, n)) : e === S.topBlur && u();
+        e === O.topFocus ? (u(), i(t, n)) : e === O.topBlur && u();
     }
     function c(e, t) {
         M = e, N = t, A = e.value, I = Object.getOwnPropertyDescriptor(e.constructor.prototype, "value"), 
@@ -6732,22 +6801,22 @@
         }
     }
     function f(e, t) {
-        if (e === S.topInput) return t;
+        if (e === O.topInput) return t;
     }
     function h(e, t, n) {
-        e === S.topFocus ? (p(), c(t, n)) : e === S.topBlur && p();
+        e === O.topFocus ? (p(), c(t, n)) : e === O.topBlur && p();
     }
     function v(e, t) {
-        if ((e === S.topSelectionChange || e === S.topKeyUp || e === S.topKeyDown) && M && M.value !== A) return A = M.value, 
+        if ((e === O.topSelectionChange || e === O.topKeyUp || e === O.topKeyDown) && M && M.value !== A) return A = M.value, 
         N;
     }
     function m(e) {
         return e.nodeName && "input" === e.nodeName.toLowerCase() && ("checkbox" === e.type || "radio" === e.type);
     }
     function g(e, t) {
-        if (e === S.topClick) return t;
+        if (e === O.topClick) return t;
     }
-    var y = n(16), b = n(29), _ = n(30), C = n(9), E = n(6), w = n(15), x = n(17), P = n(71), R = n(72), k = n(119), T = n(21), S = y.topLevelTypes, O = {
+    var y = n(16), b = n(29), _ = n(30), C = n(9), E = n(6), w = n(15), x = n(17), P = n(71), R = n(72), k = n(119), T = n(21), O = y.topLevelTypes, S = {
         change: {
             phasedRegistrationNames: {
                 bubbled: T({
@@ -6757,7 +6826,7 @@
                     onChangeCapture: null
                 })
             },
-            dependencies: [ S.topBlur, S.topChange, S.topClick, S.topFocus, S.topInput, S.topKeyDown, S.topKeyUp, S.topSelectionChange ]
+            dependencies: [ O.topBlur, O.topChange, O.topClick, O.topFocus, O.topInput, O.topKeyDown, O.topKeyUp, O.topSelectionChange ]
         }
     }, M = null, N = null, A = null, I = null, D = !1;
     C.canUseDOM && (D = R("change") && (!document.documentMode || document.documentMode > 8));
@@ -6771,14 +6840,14 @@
             A = "" + e, I.set.call(this, e);
         }
     }, j = {
-        eventTypes: O,
+        eventTypes: S,
         extractEvents: function(e, t, n, o) {
             var a, i, u = t ? E.getNodeFromInstance(t) : window;
             if (r(u) ? D ? a = s : i = l : k(u) ? L ? a = f : (a = v, i = h) : m(u) && (a = g), 
             a) {
                 var c = a(e, t);
                 if (c) {
-                    var p = x.getPooled(O.change, c, n, o);
+                    var p = x.getPooled(S.change, c, n, o);
                     return p.type = "change", _.accumulateTwoPhaseDispatches(p), p;
                 }
             }
@@ -7384,7 +7453,7 @@
     }
     function u() {
         var e = this;
-        O.postMountWrapper(e);
+        S.postMountWrapper(e);
     }
     function s() {
         var e = this;
@@ -7445,9 +7514,9 @@
         this._hostContainerInfo = null, this._wrapperState = null, this._topLevelWrapper = null, 
         this._flags = 0;
     }
-    var v = n(2), m = n(4), g = n(182), y = n(184), b = n(26), _ = n(54), C = n(27), E = n(97), w = n(16), x = n(29), P = n(55), R = n(40), k = n(196), T = n(100), S = n(6), O = n(203), M = n(204), N = n(101), A = n(207), I = (n(11), 
+    var v = n(2), m = n(4), g = n(182), y = n(184), b = n(26), _ = n(54), C = n(27), E = n(97), w = n(16), x = n(29), P = n(55), R = n(40), k = n(196), T = n(100), O = n(6), S = n(203), M = n(204), N = n(101), A = n(207), I = (n(11), 
     n(215)), D = n(220), L = (n(12), n(42)), U = (n(1), n(72), n(21)), j = (n(76), n(75), 
-    n(3), T), F = x.deleteListener, B = S.getNodeFromInstance, H = R.listenTo, q = P.registrationNameModules, V = {
+    n(3), T), F = x.deleteListener, B = O.getNodeFromInstance, H = R.listenTo, q = P.registrationNameModules, V = {
         string: !0,
         number: !0
     }, W = U({
@@ -7528,7 +7597,7 @@
                 break;
 
               case "input":
-                O.mountWrapper(this, a, t), a = O.getHostProps(this, a), e.getReactMountReady().enqueue(c, this);
+                S.mountWrapper(this, a, t), a = S.getHostProps(this, a), e.getReactMountReady().enqueue(c, this);
                 break;
 
               case "option":
@@ -7555,7 +7624,7 @@
                     var v = h.createElement("div"), m = this._currentElement.type;
                     v.innerHTML = "<" + m + "></" + m + ">", f = v.removeChild(v.firstChild);
                 } else f = a.is ? h.createElement(this._currentElement.type, a.is) : h.createElement(this._currentElement.type); else f = h.createElementNS(i, this._currentElement.type);
-                S.precacheNode(this, f), this._flags |= j.hasCachedChildNodes, this._hostParent || E.setAttributeForRoot(f), 
+                O.precacheNode(this, f), this._flags |= j.hasCachedChildNodes, this._hostParent || E.setAttributeForRoot(f), 
                 this._updateDOMProperties(null, a, e);
                 var y = b(f);
                 this._createInitialChildren(e, a, r, y), d = y;
@@ -7629,7 +7698,7 @@
                 break;
 
               case "input":
-                a = O.getHostProps(this, a), i = O.getHostProps(this, i);
+                a = S.getHostProps(this, a), i = S.getHostProps(this, i);
                 break;
 
               case "option":
@@ -7646,7 +7715,7 @@
             switch (o(this, i), this._updateDOMProperties(a, i, e), this._updateDOMChildren(a, i, e, r), 
             this._tag) {
               case "input":
-                O.updateWrapper(this);
+                S.updateWrapper(this);
                 break;
 
               case "textarea":
@@ -7704,7 +7773,7 @@
               case "body":
                 v("66", this._tag);
             }
-            this.unmountChildren(e), S.uncacheNode(this), x.deleteAllListeners(this), this._rootNodeID = 0, 
+            this.unmountChildren(e), O.uncacheNode(this), x.deleteAllListeners(this), this._rootNodeID = 0, 
             this._domID = 0, this._wrapperState = null;
         },
         getPublicInstance: function() {
@@ -9702,7 +9771,7 @@
     for (var R in P) P[R].dependencies = [ R ];
     var k = E({
         onClick: null
-    }), T = {}, S = {
+    }), T = {}, O = {
         eventTypes: x,
         extractEvents: function(e, t, n, r) {
             var a = P[e];
@@ -9824,7 +9893,7 @@
             }
         }
     };
-    e.exports = S;
+    e.exports = O;
 }, function(e, t, n) {
     "use strict";
     function r(e, t, n, r) {

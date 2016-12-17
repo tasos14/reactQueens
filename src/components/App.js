@@ -1,68 +1,53 @@
-var React     = require('react');
-var Board     = require('./Board');
-var GridSizes = require('./GridSizes');
-var axios     = require('axios');
+import React from 'react';
+import Board     from './Board';
+import GridSizes from './GridSizes';
+import axios     from 'axios';
 
-var App = React.createClass({
-  getInitialState: function(){
-    return {
-      gridSize:     4,
-      moves:        0,
-      cols:         [],
-      rows:         [],
-      redBlocks:    [],
-      activeQueens: 0,
-      gameOver:     false
-    };
-  },
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  componentWillMount: function(){
+    // Operations usually carried out in componentWillMount go here
     if(localStorage.state == null){
-      var gridSize = this.state.gridSize;
-      var cols = [];
-      var rows = [];
-      var redBlocks = [];
-      var activeQueens = 0;
+      let gridSize = 4;
+      let cols = [];
+      let rows = [];
+      let redBlocks = [];
+      let activeQueens = 0;
 
-      for(var i=0; i<gridSize; i++){
+      for(let i=0; i<gridSize; i++){
         cols.push(0);
         rows.push(0);
-        for(var j=0; j<gridSize; j++){
+        for(let j=0; j<gridSize; j++){
           redBlocks.push(0);
         }
       }
 
-      this.setState({
+      this.state = {
+        gridSize:     4,
+        moves:        0,
         cols:         cols,
         rows:         rows,
         redBlocks:    redBlocks,
         activeQueens: activeQueens
-      });
+      };
     }
     else {
-      var localState = JSON.parse(localStorage.getItem("state"));
-      this.setState({
+      let localState = JSON.parse(localStorage.getItem("state"));
+      this.state = {
         gridSize:     localState.gridSize,
         cols:         localState.cols,
         rows:         localState.rows,
         redBlocks:    localState.redBlocks,
         moves:        localState.moves,
         activeQueens: localState.activeQueens
-      });
+      };
     }
+  }
 
-
-  },
-
-  // componentDidMount: function() {
-  //   if (this.state.activeQueens == this.state.gridSize){
-  //     // console.log("from app this is where you'll make the post");
-  //   }
-  // },
-
-  componentDidUpdate: function(prevProps, prevState){
-    var data;
-    var that = this;
+  componentDidUpdate = (prevProps, prevState) => {
+    let data;
+    let that = this;
     if (this.state.activeQueens == this.state.gridSize && !this.state.gameOver){
       axios.post('/', {
         size:   this.state.gridSize,
@@ -84,27 +69,27 @@ var App = React.createClass({
 
     localStorage.state = JSON.stringify(this.state);
 
-  },
+  }
 
-  changeGridSize: function(size){
+  changeGridSize = (size) => {
     this.setState({
       gridSize: size,
     });
 
     this.newGame(size);
-  },
+  }
 
-  newGame: function(size){
-    var gridSize = isNaN(size)?  this.state.gridSize : size;
-    var cols = [];
-    var rows = [];
-    var redBlocks = [];
+  newGame = (size) => {
+    let gridSize = isNaN(size)?  this.state.gridSize : size;
+    let cols = [];
+    let rows = [];
+    let redBlocks = [];
 
 
-    for(var i=0; i<gridSize; i++){
+    for(let i=0; i<gridSize; i++){
       cols.push(0);
       rows.push(0);
-      for(var j=0; j<gridSize; j++){
+      for(let j=0; j<gridSize; j++){
         redBlocks.push(0);
       }
     }
@@ -117,19 +102,19 @@ var App = React.createClass({
       activeQueens: 0,
       gameOver:     false
     });
-  },
+  }
 
-  increaceMoves: function(){
-    var newMoves = this.state.moves + 1;
+  increaceMoves = () => {
+    let newMoves = this.state.moves + 1;
     this.setState({
       moves: newMoves
     });
-  },
+  }
 
-  moveQueen: function(id){
-    var row,col;
-    var cols = this.state.cols;
-    var rows = this.state.rows;
+  moveQueen = (id) => {
+    let row,col;
+    let cols = this.state.cols;
+    let rows = this.state.rows;
 
     this.increaceMoves();
 
@@ -158,7 +143,7 @@ var App = React.createClass({
     }
     // when you have already clicked a tile on that column
     else {
-      var prev_row = cols[col-1];
+      let prev_row = cols[col-1];
       cols[col-1] = row;
       rows[row-1] = col;
       this.removeRedBlocks(prev_row,col);
@@ -168,22 +153,22 @@ var App = React.createClass({
       cols:      cols,
       rows:      rows
     });
-  },
+  }
 
-  drawRedBlocks: function(row, col){
-    var absDist;
-    var gridSize = this.state.gridSize;
-    var redBlocks = this.state.redBlocks;
-    var cols = this.state.cols;
+  drawRedBlocks = (row, col) => {
+    let absDist;
+    let gridSize = this.state.gridSize;
+    let redBlocks = this.state.redBlocks;
+    let cols = this.state.cols;
 
     row--;
     col--;
-    for(var i=0; i<gridSize; i++){
+    for(let i=0; i<gridSize; i++){
       absDist = Math.abs(i-col);
 
       redBlocks[gridSize*row+i] = 1;
       redBlocks[gridSize*i+col] = 1;
-      for(var j=0; j<gridSize; j++){
+      for(let j=0; j<gridSize; j++){
         if(j === row-absDist || j === row+absDist){
           redBlocks[gridSize*j+i] = 1;
         }
@@ -194,24 +179,24 @@ var App = React.createClass({
     this.setState({
       redBlocks: redBlocks
     });
-  },
+  }
 
-  removeRedBlocks: function(row,col){
-    var gridSize = this.state.gridSize;
-    var redBlocks = this.state.redBlocks;
-    var cols = this.state.cols;
+  removeRedBlocks = (row,col) => {
+    let gridSize = this.state.gridSize;
+    let redBlocks = this.state.redBlocks;
+    let cols = this.state.cols;
 
     row--;
     col--;
-    for(var i=0; i<gridSize; i++){
+    for(let i=0; i<gridSize; i++){
       redBlocks[gridSize*row+i] = 0;
       redBlocks[gridSize*i+col] = 0;
-      for(var j=0; j<gridSize; j++){
+      for(let j=0; j<gridSize; j++){
         redBlocks[gridSize*j+i] = 0;
       }
     }
 
-    for(var i=0; i<gridSize; i++){
+    for(let i=0; i<gridSize; i++){
       if(cols[i] !== 0){
         this.drawRedBlocks(cols[i],i+1);
       }
@@ -220,9 +205,9 @@ var App = React.createClass({
     this.setState({
       redBlocks: redBlocks
     });
-  },
+  }
 
-  render: function(){
+  render() {
     return (
       <div id="content">
         <div id="heading" className="row">
@@ -289,6 +274,4 @@ var App = React.createClass({
       </div>
     )
   }
-});
-
-module.exports = App;
+}
