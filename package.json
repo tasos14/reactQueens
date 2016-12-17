@@ -5,10 +5,22 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "start": "NODE_ENV=production babel-node --presets 'react,es2015' src/server.js"
+    "start": "NODE_ENV=production babel-node src/server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tasos14/reactQueens.git"
+  },
+  "keywords": [
+    "nQueens",
+    "Queens"
+  ],
+  "author": "tasos14",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tasos14/reactQueens/issues"
+  },
+  "homepage": "https://github.com/tasos14/reactQueens#readme",
   "dependencies": {
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",

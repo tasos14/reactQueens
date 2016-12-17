@@ -1,13 +1,18 @@
-var React = require('react');
+import React from 'react';
 
-var Tile = React.createClass({
-  handleClick: function(e){
-    var id = e.target.id;
+export default class Tile extends React.Component {
+  constructor(props) {
+    super(props);
+    // Operations usually carried out in componentWillMount go here
+  }
+
+  handleClick = (e) => {
+    let id = e.target.id;
     this.props.onClick(id);
-  },
+  }
 
-  render: function(){
-    var tile;
+  render() {
+    let tile;
 
     if(this.props.isRed){
       if(this.props.hasQueen){
@@ -56,6 +61,4 @@ var Tile = React.createClass({
 
     return tile;
   }
-});
-
-module.exports = Tile;
+}

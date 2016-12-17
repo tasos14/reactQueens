@@ -27,7 +27,7 @@ module.exports = {
       loader: ['babel-loader'],
       query: {
         cacheDirectory: true,
-        presets: debug ? ['react', 'es2015', 'react-hmre'] : ['react', 'es2015']
+        presets: debug ? ['react', 'es2015', 'react-hmre'] : ['react', 'es2015','stage-2']
       }
     }]
   },

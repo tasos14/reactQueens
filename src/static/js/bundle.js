@@ -3049,10 +3049,10 @@
             return i.formatPattern;
         }
     });
-    var u = n(157), s = r(u), l = n(82), c = r(l), p = n(151), d = r(p), f = n(170), h = r(f), v = n(152), m = r(v), g = n(153), y = r(g), b = n(83), _ = r(b), C = n(155), E = r(C), w = n(150), x = r(w), P = n(154), R = r(P), k = n(156), T = r(k), S = n(169), N = r(S), M = n(35), O = r(M), A = n(158), I = r(A), D = r(a), L = n(167), U = r(L), j = n(89), F = r(j), B = n(160), H = r(B), q = n(161), V = r(q), W = n(165), K = r(W), z = n(85), Q = r(z);
+    var u = n(157), s = r(u), l = n(82), c = r(l), p = n(151), d = r(p), f = n(170), h = r(f), v = n(152), m = r(v), g = n(153), y = r(g), b = n(83), _ = r(b), C = n(155), E = r(C), w = n(150), x = r(w), P = n(154), R = r(P), k = n(156), T = r(k), S = n(169), M = r(S), N = n(35), O = r(N), A = n(158), I = r(A), D = r(a), L = n(167), U = r(L), j = n(89), F = r(j), B = n(160), H = r(B), q = n(161), V = r(q), W = n(165), K = r(W), z = n(85), Q = r(z);
     t.Router = s.default, t.Link = c.default, t.IndexLink = d.default, t.withRouter = h.default, 
     t.IndexRedirect = m.default, t.IndexRoute = y.default, t.Redirect = _.default, t.Route = E.default, 
-    t.History = x.default, t.Lifecycle = R.default, t.RouteContext = T.default, t.useRoutes = N.default, 
+    t.History = x.default, t.Lifecycle = R.default, t.RouteContext = T.default, t.useRoutes = M.default, 
     t.RouterContext = O.default, t.RoutingContext = I.default, t.PropTypes = D.default, 
     t.match = U.default, t.useRouterHistory = F.default, t.applyRouterMiddleware = H.default, 
     t.browserHistory = V.default, t.hashHistory = K.default, t.createMemoryHistory = Q.default;
@@ -3209,17 +3209,17 @@
             }
         }
         function r(e) {
-            1 === ++S && (N = t(T));
+            1 === ++S && (M = t(T));
             var n = T.listenBefore(e);
             return function() {
-                n(), 0 === --S && N();
+                n(), 0 === --S && M();
             };
         }
         function o(e) {
-            1 === ++S && (N = t(T));
+            1 === ++S && (M = t(T));
             var n = T.listen(e);
             return function() {
-                n(), 0 === --S && N();
+                n(), 0 === --S && M();
             };
         }
         function l(e) {
@@ -3235,10 +3235,10 @@
             return "#" + T.createHref(e);
         }
         function E(e) {
-            1 === ++S && (N = t(T)), T.registerTransitionHook(e);
+            1 === ++S && (M = t(T)), T.registerTransitionHook(e);
         }
         function w(e) {
-            T.unregisterTransitionHook(e), 0 === --S && N();
+            T.unregisterTransitionHook(e), 0 === --S && M();
         }
         function x(e, t) {
             T.pushState(e, t);
@@ -3254,7 +3254,7 @@
             getCurrentLocation: e,
             finishTransition: n,
             saveState: y.saveState
-        })), S = 0, N = void 0;
+        })), S = 0, M = void 0;
         g.supportsGoWithoutReloadUsingHash();
         return c({}, T, {
             listenBefore: r,
@@ -3393,12 +3393,12 @@
                 state: e
             }, t));
         }
-        function N(e, t) {
+        function M(e, t) {
             "string" == typeof t && (t = p.parsePath(t)), h(u({
                 state: e
             }, t));
         }
-        var M = arguments.length <= 0 || void 0 === arguments[0] ? {} : arguments[0], O = M.getCurrentLocation, A = M.finishTransition, I = M.saveState, D = M.go, L = M.getUserConfirmation, U = M.keyLength;
+        var N = arguments.length <= 0 || void 0 === arguments[0] ? {} : arguments[0], O = N.getCurrentLocation, A = N.finishTransition, I = N.saveState, D = N.go, L = N.getUserConfirmation, U = N.keyLength;
         "number" != typeof U && (U = _);
         var j = [], F = [], B = [], H = void 0, q = void 0;
         return {
@@ -3418,7 +3418,7 @@
             registerTransitionHook: b.default(k, "registerTransitionHook is deprecated; use listenBefore instead"),
             unregisterTransitionHook: b.default(T, "unregisterTransitionHook is deprecated; use the callback returned from listenBefore instead"),
             pushState: b.default(S, "pushState is deprecated; use push instead"),
-            replaceState: b.default(N, "replaceState is deprecated; use replace instead")
+            replaceState: b.default(M, "replaceState is deprecated; use replace instead")
         };
     }
     t.__esModule = !0;
@@ -4093,7 +4093,7 @@
         return e ? e.nodeType === I ? e.documentElement : e.firstChild : null;
     }
     function a(e) {
-        return e.getAttribute && e.getAttribute(M) || "";
+        return e.getAttribute && e.getAttribute(N) || "";
     }
     function i(e, t, n, r, o) {
         var a;
@@ -4130,7 +4130,7 @@
         return t ? t._hostContainerInfo._topLevelWrapper : null;
     }
     var f = n(2), h = n(26), v = n(27), m = n(40), g = (n(20), n(6)), y = n(198), b = n(201), _ = n(14), C = n(103), E = n(31), w = (n(11), 
-    n(214)), x = n(28), P = n(67), R = n(15), k = n(34), T = n(118), S = (n(1), n(43)), N = n(73), M = (n(3), 
+    n(214)), x = n(28), P = n(67), R = n(15), k = n(34), T = n(118), S = (n(1), n(43)), M = n(73), N = (n(3), 
     v.ID_ATTRIBUTE_NAME), O = v.ROOT_ATTRIBUTE_NAME, A = 1, I = 9, D = 11, L = {}, U = 1, j = function() {
         this.rootID = U++;
     };
@@ -4168,7 +4168,7 @@
             var c = d(n);
             if (c) {
                 var p = c._currentElement, h = p.props;
-                if (N(h, t)) {
+                if (M(h, t)) {
                     var v = c._renderedComponent.getPublicInstance(), m = r && function() {
                         r.call(v);
                     };
@@ -5085,7 +5085,7 @@
     t.default = f;
 }, function(e, t, n) {
     "use strict";
-    var r = n(5), o = n(147), a = n(145), i = r.createClass({
+    var r = n(5), o = n(147).default, a = n(145), i = r.createClass({
         displayName: "Board",
         createBoard: function() {
             for (var e = [], t = [], n = [], a = this.props.size, i = 1; i < a + 1; i++) {
@@ -5226,44 +5226,87 @@
     e.exports = o;
 }, function(e, t, n) {
     "use strict";
-    var r = n(5), o = r.createClass({
-        displayName: "Tile",
-        handleClick: function(e) {
-            var t = e.target.id;
-            this.props.onClick(t);
-        },
-        render: function() {
-            var e;
-            return e = this.props.isRed ? this.props.hasQueen ? r.createElement("div", {
-                id: this.props.propId,
-                className: "tile-" + this.props.boardSize + " red",
-                onClick: this.handleClick
-            }, r.createElement("img", {
-                key: "Q" + this.props.propId,
-                src: "./img/queen.png",
-                id: "Q" + this.props.propId,
-                className: "queen-" + this.props.boardSize
-            })) : r.createElement("div", {
-                id: this.props.propId,
-                className: "tile-" + this.props.boardSize + " red",
-                onClick: this.handleClick
-            }) : this.props.hasQueen ? r.createElement("div", {
-                id: this.props.propId,
-                className: "tile-" + this.props.boardSize,
-                onClick: this.handleClick
-            }, r.createElement("img", {
-                key: "Q" + this.props.propId,
-                src: "./img/queen.png",
-                id: "Q" + this.props.propId,
-                className: "queen-" + this.props.boardSize
-            })) : r.createElement("div", {
-                id: this.props.propId,
-                className: "tile-" + this.props.boardSize,
-                onClick: this.handleClick
-            });
-        }
+    function r(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
+    }
+    function o(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function a(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    function i(e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+        e.prototype = Object.create(t && t.prototype, {
+            constructor: {
+                value: e,
+                enumerable: !1,
+                writable: !0,
+                configurable: !0
+            }
+        }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+    }
+    Object.defineProperty(t, "__esModule", {
+        value: !0
     });
-    e.exports = o;
+    var u = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var r = t[n];
+                r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
+                Object.defineProperty(e, r.key, r);
+            }
+        }
+        return function(t, n, r) {
+            return n && e(t.prototype, n), r && e(t, r), t;
+        };
+    }(), s = n(5), l = r(s), c = function(e) {
+        function t(e) {
+            o(this, t);
+            var n = a(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
+            return n.handleClick = function(e) {
+                var t = e.target.id;
+                n.props.onClick(t);
+            }, n;
+        }
+        return i(t, e), u(t, [ {
+            key: "render",
+            value: function() {
+                var e;
+                return e = this.props.isRed ? this.props.hasQueen ? l.default.createElement("div", {
+                    id: this.props.propId,
+                    className: "tile-" + this.props.boardSize + " red",
+                    onClick: this.handleClick
+                }, l.default.createElement("img", {
+                    key: "Q" + this.props.propId,
+                    src: "./img/queen.png",
+                    id: "Q" + this.props.propId,
+                    className: "queen-" + this.props.boardSize
+                })) : l.default.createElement("div", {
+                    id: this.props.propId,
+                    className: "tile-" + this.props.boardSize + " red",
+                    onClick: this.handleClick
+                }) : this.props.hasQueen ? l.default.createElement("div", {
+                    id: this.props.propId,
+                    className: "tile-" + this.props.boardSize,
+                    onClick: this.handleClick
+                }, l.default.createElement("img", {
+                    key: "Q" + this.props.propId,
+                    src: "./img/queen.png",
+                    id: "Q" + this.props.propId,
+                    className: "queen-" + this.props.boardSize
+                })) : l.default.createElement("div", {
+                    id: this.props.propId,
+                    className: "tile-" + this.props.boardSize,
+                    onClick: this.handleClick
+                });
+            }
+        } ]), t;
+    }(l.default.Component);
+    t.default = c;
 }, function(e, t, n) {
     "use strict";
     function r(e) {
@@ -6419,9 +6462,9 @@
     }
     function l(e, t, n, r) {
         var o, l;
-        if (E ? o = a(e) : M ? u(e, n) && (o = S.compositionEnd) : i(e, n) && (o = S.compositionStart), 
+        if (E ? o = a(e) : N ? u(e, n) && (o = S.compositionEnd) : i(e, n) && (o = S.compositionStart), 
         !o) return null;
-        P && (M || o !== S.compositionStart ? o === S.compositionEnd && M && (l = M.getData()) : M = m.getPooled(r));
+        P && (N || o !== S.compositionStart ? o === S.compositionEnd && N && (l = N.getData()) : N = m.getPooled(r));
         var c = g.getPooled(o, t, n, r);
         if (l) c.data = l; else {
             var p = s(n);
@@ -6436,21 +6479,21 @@
 
           case T.topKeyPress:
             var n = t.which;
-            return n !== R ? null : (N = !0, k);
+            return n !== R ? null : (M = !0, k);
 
           case T.topTextInput:
             var r = t.data;
-            return r === k && N ? null : r;
+            return r === k && M ? null : r;
 
           default:
             return null;
         }
     }
     function p(e, t) {
-        if (M) {
+        if (N) {
             if (e === T.topCompositionEnd || !E && u(e, t)) {
-                var n = M.getData();
-                return m.release(M), M = null, n;
+                var n = N.getData();
+                return m.release(N), N = null, n;
             }
             return null;
         }
@@ -6521,7 +6564,7 @@
             },
             dependencies: [ T.topBlur, T.topCompositionUpdate, T.topKeyDown, T.topKeyPress, T.topKeyUp, T.topMouseDown ]
         }
-    }, N = !1, M = null, O = {
+    }, M = !1, N = null, O = {
         eventTypes: S,
         extractEvents: function(e, t, n, r) {
             return [ l(e, t, n, r), d(e, t, n, r) ];
@@ -6571,17 +6614,17 @@
         return "select" === t || "input" === t && "file" === e.type;
     }
     function o(e) {
-        var t = x.getPooled(N.change, O, e, P(e));
+        var t = x.getPooled(M.change, O, e, P(e));
         _.accumulateTwoPhaseDispatches(t), w.batchedUpdates(a, t);
     }
     function a(e) {
         b.enqueueEvents(e), b.processEventQueue(!1);
     }
     function i(e, t) {
-        M = e, O = t, M.attachEvent("onchange", o);
+        N = e, O = t, N.attachEvent("onchange", o);
     }
     function u() {
-        M && (M.detachEvent("onchange", o), M = null, O = null);
+        N && (N.detachEvent("onchange", o), N = null, O = null);
     }
     function s(e, t) {
         if (e === S.topChange) return t;
@@ -6590,12 +6633,12 @@
         e === S.topFocus ? (u(), i(t, n)) : e === S.topBlur && u();
     }
     function c(e, t) {
-        M = e, O = t, A = e.value, I = Object.getOwnPropertyDescriptor(e.constructor.prototype, "value"), 
-        Object.defineProperty(M, "value", U), M.attachEvent ? M.attachEvent("onpropertychange", d) : M.addEventListener("propertychange", d, !1);
+        N = e, O = t, A = e.value, I = Object.getOwnPropertyDescriptor(e.constructor.prototype, "value"), 
+        Object.defineProperty(N, "value", U), N.attachEvent ? N.attachEvent("onpropertychange", d) : N.addEventListener("propertychange", d, !1);
     }
     function p() {
-        M && (delete M.value, M.detachEvent ? M.detachEvent("onpropertychange", d) : M.removeEventListener("propertychange", d, !1), 
-        M = null, O = null, A = null, I = null);
+        N && (delete N.value, N.detachEvent ? N.detachEvent("onpropertychange", d) : N.removeEventListener("propertychange", d, !1), 
+        N = null, O = null, A = null, I = null);
     }
     function d(e) {
         if ("value" === e.propertyName) {
@@ -6610,7 +6653,7 @@
         e === S.topFocus ? (p(), c(t, n)) : e === S.topBlur && p();
     }
     function v(e, t) {
-        if ((e === S.topSelectionChange || e === S.topKeyUp || e === S.topKeyDown) && M && M.value !== A) return A = M.value, 
+        if ((e === S.topSelectionChange || e === S.topKeyUp || e === S.topKeyDown) && N && N.value !== A) return A = N.value, 
         O;
     }
     function m(e) {
@@ -6619,7 +6662,7 @@
     function g(e, t) {
         if (e === S.topClick) return t;
     }
-    var y = n(16), b = n(29), _ = n(30), C = n(9), E = n(6), w = n(15), x = n(17), P = n(71), R = n(72), k = n(119), T = n(21), S = y.topLevelTypes, N = {
+    var y = n(16), b = n(29), _ = n(30), C = n(9), E = n(6), w = n(15), x = n(17), P = n(71), R = n(72), k = n(119), T = n(21), S = y.topLevelTypes, M = {
         change: {
             phasedRegistrationNames: {
                 bubbled: T({
@@ -6631,7 +6674,7 @@
             },
             dependencies: [ S.topBlur, S.topChange, S.topClick, S.topFocus, S.topInput, S.topKeyDown, S.topKeyUp, S.topSelectionChange ]
         }
-    }, M = null, O = null, A = null, I = null, D = !1;
+    }, N = null, O = null, A = null, I = null, D = !1;
     C.canUseDOM && (D = R("change") && (!document.documentMode || document.documentMode > 8));
     var L = !1;
     C.canUseDOM && (L = R("input") && (!document.documentMode || document.documentMode > 11));
@@ -6643,14 +6686,14 @@
             A = "" + e, I.set.call(this, e);
         }
     }, j = {
-        eventTypes: N,
+        eventTypes: M,
         extractEvents: function(e, t, n, o) {
             var a, i, u = t ? E.getNodeFromInstance(t) : window;
             if (r(u) ? D ? a = s : i = l : k(u) ? L ? a = f : (a = v, i = h) : m(u) && (a = g), 
             a) {
                 var c = a(e, t);
                 if (c) {
-                    var p = x.getPooled(N.change, c, n, o);
+                    var p = x.getPooled(M.change, c, n, o);
                     return p.type = "change", _.accumulateTwoPhaseDispatches(p), p;
                 }
             }
@@ -7256,7 +7299,7 @@
     }
     function u() {
         var e = this;
-        N.postMountWrapper(e);
+        M.postMountWrapper(e);
     }
     function s() {
         var e = this;
@@ -7264,7 +7307,7 @@
     }
     function l() {
         var e = this;
-        M.postMountWrapper(e);
+        N.postMountWrapper(e);
     }
     function c() {
         var e = this;
@@ -7317,7 +7360,7 @@
         this._hostContainerInfo = null, this._wrapperState = null, this._topLevelWrapper = null, 
         this._flags = 0;
     }
-    var v = n(2), m = n(4), g = n(182), y = n(184), b = n(26), _ = n(54), C = n(27), E = n(97), w = n(16), x = n(29), P = n(55), R = n(40), k = n(196), T = n(100), S = n(6), N = n(203), M = n(204), O = n(101), A = n(207), I = (n(11), 
+    var v = n(2), m = n(4), g = n(182), y = n(184), b = n(26), _ = n(54), C = n(27), E = n(97), w = n(16), x = n(29), P = n(55), R = n(40), k = n(196), T = n(100), S = n(6), M = n(203), N = n(204), O = n(101), A = n(207), I = (n(11), 
     n(215)), D = n(220), L = (n(12), n(42)), U = (n(1), n(72), n(21)), j = (n(76), n(75), 
     n(3), T), F = x.deleteListener, B = S.getNodeFromInstance, H = R.listenTo, q = P.registrationNameModules, V = {
         string: !0,
@@ -7400,11 +7443,11 @@
                 break;
 
               case "input":
-                N.mountWrapper(this, a, t), a = N.getHostProps(this, a), e.getReactMountReady().enqueue(c, this);
+                M.mountWrapper(this, a, t), a = M.getHostProps(this, a), e.getReactMountReady().enqueue(c, this);
                 break;
 
               case "option":
-                M.mountWrapper(this, a, t), a = M.getHostProps(this, a);
+                N.mountWrapper(this, a, t), a = N.getHostProps(this, a);
                 break;
 
               case "select":
@@ -7501,11 +7544,11 @@
                 break;
 
               case "input":
-                a = N.getHostProps(this, a), i = N.getHostProps(this, i);
+                a = M.getHostProps(this, a), i = M.getHostProps(this, i);
                 break;
 
               case "option":
-                a = M.getHostProps(this, a), i = M.getHostProps(this, i);
+                a = N.getHostProps(this, a), i = N.getHostProps(this, i);
                 break;
 
               case "select":
@@ -7518,7 +7561,7 @@
             switch (o(this, i), this._updateDOMProperties(a, i, e), this._updateDOMChildren(a, i, e, r), 
             this._tag) {
               case "input":
-                N.updateWrapper(this);
+                M.updateWrapper(this);
                 break;
 
               case "textarea":

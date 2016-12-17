@@ -1,5 +1,5 @@
 var React = require('react');
-var Tile  = require('./Tile');
+var Tile  = require('./Tile').default;
 var GameMessage = require('./GameMessage');
 
 var Board = React.createClass({
