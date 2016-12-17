@@ -3049,11 +3049,11 @@
             return i.formatPattern;
         }
     });
-    var u = n(157), s = r(u), l = n(82), c = r(l), p = n(151), d = r(p), f = n(170), h = r(f), v = n(152), m = r(v), g = n(153), y = r(g), b = n(83), _ = r(b), C = n(155), E = r(C), w = n(150), x = r(w), P = n(154), R = r(P), k = n(156), T = r(k), S = n(169), M = r(S), N = n(35), O = r(N), A = n(158), I = r(A), D = r(a), L = n(167), U = r(L), j = n(89), F = r(j), B = n(160), H = r(B), q = n(161), V = r(q), W = n(165), K = r(W), z = n(85), Q = r(z);
+    var u = n(157), s = r(u), l = n(82), c = r(l), p = n(151), d = r(p), f = n(170), h = r(f), v = n(152), m = r(v), g = n(153), y = r(g), b = n(83), _ = r(b), C = n(155), E = r(C), w = n(150), x = r(w), P = n(154), R = r(P), k = n(156), T = r(k), S = n(169), O = r(S), M = n(35), N = r(M), A = n(158), I = r(A), D = r(a), L = n(167), U = r(L), j = n(89), F = r(j), B = n(160), H = r(B), q = n(161), V = r(q), W = n(165), K = r(W), z = n(85), Q = r(z);
     t.Router = s.default, t.Link = c.default, t.IndexLink = d.default, t.withRouter = h.default, 
     t.IndexRedirect = m.default, t.IndexRoute = y.default, t.Redirect = _.default, t.Route = E.default, 
-    t.History = x.default, t.Lifecycle = R.default, t.RouteContext = T.default, t.useRoutes = M.default, 
-    t.RouterContext = O.default, t.RoutingContext = I.default, t.PropTypes = D.default, 
+    t.History = x.default, t.Lifecycle = R.default, t.RouteContext = T.default, t.useRoutes = O.default, 
+    t.RouterContext = N.default, t.RoutingContext = I.default, t.PropTypes = D.default, 
     t.match = U.default, t.useRouterHistory = F.default, t.applyRouterMiddleware = H.default, 
     t.browserHistory = V.default, t.hashHistory = K.default, t.createMemoryHistory = Q.default;
 }, function(e, t, n) {
@@ -3209,17 +3209,17 @@
             }
         }
         function r(e) {
-            1 === ++S && (M = t(T));
+            1 === ++S && (O = t(T));
             var n = T.listenBefore(e);
             return function() {
-                n(), 0 === --S && M();
+                n(), 0 === --S && O();
             };
         }
         function o(e) {
-            1 === ++S && (M = t(T));
+            1 === ++S && (O = t(T));
             var n = T.listen(e);
             return function() {
-                n(), 0 === --S && M();
+                n(), 0 === --S && O();
             };
         }
         function l(e) {
@@ -3235,10 +3235,10 @@
             return "#" + T.createHref(e);
         }
         function E(e) {
-            1 === ++S && (M = t(T)), T.registerTransitionHook(e);
+            1 === ++S && (O = t(T)), T.registerTransitionHook(e);
         }
         function w(e) {
-            T.unregisterTransitionHook(e), 0 === --S && M();
+            T.unregisterTransitionHook(e), 0 === --S && O();
         }
         function x(e, t) {
             T.pushState(e, t);
@@ -3254,7 +3254,7 @@
             getCurrentLocation: e,
             finishTransition: n,
             saveState: y.saveState
-        })), S = 0, M = void 0;
+        })), S = 0, O = void 0;
         g.supportsGoWithoutReloadUsingHash();
         return c({}, T, {
             listenBefore: r,
@@ -3311,7 +3311,7 @@
         }
         function r(e) {
             if (B.push(e), H) e(H); else {
-                var t = O();
+                var t = N();
                 F = [ t.key ], n(t);
             }
             return function() {
@@ -3375,7 +3375,7 @@
             }), t = n, n = arguments[3] || C()), v.default(e, t, n);
         }
         function P(e) {
-            H ? (R(H, e), n(H)) : R(O(), e);
+            H ? (R(H, e), n(H)) : R(N(), e);
         }
         function R(e, t) {
             e.state = u({}, e.state, t), I(e.key, e.state);
@@ -3393,12 +3393,12 @@
                 state: e
             }, t));
         }
-        function M(e, t) {
+        function O(e, t) {
             "string" == typeof t && (t = p.parsePath(t)), h(u({
                 state: e
             }, t));
         }
-        var N = arguments.length <= 0 || void 0 === arguments[0] ? {} : arguments[0], O = N.getCurrentLocation, A = N.finishTransition, I = N.saveState, D = N.go, L = N.getUserConfirmation, U = N.keyLength;
+        var M = arguments.length <= 0 || void 0 === arguments[0] ? {} : arguments[0], N = M.getCurrentLocation, A = M.finishTransition, I = M.saveState, D = M.go, L = M.getUserConfirmation, U = M.keyLength;
         "number" != typeof U && (U = _);
         var j = [], F = [], B = [], H = void 0, q = void 0;
         return {
@@ -3418,7 +3418,7 @@
             registerTransitionHook: b.default(k, "registerTransitionHook is deprecated; use listenBefore instead"),
             unregisterTransitionHook: b.default(T, "unregisterTransitionHook is deprecated; use the callback returned from listenBefore instead"),
             pushState: b.default(S, "pushState is deprecated; use push instead"),
-            replaceState: b.default(M, "replaceState is deprecated; use replace instead")
+            replaceState: b.default(O, "replaceState is deprecated; use replace instead")
         };
     }
     t.__esModule = !0;
@@ -4093,7 +4093,7 @@
         return e ? e.nodeType === I ? e.documentElement : e.firstChild : null;
     }
     function a(e) {
-        return e.getAttribute && e.getAttribute(N) || "";
+        return e.getAttribute && e.getAttribute(M) || "";
     }
     function i(e, t, n, r, o) {
         var a;
@@ -4130,8 +4130,8 @@
         return t ? t._hostContainerInfo._topLevelWrapper : null;
     }
     var f = n(2), h = n(26), v = n(27), m = n(40), g = (n(20), n(6)), y = n(198), b = n(201), _ = n(14), C = n(103), E = n(31), w = (n(11), 
-    n(214)), x = n(28), P = n(67), R = n(15), k = n(34), T = n(118), S = (n(1), n(43)), M = n(73), N = (n(3), 
-    v.ID_ATTRIBUTE_NAME), O = v.ROOT_ATTRIBUTE_NAME, A = 1, I = 9, D = 11, L = {}, U = 1, j = function() {
+    n(214)), x = n(28), P = n(67), R = n(15), k = n(34), T = n(118), S = (n(1), n(43)), O = n(73), M = (n(3), 
+    v.ID_ATTRIBUTE_NAME), N = v.ROOT_ATTRIBUTE_NAME, A = 1, I = 9, D = 11, L = {}, U = 1, j = function() {
         this.rootID = U++;
     };
     j.prototype.isReactComponent = {}, j.prototype.render = function() {
@@ -4168,7 +4168,7 @@
             var c = d(n);
             if (c) {
                 var p = c._currentElement, h = p.props;
-                if (M(h, t)) {
+                if (O(h, t)) {
                     var v = c._renderedComponent.getPublicInstance(), m = r && function() {
                         r.call(v);
                     };
@@ -4186,7 +4186,7 @@
             c(e) ? void 0 : f("40");
             var t = d(e);
             if (!t) {
-                l(e), 1 === e.nodeType && e.hasAttribute(O);
+                l(e), 1 === e.nodeType && e.hasAttribute(N);
                 return !1;
             }
             return delete L[t._instance.rootID], R.batchedUpdates(s, t, e, !1), !0;
@@ -5085,7 +5085,7 @@
     t.default = f;
 }, function(e, t, n) {
     "use strict";
-    var r = n(5), o = n(147).default, a = n(145), i = r.createClass({
+    var r = n(5), o = n(147).default, a = n(145).default, i = r.createClass({
         displayName: "Board",
         createBoard: function() {
             for (var e = [], t = [], n = [], a = this.props.size, i = 1; i < a + 1; i++) {
@@ -5148,61 +5148,103 @@
     e.exports = i;
 }, function(e, t, n) {
     "use strict";
-    var r = n(5), o = r.createClass({
-        displayName: "GameMessage",
-        render: function() {
-            var e, t = (this.props.activeQueens, this.props.gridSize), n = this.props.moves - t;
-            return e = this.props.visible ? 0 == n ? r.createElement("div", {
-                className: "game-over visible"
-            }, r.createElement("p", null, "Exelent !!!"), r.createElement("div", {
-                className: "rating"
-            }, r.createElement("span", {
-                className: "star"
-            }, "★"), r.createElement("span", {
-                className: "star"
-            }, "★"), r.createElement("span", {
-                className: "star"
-            }, "★")), r.createElement("div", {
-                className: "text-center"
-            }, r.createElement("button", {
-                className: "new-game",
-                onClick: this.props.newGame
-            }, "Play again"))) : n > 0 && n < 3 ? r.createElement("div", {
-                className: "game-over visible"
-            }, r.createElement("p", null, "Great !!"), r.createElement("div", {
-                className: "rating"
-            }, r.createElement("span", {
-                className: "star"
-            }, "★"), r.createElement("span", {
-                className: "star"
-            }, "★"), r.createElement("span", {
-                className: "star inactive"
-            }, "★")), r.createElement("div", {
-                className: "text-center"
-            }, r.createElement("button", {
-                className: "new-game",
-                onClick: this.props.newGame
-            }, "Play again"))) : r.createElement("div", {
-                className: "game-over visible"
-            }, r.createElement("p", null, "Good"), r.createElement("div", {
-                className: "rating"
-            }, r.createElement("span", {
-                className: "star"
-            }, "★"), r.createElement("span", {
-                className: "star inactive"
-            }, "★"), r.createElement("span", {
-                className: "star inactive"
-            }, "★")), r.createElement("div", {
-                className: "text-center"
-            }, r.createElement("button", {
-                className: "new-game",
-                onClick: this.props.newGame
-            }, "Play again"))) : r.createElement("div", {
-                className: "game-over"
-            });
-        }
+    function r(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
+    }
+    function o(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function a(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    function i(e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+        e.prototype = Object.create(t && t.prototype, {
+            constructor: {
+                value: e,
+                enumerable: !1,
+                writable: !0,
+                configurable: !0
+            }
+        }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+    }
+    Object.defineProperty(t, "__esModule", {
+        value: !0
     });
-    e.exports = o;
+    var u = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var r = t[n];
+                r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
+                Object.defineProperty(e, r.key, r);
+            }
+        }
+        return function(t, n, r) {
+            return n && e(t.prototype, n), r && e(t, r), t;
+        };
+    }(), s = n(5), l = r(s), c = function(e) {
+        function t(e) {
+            return o(this, t), a(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
+        }
+        return i(t, e), u(t, [ {
+            key: "render",
+            value: function() {
+                var e = this.props.activeQueens, t = this.props.gridSize, n = this.props.moves - t, r = void 0;
+                return r = e - t == 0 ? 0 == n ? l.default.createElement("div", {
+                    className: "game-over visible"
+                }, l.default.createElement("p", null, "Exelent !!!"), l.default.createElement("div", {
+                    className: "rating"
+                }, l.default.createElement("span", {
+                    className: "star"
+                }, "★"), l.default.createElement("span", {
+                    className: "star"
+                }, "★"), l.default.createElement("span", {
+                    className: "star"
+                }, "★")), l.default.createElement("div", {
+                    className: "text-center"
+                }, l.default.createElement("button", {
+                    className: "new-game",
+                    onClick: this.props.newGame
+                }, "Play again"))) : n > 0 && n < 3 ? l.default.createElement("div", {
+                    className: "game-over visible"
+                }, l.default.createElement("p", null, "Great !!"), l.default.createElement("div", {
+                    className: "rating"
+                }, l.default.createElement("span", {
+                    className: "star"
+                }, "★"), l.default.createElement("span", {
+                    className: "star"
+                }, "★"), l.default.createElement("span", {
+                    className: "star inactive"
+                }, "★")), l.default.createElement("div", {
+                    className: "text-center"
+                }, l.default.createElement("button", {
+                    className: "new-game",
+                    onClick: this.props.newGame
+                }, "Play again"))) : l.default.createElement("div", {
+                    className: "game-over visible"
+                }, l.default.createElement("p", null, "Good"), l.default.createElement("div", {
+                    className: "rating"
+                }, l.default.createElement("span", {
+                    className: "star"
+                }, "★"), l.default.createElement("span", {
+                    className: "star inactive"
+                }, "★"), l.default.createElement("span", {
+                    className: "star inactive"
+                }, "★")), l.default.createElement("div", {
+                    className: "text-center"
+                }, l.default.createElement("button", {
+                    className: "new-game",
+                    onClick: this.props.newGame
+                }, "Play again"))) : l.default.createElement("div", {
+                    className: "game-over"
+                });
+            }
+        } ]), t;
+    }(l.default.Component);
+    t.default = c;
 }, function(e, t, n) {
     "use strict";
     var r = n(5), o = r.createClass({
@@ -5275,7 +5317,7 @@
         return i(t, e), u(t, [ {
             key: "render",
             value: function() {
-                var e;
+                var e = void 0;
                 return e = this.props.isRed ? this.props.hasQueen ? l.default.createElement("div", {
                     id: this.props.propId,
                     className: "tile-" + this.props.boardSize + " red",
@@ -6462,9 +6504,9 @@
     }
     function l(e, t, n, r) {
         var o, l;
-        if (E ? o = a(e) : N ? u(e, n) && (o = S.compositionEnd) : i(e, n) && (o = S.compositionStart), 
+        if (E ? o = a(e) : M ? u(e, n) && (o = S.compositionEnd) : i(e, n) && (o = S.compositionStart), 
         !o) return null;
-        P && (N || o !== S.compositionStart ? o === S.compositionEnd && N && (l = N.getData()) : N = m.getPooled(r));
+        P && (M || o !== S.compositionStart ? o === S.compositionEnd && M && (l = M.getData()) : M = m.getPooled(r));
         var c = g.getPooled(o, t, n, r);
         if (l) c.data = l; else {
             var p = s(n);
@@ -6479,21 +6521,21 @@
 
           case T.topKeyPress:
             var n = t.which;
-            return n !== R ? null : (M = !0, k);
+            return n !== R ? null : (O = !0, k);
 
           case T.topTextInput:
             var r = t.data;
-            return r === k && M ? null : r;
+            return r === k && O ? null : r;
 
           default:
             return null;
         }
     }
     function p(e, t) {
-        if (N) {
+        if (M) {
             if (e === T.topCompositionEnd || !E && u(e, t)) {
-                var n = N.getData();
-                return m.release(N), N = null, n;
+                var n = M.getData();
+                return m.release(M), M = null, n;
             }
             return null;
         }
@@ -6564,13 +6606,13 @@
             },
             dependencies: [ T.topBlur, T.topCompositionUpdate, T.topKeyDown, T.topKeyPress, T.topKeyUp, T.topMouseDown ]
         }
-    }, M = !1, N = null, O = {
+    }, O = !1, M = null, N = {
         eventTypes: S,
         extractEvents: function(e, t, n, r) {
             return [ l(e, t, n, r), d(e, t, n, r) ];
         }
     };
-    e.exports = O;
+    e.exports = N;
 }, function(e, t, n) {
     "use strict";
     var r = n(95), o = n(9), a = (n(11), n(247), n(237)), i = n(254), u = n(257), s = (n(3), 
@@ -6614,17 +6656,17 @@
         return "select" === t || "input" === t && "file" === e.type;
     }
     function o(e) {
-        var t = x.getPooled(M.change, O, e, P(e));
+        var t = x.getPooled(O.change, N, e, P(e));
         _.accumulateTwoPhaseDispatches(t), w.batchedUpdates(a, t);
     }
     function a(e) {
         b.enqueueEvents(e), b.processEventQueue(!1);
     }
     function i(e, t) {
-        N = e, O = t, N.attachEvent("onchange", o);
+        M = e, N = t, M.attachEvent("onchange", o);
     }
     function u() {
-        N && (N.detachEvent("onchange", o), N = null, O = null);
+        M && (M.detachEvent("onchange", o), M = null, N = null);
     }
     function s(e, t) {
         if (e === S.topChange) return t;
@@ -6633,12 +6675,12 @@
         e === S.topFocus ? (u(), i(t, n)) : e === S.topBlur && u();
     }
     function c(e, t) {
-        N = e, O = t, A = e.value, I = Object.getOwnPropertyDescriptor(e.constructor.prototype, "value"), 
-        Object.defineProperty(N, "value", U), N.attachEvent ? N.attachEvent("onpropertychange", d) : N.addEventListener("propertychange", d, !1);
+        M = e, N = t, A = e.value, I = Object.getOwnPropertyDescriptor(e.constructor.prototype, "value"), 
+        Object.defineProperty(M, "value", U), M.attachEvent ? M.attachEvent("onpropertychange", d) : M.addEventListener("propertychange", d, !1);
     }
     function p() {
-        N && (delete N.value, N.detachEvent ? N.detachEvent("onpropertychange", d) : N.removeEventListener("propertychange", d, !1), 
-        N = null, O = null, A = null, I = null);
+        M && (delete M.value, M.detachEvent ? M.detachEvent("onpropertychange", d) : M.removeEventListener("propertychange", d, !1), 
+        M = null, N = null, A = null, I = null);
     }
     function d(e) {
         if ("value" === e.propertyName) {
@@ -6653,8 +6695,8 @@
         e === S.topFocus ? (p(), c(t, n)) : e === S.topBlur && p();
     }
     function v(e, t) {
-        if ((e === S.topSelectionChange || e === S.topKeyUp || e === S.topKeyDown) && N && N.value !== A) return A = N.value, 
-        O;
+        if ((e === S.topSelectionChange || e === S.topKeyUp || e === S.topKeyDown) && M && M.value !== A) return A = M.value, 
+        N;
     }
     function m(e) {
         return e.nodeName && "input" === e.nodeName.toLowerCase() && ("checkbox" === e.type || "radio" === e.type);
@@ -6662,7 +6704,7 @@
     function g(e, t) {
         if (e === S.topClick) return t;
     }
-    var y = n(16), b = n(29), _ = n(30), C = n(9), E = n(6), w = n(15), x = n(17), P = n(71), R = n(72), k = n(119), T = n(21), S = y.topLevelTypes, M = {
+    var y = n(16), b = n(29), _ = n(30), C = n(9), E = n(6), w = n(15), x = n(17), P = n(71), R = n(72), k = n(119), T = n(21), S = y.topLevelTypes, O = {
         change: {
             phasedRegistrationNames: {
                 bubbled: T({
@@ -6674,7 +6716,7 @@
             },
             dependencies: [ S.topBlur, S.topChange, S.topClick, S.topFocus, S.topInput, S.topKeyDown, S.topKeyUp, S.topSelectionChange ]
         }
-    }, N = null, O = null, A = null, I = null, D = !1;
+    }, M = null, N = null, A = null, I = null, D = !1;
     C.canUseDOM && (D = R("change") && (!document.documentMode || document.documentMode > 8));
     var L = !1;
     C.canUseDOM && (L = R("input") && (!document.documentMode || document.documentMode > 11));
@@ -6686,14 +6728,14 @@
             A = "" + e, I.set.call(this, e);
         }
     }, j = {
-        eventTypes: M,
+        eventTypes: O,
         extractEvents: function(e, t, n, o) {
             var a, i, u = t ? E.getNodeFromInstance(t) : window;
             if (r(u) ? D ? a = s : i = l : k(u) ? L ? a = f : (a = v, i = h) : m(u) && (a = g), 
             a) {
                 var c = a(e, t);
                 if (c) {
-                    var p = x.getPooled(M.change, c, n, o);
+                    var p = x.getPooled(O.change, c, n, o);
                     return p.type = "change", _.accumulateTwoPhaseDispatches(p), p;
                 }
             }
@@ -7299,7 +7341,7 @@
     }
     function u() {
         var e = this;
-        M.postMountWrapper(e);
+        O.postMountWrapper(e);
     }
     function s() {
         var e = this;
@@ -7307,7 +7349,7 @@
     }
     function l() {
         var e = this;
-        N.postMountWrapper(e);
+        M.postMountWrapper(e);
     }
     function c() {
         var e = this;
@@ -7344,7 +7386,7 @@
         }
     }
     function p() {
-        O.postUpdateWrapper(this);
+        N.postUpdateWrapper(this);
     }
     function d(e) {
         ee.call(J, e) || (Z.test(e) ? void 0 : v("65", e), J[e] = !0);
@@ -7360,7 +7402,7 @@
         this._hostContainerInfo = null, this._wrapperState = null, this._topLevelWrapper = null, 
         this._flags = 0;
     }
-    var v = n(2), m = n(4), g = n(182), y = n(184), b = n(26), _ = n(54), C = n(27), E = n(97), w = n(16), x = n(29), P = n(55), R = n(40), k = n(196), T = n(100), S = n(6), M = n(203), N = n(204), O = n(101), A = n(207), I = (n(11), 
+    var v = n(2), m = n(4), g = n(182), y = n(184), b = n(26), _ = n(54), C = n(27), E = n(97), w = n(16), x = n(29), P = n(55), R = n(40), k = n(196), T = n(100), S = n(6), O = n(203), M = n(204), N = n(101), A = n(207), I = (n(11), 
     n(215)), D = n(220), L = (n(12), n(42)), U = (n(1), n(72), n(21)), j = (n(76), n(75), 
     n(3), T), F = x.deleteListener, B = S.getNodeFromInstance, H = R.listenTo, q = P.registrationNameModules, V = {
         string: !0,
@@ -7443,15 +7485,15 @@
                 break;
 
               case "input":
-                M.mountWrapper(this, a, t), a = M.getHostProps(this, a), e.getReactMountReady().enqueue(c, this);
+                O.mountWrapper(this, a, t), a = O.getHostProps(this, a), e.getReactMountReady().enqueue(c, this);
                 break;
 
               case "option":
-                N.mountWrapper(this, a, t), a = N.getHostProps(this, a);
+                M.mountWrapper(this, a, t), a = M.getHostProps(this, a);
                 break;
 
               case "select":
-                O.mountWrapper(this, a, t), a = O.getHostProps(this, a), e.getReactMountReady().enqueue(c, this);
+                N.mountWrapper(this, a, t), a = N.getHostProps(this, a), e.getReactMountReady().enqueue(c, this);
                 break;
 
               case "textarea":
@@ -7544,15 +7586,15 @@
                 break;
 
               case "input":
-                a = M.getHostProps(this, a), i = M.getHostProps(this, i);
+                a = O.getHostProps(this, a), i = O.getHostProps(this, i);
                 break;
 
               case "option":
-                a = N.getHostProps(this, a), i = N.getHostProps(this, i);
+                a = M.getHostProps(this, a), i = M.getHostProps(this, i);
                 break;
 
               case "select":
-                a = O.getHostProps(this, a), i = O.getHostProps(this, i);
+                a = N.getHostProps(this, a), i = N.getHostProps(this, i);
                 break;
 
               case "textarea":
@@ -7561,7 +7603,7 @@
             switch (o(this, i), this._updateDOMProperties(a, i, e), this._updateDOMChildren(a, i, e, r), 
             this._tag) {
               case "input":
-                M.updateWrapper(this);
+                O.updateWrapper(this);
                 break;
 
               case "textarea":

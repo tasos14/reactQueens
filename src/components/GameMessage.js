@@ -1,13 +1,18 @@
-var React = require('react');
+import React from 'react';
 
-var GameMessage = React.createClass({
-  render: function() {
-    var activeQueens = this.props.activeQueens;
-    var size = this.props.gridSize;
-    var score = this.props.moves-size;
-    var gameMessage;
+export default class GameMessage extends React.Component {
+  constructor(props) {
+    super(props);
+    // Operations usually carried out in componentWillMount go here
+  }
 
-    if (this.props.visible) {
+  render() {
+    let activeQueens = this.props.activeQueens;
+    let size = this.props.gridSize;
+    let score = this.props.moves-size;
+    let gameMessage;
+
+    if ((activeQueens-size) == 0) {
       if (score == 0) {
         gameMessage = <div className="game-over visible">
           <p>Exelent !!!</p>
@@ -55,7 +60,4 @@ var GameMessage = React.createClass({
 
     return gameMessage;
   }
-
-});
-
-module.exports = GameMessage;
+}
