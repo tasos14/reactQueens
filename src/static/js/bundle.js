@@ -4859,7 +4859,7 @@
     };
 }, function(e, t, n) {
     "use strict";
-    var r = n(5), o = n(144), a = n(146), i = n(124), u = r.createClass({
+    var r = n(5), o = n(144).default, a = n(146), i = n(124), u = r.createClass({
         displayName: "App",
         getInitialState: function() {
             return {
@@ -5085,67 +5085,110 @@
     t.default = f;
 }, function(e, t, n) {
     "use strict";
-    var r = n(5), o = n(147).default, a = n(145).default, i = r.createClass({
-        displayName: "Board",
-        createBoard: function() {
-            for (var e = [], t = [], n = [], a = this.props.size, i = 1; i < a + 1; i++) {
-                for (var u = 1; u < a + 1; u++) 1 == this.props.redBlocks[a * (i - 1) + u - 1] ? this.props.cols[u - 1] === i ? t.push(r.createElement(o, {
-                    key: i + "" + u,
-                    propId: i + "" + u,
-                    boardSize: a,
-                    onClick: this.props.onTileClick,
-                    hasQueen: !0,
-                    isRed: !0
-                })) : t.push(r.createElement(o, {
-                    key: i + "" + u,
-                    propId: i + "" + u,
-                    boardSize: a,
-                    onClick: this.props.onTileClick,
-                    isRed: !0
-                })) : this.props.cols[u - 1] === i ? t.push(r.createElement(o, {
-                    key: i + "" + u,
-                    propId: i + "" + u,
-                    boardSize: a,
-                    onClick: this.props.onTileClick,
-                    hasQueen: !0
-                })) : t.push(r.createElement(o, {
-                    key: i + "" + u,
-                    propId: i + "" + u,
-                    boardSize: a,
-                    onClick: this.props.onTileClick
-                }));
-                e.push(r.createElement("div", {
-                    key: i,
-                    className: "board-row"
-                }, t)), 0 != this.props.cols[i - 1] ? n.push(r.createElement("img", {
-                    key: "Q" + i,
-                    src: "./img/queen.png",
-                    id: "Q" + i,
-                    className: "queen-" + a + " fade"
-                })) : n.push(r.createElement("img", {
-                    key: "Q" + i,
-                    src: "./img/queen.png",
-                    id: "Q" + i,
-                    className: "queen-" + a
-                })), t = [];
+    function r(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
+    }
+    function o(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function a(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    function i(e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+        e.prototype = Object.create(t && t.prototype, {
+            constructor: {
+                value: e,
+                enumerable: !1,
+                writable: !0,
+                configurable: !0
             }
-            return {
-                rows: e,
-                queens: n
-            };
-        },
-        render: function() {
-            var e = this.createBoard();
-            return r.createElement("board", null, e.rows, r.createElement(a, {
-                activeQueens: this.props.activeQueens,
-                gridSize: this.props.size,
-                moves: this.props.moves,
-                newGame: this.props.newGame,
-                visible: this.props.gameOver
-            }), e.queens);
-        }
+        }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+    }
+    Object.defineProperty(t, "__esModule", {
+        value: !0
     });
-    e.exports = i;
+    var u = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var r = t[n];
+                r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
+                Object.defineProperty(e, r.key, r);
+            }
+        }
+        return function(t, n, r) {
+            return n && e(t.prototype, n), r && e(t, r), t;
+        };
+    }(), s = n(5), l = r(s), c = n(147), p = r(c), d = n(145), f = r(d), h = function(e) {
+        function t(e) {
+            return o(this, t), a(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
+        }
+        return i(t, e), u(t, [ {
+            key: "createBoard",
+            value: function() {
+                for (var e = [], t = [], n = [], r = this.props.size, o = 1; o < r + 1; o++) {
+                    for (var a = 1; a < r + 1; a++) 1 == this.props.redBlocks[r * (o - 1) + a - 1] ? this.props.cols[a - 1] === o ? t.push(l.default.createElement(p.default, {
+                        key: o + "" + a,
+                        propId: o + "" + a,
+                        boardSize: r,
+                        onClick: this.props.onTileClick,
+                        hasQueen: !0,
+                        isRed: !0
+                    })) : t.push(l.default.createElement(p.default, {
+                        key: o + "" + a,
+                        propId: o + "" + a,
+                        boardSize: r,
+                        onClick: this.props.onTileClick,
+                        isRed: !0
+                    })) : this.props.cols[a - 1] === o ? t.push(l.default.createElement(p.default, {
+                        key: o + "" + a,
+                        propId: o + "" + a,
+                        boardSize: r,
+                        onClick: this.props.onTileClick,
+                        hasQueen: !0
+                    })) : t.push(l.default.createElement(p.default, {
+                        key: o + "" + a,
+                        propId: o + "" + a,
+                        boardSize: r,
+                        onClick: this.props.onTileClick
+                    }));
+                    e.push(l.default.createElement("div", {
+                        key: o,
+                        className: "board-row"
+                    }, t)), 0 != this.props.cols[o - 1] ? n.push(l.default.createElement("img", {
+                        key: "Q" + o,
+                        src: "./img/queen.png",
+                        id: "Q" + o,
+                        className: "queen-" + r + " fade"
+                    })) : n.push(l.default.createElement("img", {
+                        key: "Q" + o,
+                        src: "./img/queen.png",
+                        id: "Q" + o,
+                        className: "queen-" + r
+                    })), t = [];
+                }
+                return {
+                    rows: e,
+                    queens: n
+                };
+            }
+        }, {
+            key: "render",
+            value: function() {
+                var e = this.createBoard();
+                return l.default.createElement("board", null, e.rows, l.default.createElement(f.default, {
+                    activeQueens: this.props.activeQueens,
+                    gridSize: this.props.size,
+                    moves: this.props.moves,
+                    newGame: this.props.newGame
+                }), e.queens);
+            }
+        } ]), t;
+    }(l.default.Component);
+    t.default = h;
 }, function(e, t, n) {
     "use strict";
     function r(e) {

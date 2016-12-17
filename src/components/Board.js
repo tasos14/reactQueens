@@ -1,16 +1,21 @@
-var React = require('react');
-var Tile  = require('./Tile').default;
-var GameMessage = require('./GameMessage');
+import React from 'react';
+import Tile  from './Tile';
+import GameMessage from './GameMessage';
 
-var Board = React.createClass({
-  createBoard: function(){
-    var rows = [];
-    var row = [];
-    var queens = [];
-    var size = (this.props.size);
+export default class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    // Operations usually carried out in componentWillMount go here
+  }
 
-    for(var i=1; i<size+1; i++){
-      for(var j=1; j<size+1; j++){
+  createBoard() {
+    let rows = [];
+    let row = [];
+    let queens = [];
+    let size = (this.props.size);
+
+    for(let i=1; i<size+1; i++){
+      for(let j=1; j<size+1; j++){
         // if its a red block
         if(this.props.redBlocks[size*(i-1)+j-1] == 1){
           if(this.props.cols[j-1] === i){
@@ -53,10 +58,10 @@ var Board = React.createClass({
       rows:   rows,
       queens: queens
     })
-  },
+  }
 
-  render: function(){
-    var board = this.createBoard();
+  render() {
+    let board = this.createBoard();
 
     return (
       <board>
@@ -66,12 +71,10 @@ var Board = React.createClass({
           gridSize={this.props.size}
           moves={this.props.moves}
           newGame={this.props.newGame}
-          visible={this.props.gameOver}
         />
         {board.queens}
       </board>
     );
   }
-})
 
-module.exports = Board;
+}
