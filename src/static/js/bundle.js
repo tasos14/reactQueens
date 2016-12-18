@@ -4980,19 +4980,10 @@
                     cols: i,
                     rows: u,
                     redBlocks: s,
-                    activeQueens: l
+                    activeQueens: l,
+                    gameOver: !1
                 };
-            } else {
-                var d = JSON.parse(localStorage.getItem("state"));
-                n.state = {
-                    gridSize: d.gridSize,
-                    cols: d.cols,
-                    rows: d.rows,
-                    redBlocks: d.redBlocks,
-                    moves: d.moves,
-                    activeQueens: d.activeQueens
-                };
-            }
+            } else n.state = JSON.parse(localStorage.getItem("state"));
             return n;
         }
         return i(t, e), u(t, [ {
@@ -5209,7 +5200,8 @@
                     activeQueens: this.props.activeQueens,
                     gridSize: this.props.size,
                     moves: this.props.moves,
-                    newGame: this.props.newGame
+                    newGame: this.props.newGame,
+                    visible: this.props.gameOver
                 }), e.queens);
             }
         } ]), t;
@@ -5261,8 +5253,8 @@
         return i(t, e), u(t, [ {
             key: "render",
             value: function() {
-                var e = this.props.activeQueens, t = this.props.gridSize, n = this.props.moves - t, r = void 0;
-                return r = e - t == 0 ? 0 == n ? l.default.createElement("div", {
+                var e = (this.props.activeQueens, this.props.gridSize), t = this.props.moves - e, n = void 0;
+                return n = this.props.visible ? 0 == t ? l.default.createElement("div", {
                     className: "game-over visible"
                 }, l.default.createElement("p", null, "Exelent !!!"), l.default.createElement("div", {
                     className: "rating"
@@ -5277,7 +5269,7 @@
                 }, l.default.createElement("button", {
                     className: "new-game",
                     onClick: this.props.newGame
-                }, "Play again"))) : n > 0 && n < 3 ? l.default.createElement("div", {
+                }, "Play again"))) : t > 0 && t < 3 ? l.default.createElement("div", {
                     className: "game-over visible"
                 }, l.default.createElement("p", null, "Great !!"), l.default.createElement("div", {
                     className: "rating"

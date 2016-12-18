@@ -12,7 +12,7 @@ export default class GameMessage extends React.Component {
     let score = this.props.moves-size;
     let gameMessage;
 
-    if ((activeQueens-size) == 0) {
+    if (this.props.visible) {
       if (score == 0) {
         gameMessage = <div className="game-over visible">
           <p>Exelent !!!</p>

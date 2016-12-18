@@ -71,6 +71,7 @@ export default class Board extends React.Component {
           gridSize={this.props.size}
           moves={this.props.moves}
           newGame={this.props.newGame}
+          visible={this.props.gameOver}
         />
         {board.queens}
       </board>

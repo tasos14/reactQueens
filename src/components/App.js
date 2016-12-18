@@ -29,19 +29,12 @@ export default class App extends React.Component {
         cols:         cols,
         rows:         rows,
         redBlocks:    redBlocks,
-        activeQueens: activeQueens
+        activeQueens: activeQueens,
+        gameOver:     false
       };
     }
     else {
-      let localState = JSON.parse(localStorage.getItem("state"));
-      this.state = {
-        gridSize:     localState.gridSize,
-        cols:         localState.cols,
-        rows:         localState.rows,
-        redBlocks:    localState.redBlocks,
-        moves:        localState.moves,
-        activeQueens: localState.activeQueens
-      };
+      this.state = JSON.parse(localStorage.getItem("state"));
     }
   }
 
@@ -58,7 +51,7 @@ export default class App extends React.Component {
         if (data && !that.state.gameOver) {
           console.log(data);
           that.setState({
-            gameOver: data,
+            gameOver: data
           });
         }
       })
