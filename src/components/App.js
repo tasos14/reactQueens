@@ -1,7 +1,8 @@
-import React from 'react';
-import Board     from './Board';
-import GridSizes from './GridSizes';
-import axios     from 'axios';
+import React        from 'react';
+import Board        from './Board';
+import GridSizes    from './GridSizes';
+import Switch from './ToggleSwitch';
+import axios        from 'axios';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -30,7 +31,8 @@ export default class App extends React.Component {
         rows:         rows,
         redBlocks:    redBlocks,
         activeQueens: activeQueens,
-        gameOver:     false
+        gameOver:     false,
+        highlight:    true
       };
     }
     else {
@@ -64,9 +66,19 @@ export default class App extends React.Component {
 
   }
 
+  toggleSwitch = () => {
+    let on = !this.state.highlight;
+
+    this.setState({
+      highlight: on
+    });
+
+
+  }
+
   changeGridSize = (size) => {
     this.setState({
-      gridSize: size,
+      gridSize: size
     });
 
     this.newGame(size);
@@ -225,6 +237,9 @@ export default class App extends React.Component {
             </button>
             <GridSizes onClick={this.changeGridSize} />
           </div>
+
+          <Switch on={this.state.highlight} onClick={this.toggleSwitch}/>
+
         </div>
 
         <div id="board-container">
@@ -236,6 +251,7 @@ export default class App extends React.Component {
             activeQueens={this.state.activeQueens}
             moves={this.state.moves}
             newGame={this.newGame}
+            highlight={this.state.highlight}
             gameOver={this.state.gameOver}
           />
         </div>

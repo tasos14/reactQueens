@@ -17,7 +17,7 @@ export default class Board extends React.Component {
     for(let i=1; i<size+1; i++){
       for(let j=1; j<size+1; j++){
         // if its a red block
-        if(this.props.redBlocks[size*(i-1)+j-1] == 1){
+        if(this.props.redBlocks[size*(i-1)+j-1] == 1 && this.props.highlight){
           if(this.props.cols[j-1] === i){
             row.push(
               <Tile key={i+""+j} propId={i+""+j} boardSize={size} onClick={this.props.onTileClick} hasQueen={true} isRed={true}/>);
