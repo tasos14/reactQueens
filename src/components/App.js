@@ -1,7 +1,7 @@
 import React        from 'react';
 import Board        from './Board';
 import GridSizes    from './GridSizes';
-import Switch from './ToggleSwitch';
+import Switch       from './ToggleSwitch';
 import axios        from 'axios';
 
 export default class App extends React.Component {
@@ -51,7 +51,6 @@ export default class App extends React.Component {
       .then(function (response) {
         data = response.data;
         if (data && !that.state.gameOver) {
-          console.log(data);
           that.setState({
             gameOver: data
           });
