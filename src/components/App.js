@@ -146,8 +146,6 @@ export default class App extends React.Component {
     let cols = this.state.cols;
     let rows = this.state.rows;
 
-    this.increaceMoves();
-
     if(id.length === 2){
       row = Number(id.charAt(0));
       col = Number(id.charAt(1));
@@ -161,6 +159,7 @@ export default class App extends React.Component {
     if(cols[col-1] === 0){
       cols[col-1] = row;
       rows[row-1] = col;
+      this.increaceMoves();
       this.drawRedBlocks(row,col);
       this.state.activeQueens++;
     }
@@ -176,6 +175,7 @@ export default class App extends React.Component {
       let prev_row = cols[col-1];
       cols[col-1] = row;
       rows[row-1] = col;
+      this.increaceMoves();
       this.removeRedBlocks(prev_row,col);
     }
 

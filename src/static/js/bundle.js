@@ -2723,7 +2723,7 @@
         return e ? e.nodeType === A ? e.documentElement : e.firstChild : null;
     }
     function a(e) {
-        return e.getAttribute && e.getAttribute(M) || "";
+        return e.getAttribute && e.getAttribute(R) || "";
     }
     function i(e, t, n, r, o) {
         var a;
@@ -2760,7 +2760,7 @@
         return t ? t._hostContainerInfo._topLevelWrapper : null;
     }
     var f = n(2), h = n(18), m = n(19), v = n(28), g = (n(15), n(5)), y = n(134), b = n(137), C = n(10), _ = n(72), E = n(23), w = (n(8), 
-    n(150)), x = n(20), k = n(49), N = n(11), T = n(26), P = n(87), S = (n(1), n(31)), R = n(55), M = (n(3), 
+    n(150)), x = n(20), k = n(49), N = n(11), T = n(26), P = n(87), S = (n(1), n(31)), M = n(55), R = (n(3), 
     m.ID_ATTRIBUTE_NAME), O = m.ROOT_ATTRIBUTE_NAME, I = 1, A = 9, D = 11, L = {}, U = 1, F = function() {
         this.rootID = U++;
     };
@@ -2798,7 +2798,7 @@
             var c = d(n);
             if (c) {
                 var p = c._currentElement, h = p.props;
-                if (R(h, t)) {
+                if (M(h, t)) {
                     var m = c._renderedComponent.getPublicInstance(), v = r && function() {
                         r.call(m);
                     };
@@ -3583,12 +3583,12 @@
                 });
             }, n.moveQueen = function(e) {
                 var t = void 0, r = void 0, o = n.state.cols, a = n.state.rows;
-                if (n.increaceMoves(), 2 === e.length ? (t = Number(e.charAt(0)), r = Number(e.charAt(1))) : (t = Number(e.charAt(1)), 
-                r = Number(e.charAt(2))), 0 === o[r - 1]) o[r - 1] = t, a[t - 1] = r, n.drawRedBlocks(t, r), 
-                n.state.activeQueens++; else if (o[r - 1] === t) o[r - 1] = 0, a[t - 1] = 0, n.removeRedBlocks(t, r), 
-                n.state.activeQueens--; else {
+                if (2 === e.length ? (t = Number(e.charAt(0)), r = Number(e.charAt(1))) : (t = Number(e.charAt(1)), 
+                r = Number(e.charAt(2))), 0 === o[r - 1]) o[r - 1] = t, a[t - 1] = r, n.increaceMoves(), 
+                n.drawRedBlocks(t, r), n.state.activeQueens++; else if (o[r - 1] === t) o[r - 1] = 0, 
+                a[t - 1] = 0, n.removeRedBlocks(t, r), n.state.activeQueens--; else {
                     var i = o[r - 1];
-                    o[r - 1] = t, a[t - 1] = r, n.removeRedBlocks(i, r);
+                    o[r - 1] = t, a[t - 1] = r, n.increaceMoves(), n.removeRedBlocks(i, r);
                 }
                 n.setState({
                     cols: o,
@@ -4175,9 +4175,9 @@
     }
     function l(e, t, n, r) {
         var o, l;
-        if (E ? o = a(e) : M ? s(e, n) && (o = S.compositionEnd) : i(e, n) && (o = S.compositionStart), 
+        if (E ? o = a(e) : R ? s(e, n) && (o = S.compositionEnd) : i(e, n) && (o = S.compositionStart), 
         !o) return null;
-        k && (M || o !== S.compositionStart ? o === S.compositionEnd && M && (l = M.getData()) : M = v.getPooled(r));
+        k && (R || o !== S.compositionStart ? o === S.compositionEnd && R && (l = R.getData()) : R = v.getPooled(r));
         var c = g.getPooled(o, t, n, r);
         if (l) c.data = l; else {
             var p = u(n);
@@ -4192,21 +4192,21 @@
 
           case P.topKeyPress:
             var n = t.which;
-            return n !== N ? null : (R = !0, T);
+            return n !== N ? null : (M = !0, T);
 
           case P.topTextInput:
             var r = t.data;
-            return r === T && R ? null : r;
+            return r === T && M ? null : r;
 
           default:
             return null;
         }
     }
     function p(e, t) {
-        if (M) {
+        if (R) {
             if (e === P.topCompositionEnd || !E && s(e, t)) {
-                var n = M.getData();
-                return v.release(M), M = null, n;
+                var n = R.getData();
+                return v.release(R), R = null, n;
             }
             return null;
         }
@@ -4277,7 +4277,7 @@
             },
             dependencies: [ P.topBlur, P.topCompositionUpdate, P.topKeyDown, P.topKeyPress, P.topKeyUp, P.topMouseDown ]
         }
-    }, R = !1, M = null, O = {
+    }, M = !1, R = null, O = {
         eventTypes: S,
         extractEvents: function(e, t, n, r) {
             return [ l(e, t, n, r), d(e, t, n, r) ];
@@ -4327,17 +4327,17 @@
         return "select" === t || "input" === t && "file" === e.type;
     }
     function o(e) {
-        var t = x.getPooled(R.change, O, e, k(e));
+        var t = x.getPooled(M.change, O, e, k(e));
         C.accumulateTwoPhaseDispatches(t), w.batchedUpdates(a, t);
     }
     function a(e) {
         b.enqueueEvents(e), b.processEventQueue(!1);
     }
     function i(e, t) {
-        M = e, O = t, M.attachEvent("onchange", o);
+        R = e, O = t, R.attachEvent("onchange", o);
     }
     function s() {
-        M && (M.detachEvent("onchange", o), M = null, O = null);
+        R && (R.detachEvent("onchange", o), R = null, O = null);
     }
     function u(e, t) {
         if (e === S.topChange) return t;
@@ -4346,12 +4346,12 @@
         e === S.topFocus ? (s(), i(t, n)) : e === S.topBlur && s();
     }
     function c(e, t) {
-        M = e, O = t, I = e.value, A = Object.getOwnPropertyDescriptor(e.constructor.prototype, "value"), 
-        Object.defineProperty(M, "value", U), M.attachEvent ? M.attachEvent("onpropertychange", d) : M.addEventListener("propertychange", d, !1);
+        R = e, O = t, I = e.value, A = Object.getOwnPropertyDescriptor(e.constructor.prototype, "value"), 
+        Object.defineProperty(R, "value", U), R.attachEvent ? R.attachEvent("onpropertychange", d) : R.addEventListener("propertychange", d, !1);
     }
     function p() {
-        M && (delete M.value, M.detachEvent ? M.detachEvent("onpropertychange", d) : M.removeEventListener("propertychange", d, !1), 
-        M = null, O = null, I = null, A = null);
+        R && (delete R.value, R.detachEvent ? R.detachEvent("onpropertychange", d) : R.removeEventListener("propertychange", d, !1), 
+        R = null, O = null, I = null, A = null);
     }
     function d(e) {
         if ("value" === e.propertyName) {
@@ -4366,7 +4366,7 @@
         e === S.topFocus ? (p(), c(t, n)) : e === S.topBlur && p();
     }
     function m(e, t) {
-        if ((e === S.topSelectionChange || e === S.topKeyUp || e === S.topKeyDown) && M && M.value !== I) return I = M.value, 
+        if ((e === S.topSelectionChange || e === S.topKeyUp || e === S.topKeyDown) && R && R.value !== I) return I = R.value, 
         O;
     }
     function v(e) {
@@ -4375,7 +4375,7 @@
     function g(e, t) {
         if (e === S.topClick) return t;
     }
-    var y = n(12), b = n(21), C = n(22), _ = n(6), E = n(5), w = n(11), x = n(13), k = n(53), N = n(54), T = n(88), P = n(16), S = y.topLevelTypes, R = {
+    var y = n(12), b = n(21), C = n(22), _ = n(6), E = n(5), w = n(11), x = n(13), k = n(53), N = n(54), T = n(88), P = n(16), S = y.topLevelTypes, M = {
         change: {
             phasedRegistrationNames: {
                 bubbled: P({
@@ -4387,7 +4387,7 @@
             },
             dependencies: [ S.topBlur, S.topChange, S.topClick, S.topFocus, S.topInput, S.topKeyDown, S.topKeyUp, S.topSelectionChange ]
         }
-    }, M = null, O = null, I = null, A = null, D = !1;
+    }, R = null, O = null, I = null, A = null, D = !1;
     _.canUseDOM && (D = N("change") && (!document.documentMode || document.documentMode > 8));
     var L = !1;
     _.canUseDOM && (L = N("input") && (!document.documentMode || document.documentMode > 11));
@@ -4399,14 +4399,14 @@
             I = "" + e, A.set.call(this, e);
         }
     }, F = {
-        eventTypes: R,
+        eventTypes: M,
         extractEvents: function(e, t, n, o) {
             var a, i, s = t ? E.getNodeFromInstance(t) : window;
             if (r(s) ? D ? a = u : i = l : T(s) ? L ? a = f : (a = m, i = h) : v(s) && (a = g), 
             a) {
                 var c = a(e, t);
                 if (c) {
-                    var p = x.getPooled(R.change, c, n, o);
+                    var p = x.getPooled(M.change, c, n, o);
                     return p.type = "change", C.accumulateTwoPhaseDispatches(p), p;
                 }
             }
@@ -5012,7 +5012,7 @@
     }
     function s() {
         var e = this;
-        R.postMountWrapper(e);
+        M.postMountWrapper(e);
     }
     function u() {
         var e = this;
@@ -5020,7 +5020,7 @@
     }
     function l() {
         var e = this;
-        M.postMountWrapper(e);
+        R.postMountWrapper(e);
     }
     function c() {
         var e = this;
@@ -5073,7 +5073,7 @@
         this._hostContainerInfo = null, this._wrapperState = null, this._topLevelWrapper = null, 
         this._flags = 0;
     }
-    var m = n(2), v = n(4), g = n(118), y = n(120), b = n(18), C = n(36), _ = n(19), E = n(66), w = n(12), x = n(21), k = n(37), N = n(28), T = n(132), P = n(69), S = n(5), R = n(139), M = n(140), O = n(70), I = n(143), A = (n(8), 
+    var m = n(2), v = n(4), g = n(118), y = n(120), b = n(18), C = n(36), _ = n(19), E = n(66), w = n(12), x = n(21), k = n(37), N = n(28), T = n(132), P = n(69), S = n(5), M = n(139), R = n(140), O = n(70), I = n(143), A = (n(8), 
     n(151)), D = n(156), L = (n(9), n(30)), U = (n(1), n(54), n(16)), F = (n(58), n(57), 
     n(3), P), j = x.deleteListener, B = S.getNodeFromInstance, V = N.listenTo, H = k.registrationNameModules, W = {
         string: !0,
@@ -5156,11 +5156,11 @@
                 break;
 
               case "input":
-                R.mountWrapper(this, a, t), a = R.getHostProps(this, a), e.getReactMountReady().enqueue(c, this);
+                M.mountWrapper(this, a, t), a = M.getHostProps(this, a), e.getReactMountReady().enqueue(c, this);
                 break;
 
               case "option":
-                M.mountWrapper(this, a, t), a = M.getHostProps(this, a);
+                R.mountWrapper(this, a, t), a = R.getHostProps(this, a);
                 break;
 
               case "select":
@@ -5257,11 +5257,11 @@
                 break;
 
               case "input":
-                a = R.getHostProps(this, a), i = R.getHostProps(this, i);
+                a = M.getHostProps(this, a), i = M.getHostProps(this, i);
                 break;
 
               case "option":
-                a = M.getHostProps(this, a), i = M.getHostProps(this, i);
+                a = R.getHostProps(this, a), i = R.getHostProps(this, i);
                 break;
 
               case "select":
@@ -5274,7 +5274,7 @@
             switch (o(this, i), this._updateDOMProperties(a, i, e), this._updateDOMChildren(a, i, e, r), 
             this._tag) {
               case "input":
-                R.updateWrapper(this);
+                M.updateWrapper(this);
                 break;
 
               case "textarea":
