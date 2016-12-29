@@ -22,7 +22,7 @@ export default class GameMessage extends React.Component {
             <span className="star" >★</span>
           </div>
           <div className="text-center">
-            <button className="new-game" onClick={this.props.newGame}>Play again</button>
+            <button className="new-game" onClick={this.props.newGame}>New Game</button>
           </div>
         </div>;
       }
@@ -35,7 +35,7 @@ export default class GameMessage extends React.Component {
             <span className="star inactive" >★</span>
           </div>
           <div className="text-center">
-            <button className="new-game" onClick={this.props.newGame}>Play again</button>
+            <button className="new-game" onClick={this.props.newGame}>New Game</button>
           </div>
         </div>;
       }
@@ -48,7 +48,7 @@ export default class GameMessage extends React.Component {
             <span className="star inactive" >★</span>
           </div>
           <div className="text-center">
-            <button className="new-game" onClick={this.props.newGame}>Play again</button>
+            <button className="new-game" onClick={this.props.newGame}>New Game</button>
           </div>
         </div>;
       }

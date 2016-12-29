@@ -223,6 +223,11 @@ h1.title {
   text-align: center;
   float: right;
   border: none;
+  width: 125px;
+}
+
+.restart-button i {
+  margin-left: 5px;
 }
 
 .dropdown{

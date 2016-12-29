@@ -83,6 +83,32 @@ export default class App extends React.Component {
     this.newGame(size);
   }
 
+  reset = () => {
+    let gridSize = this.state.gridSize;
+    let cols = [];
+    let rows = [];
+    let redBlocks = [];
+
+
+    for(let i=0; i<gridSize; i++){
+      cols.push(0);
+      rows.push(0);
+      for(let j=0; j<gridSize; j++){
+        redBlocks.push(0);
+      }
+    }
+
+    this.setState({
+      cols:         cols,
+      rows:         rows,
+      redBlocks:    redBlocks,
+      activeQueens: 0,
+      gameOver:     false
+    });
+
+
+  }
+
   newGame = (size) => {
     let gridSize = isNaN(size)?  this.state.gridSize : size;
     let cols = [];
@@ -228,7 +254,7 @@ export default class App extends React.Component {
               no two queens threaten each other !
           </div>
 
-          <button className="restart-button" onClick={this.newGame}>New game</button>
+          <button className="restart-button" onClick={this.reset}>Reset<i className="fa fa-repeat" aria-hidden="true"></i></button>
 
           <div className="dropdown">
             <button type="button" className="dropdown-toggle grid-button" data-toggle="dropdown">
