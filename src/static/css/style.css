@@ -459,3 +459,9 @@ a {
   a:hover{
     color: #776E65;
   }
+
+@media screen and (max-width: 845px) {
+  .github-corner {
+    display: none;
+  }
+}
