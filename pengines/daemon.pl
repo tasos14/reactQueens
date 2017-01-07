@@ -1,4 +1,4 @@
-#!/home/pengines/bin/swipl
+#!/usr/bin/swipl
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Pengines  is  prepared  to  be  combined  with  the  SWI-Prolog  library
