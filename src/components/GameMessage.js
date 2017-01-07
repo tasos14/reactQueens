@@ -15,7 +15,7 @@ export default class GameMessage extends React.Component {
     if (this.props.visible) {
       if (score == 0) {
         gameMessage = <div className="game-over visible">
-          <p>Exelent !!!</p>
+          <p>Excellent !!!</p>
           <div className="rating" >
             <span className="star" >★</span>
             <span className="star" >★</span>
