@@ -3689,7 +3689,7 @@
                     href: "https://en.wikipedia.org/wiki/Eight_queens_puzzle",
                     target: "_blank"
                 }, "here"), "."), l.default.createElement("hr", null), l.default.createElement("p", null, "Created by ", l.default.createElement("a", {
-                    href: "github.com/tasos14"
+                    href: "https://github.com/tasos14"
                 }, "tasos14"), ", inspired by ", l.default.createElement("a", {
                     href: "http://ng2048.github.io/",
                     target: "_blank"

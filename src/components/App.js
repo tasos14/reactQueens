@@ -302,7 +302,7 @@ export default class App extends React.Component {
         <hr></hr>
 
         <p>
-          Created by <a href="github.com/tasos14">tasos14</a>, inspired by <a href="http://ng2048.github.io/" target="_blank">ng-2048</a>.
+          Created by <a href="https://github.com/tasos14">tasos14</a>, inspired by <a href="http://ng2048.github.io/" target="_blank">ng-2048</a>.
         </p>
 
       </div>
