@@ -89,7 +89,7 @@ html, body{
 
 @media screen and (max-width: 555px) and (max-height: 640px){
   #board-container{
-    margin: 40px -8px !important;
+   /* margin: 40px -8px !important;*/
   }
 
   .txt{
@@ -99,7 +99,7 @@ html, body{
 
 @media screen and (max-width: 460px){
   #board-container{
-    margin: 40px -8px !important;
+    margin-left: -1px !important;
   }
 
   h1.title {

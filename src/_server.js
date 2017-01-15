@@ -37,8 +37,12 @@ app.use(_express2.default.static(_path2.default.join(__dirname, 'static')));
 app.use(_bodyParser2.default.urlencoded({ extended: false }));
 app.use(_bodyParser2.default.json());
 
-app.get("*", function (req, res) {
+app.get("/", function (req, res) {
   res.sendFile(_path2.default.join(__dirname, "static/index.html"));
+});
+
+app.get("/report", function (req, res) {
+  res.sendFile(_path2.default.join(__dirname, "static/report.html"));
 });
 
 app.post('/', function (req, res) {
