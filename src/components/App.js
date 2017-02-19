@@ -40,7 +40,7 @@ export default class App extends React.Component {
     }
   }
 
-  componentDidUpdate = (prevProps, prevState) => {
+  componentDidUpdate = () => {
     let data;
     let that = this;
     if (this.state.activeQueens == this.state.gridSize && !this.state.gameOver){
@@ -189,7 +189,7 @@ export default class App extends React.Component {
     let absDist;
     let gridSize = this.state.gridSize;
     let redBlocks = this.state.redBlocks;
-    let cols = this.state.cols;
+    // let cols = this.state.cols;
 
     row--;
     col--;
@@ -306,6 +306,6 @@ export default class App extends React.Component {
         </p>
 
       </div>
-    )
+    );
   }
 }

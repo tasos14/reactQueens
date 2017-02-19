@@ -1,7 +1,6 @@
 import path from 'path';
 import { Server } from 'http';
 import Express from 'express';
-import React from 'react';
 import Pengines from 'pengines';
 import bodyParser from 'body-parser';
 
@@ -42,7 +41,7 @@ app.post('/', (req, res) => {
     ask: query
   }).on('create', function() {
       console.info("Pengine created.");
-    }).on('success', function(resault) {
+    }).on('success', function() {
       let answer = true;
       res.json(answer);
     }).on('failure', function() {

@@ -57,7 +57,7 @@ export default class Board extends React.Component {
     return ({
       rows:   rows,
       queens: queens
-    })
+    });
   }
 
   render() {
