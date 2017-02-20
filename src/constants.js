@@ -1,0 +1,1 @@
+export const TOGGLE_SWITCH = 'TOGGLE_SWITCH';
