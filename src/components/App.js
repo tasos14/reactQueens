@@ -3,6 +3,12 @@ import Board        from './Board';
 import GridSizes    from './GridSizes';
 import Switch       from './ToggleSwitch';
 import axios        from 'axios';
+import { createStore } from 'redux';
+import queensApp from '../reducers';
+import { toggleSwitch } from '../actions';
+
+const store = createStore(queensApp);
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -72,6 +78,10 @@ export default class App extends React.Component {
       highlight: on
     });
 
+    store.dispatch(toggleSwitch());
+
+    let state = store.getState();
+    console.log(state);
 
   }
 

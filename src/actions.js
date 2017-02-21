@@ -1,9 +1,16 @@
-import { TOGGLE_SWITCH } from './constants';
+import { TOGGLE_SWITCH, CHANGE_GRIDSIZE } from './constants';
 
 
 
-export function toggleSwitch() {
+export const toggleSwitch = () => {
   return {
     type: TOGGLE_SWITCH,
   };
-}
+};
+
+export const changeGridSize = (newGridSize) => {
+  return {
+    type: CHANGE_GRIDSIZE,
+    gridSize: newGridSize
+  };
+};
