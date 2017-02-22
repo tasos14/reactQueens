@@ -1,11 +1,11 @@
 import React        from 'react';
+import axios        from 'axios';
+import { createStore } from 'redux';
 import Board        from './Board';
 import GridSizes    from './GridSizes';
 import Switch       from './ToggleSwitch';
-import axios        from 'axios';
-import { createStore } from 'redux';
 import queensApp from '../reducers';
-import { toggleSwitch } from '../actions';
+import { toggleSwitch, changeGrid } from '../actions';
 
 const store = createStore(queensApp);
 
@@ -71,7 +71,7 @@ export default class App extends React.Component {
 
   }
 
-  toggleSwitch = () => {
+  handleToggleSwitch = () => {
     let on = !this.state.highlight;
 
     this.setState({
@@ -79,8 +79,9 @@ export default class App extends React.Component {
     });
 
     store.dispatch(toggleSwitch());
+    store.dispatch(changeGrid(9));
 
-    let state = store.getState();
+    let state = store.getState().toObject();
     console.log(state);
 
   }
@@ -273,7 +274,7 @@ export default class App extends React.Component {
             <GridSizes onClick={this.changeGridSize} />
           </div>
 
-          <Switch on={this.state.highlight} onClick={this.toggleSwitch}/>
+          <Switch on={this.state.highlight} onClick={this.handleToggleSwitch}/>
 
         </div>
 

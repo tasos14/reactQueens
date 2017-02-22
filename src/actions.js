@@ -8,7 +8,7 @@ export const toggleSwitch = () => {
   };
 };
 
-export const changeGridSize = (newGridSize) => {
+export const changeGrid = (newGridSize) => {
   return {
     type: CHANGE_GRIDSIZE,
     gridSize: newGridSize
