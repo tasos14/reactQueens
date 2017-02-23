@@ -1,28 +1,20 @@
 import React from 'react';
 
-export default class ToggleSwitch extends React.Component {
-  constructor(props) {
-    super(props);
+const ToggleSwitch = ({ on, onClick }) => {
+  let toggleSwitch;
+
+  if (on) {
+    toggleSwitch = <div className="switch" onClick={onClick}>
+      <div className="slider on"></div>
+    </div>;
+  }
+  else {
+    toggleSwitch = <div className="switch" onClick={onClick}>
+      <div className="slider"></div>
+    </div>;
   }
 
-  handleClick = () => {
-    this.props.onClick();
-  }
+  return (toggleSwitch);
+};
 
-  render() {
-    let toggleSwitch;
-    if (this.props.on) {
-      toggleSwitch = <div className="switch" onClick={this.handleClick}>
-        <div className="slider on"></div>
-      </div>
-    }
-    else {
-      toggleSwitch = <div className="switch" onClick={this.handleClick}>
-        <div className="slider"></div>
-      </div>
-    }
-
-    return (toggleSwitch);
-  }
-
-}
+export default ToggleSwitch;
