@@ -1,8 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import queensApp from './reducers';
 import App from './components/App';
 
+let store = createStore(queensApp);
 
-window.onload = () => {
-  ReactDOM.render(<App />, document.getElementById('app'));
-};
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+);

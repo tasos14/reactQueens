@@ -1,14 +1,9 @@
 import React        from 'react';
 import axios        from 'axios';
-import { createStore } from 'redux';
 import Board        from './Board';
 import GridSizes    from './GridSizes';
 import Switch       from './ToggleSwitch';
 import Footer       from './Footer';
-import queensApp from '../reducers';
-import { toggleSwitch, changeGrid } from '../actions';
-
-const store = createStore(queensApp);
 
 
 export default class App extends React.Component {
@@ -78,13 +73,6 @@ export default class App extends React.Component {
     this.setState({
       highlight: on
     });
-
-    store.dispatch(toggleSwitch());
-    store.dispatch(changeGrid(9));
-
-    let state = store.getState().toObject();
-    console.log(state);
-
   }
 
   changeGridSize = (size) => {
