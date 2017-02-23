@@ -3285,7 +3285,6 @@
                 }, c.default.createElement(h.default, {
                     size: this.state.gridSize,
                     onTileClick: this.moveQueen,
-                    rows: this.state.rows,
                     cols: this.state.cols,
                     redBlocks: this.state.redBlocks,
                     activeQueens: this.state.activeQueens,
@@ -3317,106 +3316,74 @@
             default: e
         };
     }
-    function o(e, t) {
-        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-    }
-    function i(e, t) {
-        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-        return !t || "object" != typeof t && "function" != typeof t ? e : t;
-    }
-    function a(e, t) {
-        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-        e.prototype = Object.create(t && t.prototype, {
-            constructor: {
-                value: e,
-                enumerable: !1,
-                writable: !0,
-                configurable: !0
-            }
-        }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-    }
     Object.defineProperty(t, "__esModule", {
         value: !0
     });
-    var u = function() {
-        function e(e, t) {
-            for (var n = 0; n < t.length; n++) {
-                var r = t[n];
-                r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
-                Object.defineProperty(e, r.key, r);
-            }
+    var o = n(15), i = r(o), a = n(119), u = r(a), s = n(117), c = r(s), l = function(e) {
+        for (var t = e.size, n = e.onTileClick, r = e.cols, o = e.redBlocks, a = e.activeQueens, s = e.moves, l = e.newGame, p = e.highlight, f = e.gameOver, d = [], h = {
+            rows: [],
+            queens: []
+        }, v = 1; v < t + 1; v++) {
+            for (var m = 1; m < t + 1; m++) 1 == o[t * (v - 1) + m - 1] && p ? r[m - 1] === v ? d.push(i.default.createElement(u.default, {
+                key: v + "" + m,
+                propId: v + "" + m,
+                boardSize: t,
+                handleTileClick: n,
+                hasQueen: !0,
+                isRed: !0
+            })) : d.push(i.default.createElement(u.default, {
+                key: v + "" + m,
+                propId: v + "" + m,
+                boardSize: t,
+                handleTileClick: n,
+                isRed: !0
+            })) : r[m - 1] === v ? d.push(i.default.createElement(u.default, {
+                key: v + "" + m,
+                propId: v + "" + m,
+                boardSize: t,
+                handleTileClick: n,
+                hasQueen: !0
+            })) : d.push(i.default.createElement(u.default, {
+                key: v + "" + m,
+                propId: v + "" + m,
+                boardSize: t,
+                handleTileClick: n
+            }));
+            h.rows.push(i.default.createElement("div", {
+                key: v,
+                className: "board-row"
+            }, d)), 0 != r[v - 1] ? h.queens.push(i.default.createElement("img", {
+                key: "Q" + v,
+                src: "./img/queen.png",
+                id: "Q" + v,
+                className: "queen-" + t + " fade"
+            })) : h.queens.push(i.default.createElement("img", {
+                key: "Q" + v,
+                src: "./img/queen.png",
+                id: "Q" + v,
+                className: "queen-" + t
+            })), d = [];
         }
-        return function(t, n, r) {
-            return n && e(t.prototype, n), r && e(t, r), t;
-        };
-    }(), s = n(15), c = r(s), l = n(119), p = r(l), f = n(117), d = r(f), h = function(e) {
-        function t(e) {
-            return o(this, t), i(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
-        }
-        return a(t, e), u(t, [ {
-            key: "createBoard",
-            value: function() {
-                for (var e = [], t = [], n = [], r = this.props.size, o = 1; o < r + 1; o++) {
-                    for (var i = 1; i < r + 1; i++) 1 == this.props.redBlocks[r * (o - 1) + i - 1] && this.props.highlight ? this.props.cols[i - 1] === o ? t.push(c.default.createElement(p.default, {
-                        key: o + "" + i,
-                        propId: o + "" + i,
-                        boardSize: r,
-                        handleTileClick: this.props.onTileClick,
-                        hasQueen: !0,
-                        isRed: !0
-                    })) : t.push(c.default.createElement(p.default, {
-                        key: o + "" + i,
-                        propId: o + "" + i,
-                        boardSize: r,
-                        handleTileClick: this.props.onTileClick,
-                        isRed: !0
-                    })) : this.props.cols[i - 1] === o ? t.push(c.default.createElement(p.default, {
-                        key: o + "" + i,
-                        propId: o + "" + i,
-                        boardSize: r,
-                        handleTileClick: this.props.onTileClick,
-                        hasQueen: !0
-                    })) : t.push(c.default.createElement(p.default, {
-                        key: o + "" + i,
-                        propId: o + "" + i,
-                        boardSize: r,
-                        handleTileClick: this.props.onTileClick
-                    }));
-                    e.push(c.default.createElement("div", {
-                        key: o,
-                        className: "board-row"
-                    }, t)), 0 != this.props.cols[o - 1] ? n.push(c.default.createElement("img", {
-                        key: "Q" + o,
-                        src: "./img/queen.png",
-                        id: "Q" + o,
-                        className: "queen-" + r + " fade"
-                    })) : n.push(c.default.createElement("img", {
-                        key: "Q" + o,
-                        src: "./img/queen.png",
-                        id: "Q" + o,
-                        className: "queen-" + r
-                    })), t = [];
-                }
-                return {
-                    rows: e,
-                    queens: n
-                };
-            }
-        }, {
-            key: "render",
-            value: function() {
-                var e = this.createBoard();
-                return c.default.createElement("board", null, e.rows, c.default.createElement(d.default, {
-                    activeQueens: this.props.activeQueens,
-                    gridSize: this.props.size,
-                    moves: this.props.moves,
-                    newGame: this.props.newGame,
-                    visible: this.props.gameOver
-                }), e.queens);
-            }
-        } ]), t;
-    }(c.default.Component);
-    t.default = h;
+        return i.default.createElement("board", null, h.rows, i.default.createElement(c.default, {
+            activeQueens: a,
+            gridSize: t,
+            moves: s,
+            newGame: l,
+            visible: f
+        }), h.queens);
+    };
+    l.propTypes = {
+        size: o.PropTypes.number,
+        onTileClick: o.PropTypes.func,
+        rows: o.PropTypes.array,
+        cols: o.PropTypes.array,
+        redBlocks: o.PropTypes.array,
+        activeQueens: o.PropTypes.number,
+        moves: o.PropTypes.number,
+        newGame: o.PropTypes.func,
+        highlight: o.PropTypes.bool,
+        gameOver: o.PropTypes.bool
+    }, t.default = l;
 }, function(e, t, n) {
     "use strict";
     function r(e) {
@@ -3710,16 +3677,16 @@
             return e && "number" == typeof e.length;
         }
         function M(e) {
-            return null === e || void 0 === e ? j() : i(e) ? e.toSeq() : q(e);
+            return null === e || void 0 === e ? j() : i(e) ? e.toSeq() : F(e);
         }
         function N(e) {
             return null === e || void 0 === e ? j().toKeyedSeq() : i(e) ? a(e) ? e.toSeq() : e.fromEntrySeq() : z(e);
         }
         function O(e) {
-            return null === e || void 0 === e ? j() : i(e) ? a(e) ? e.entrySeq() : e.toIndexedSeq() : F(e);
+            return null === e || void 0 === e ? j() : i(e) ? a(e) ? e.entrySeq() : e.toIndexedSeq() : q(e);
         }
         function P(e) {
-            return (null === e || void 0 === e ? j() : i(e) ? a(e) ? e.entrySeq() : e : F(e)).toSetSeq();
+            return (null === e || void 0 === e ? j() : i(e) ? a(e) ? e.entrySeq() : e : q(e)).toSetSeq();
         }
         function A(e) {
             this._array = e, this.size = e.length;
@@ -3745,12 +3712,12 @@
             if (!t) throw new TypeError("Expected Array or iterable object of [k, v] entries, or keyed object: " + e);
             return t;
         }
-        function F(e) {
+        function q(e) {
             var t = B(e);
             if (!t) throw new TypeError("Expected Array or iterable object of values: " + e);
             return t;
         }
-        function q(e) {
+        function F(e) {
             var t = B(e) || "object" == typeof e && new D(e);
             if (!t) throw new TypeError("Expected Array or iterable object of values, or keyed object: " + e);
             return t;
@@ -3877,8 +3844,8 @@
             throw new Error("Value type " + t + " cannot be hashed.");
         }
         function ae(e) {
-            var t = Fn[e];
-            return void 0 === t && (t = ue(e), zn === jn && (zn = 0, Fn = {}), zn++, Fn[e] = t), 
+            var t = qn[e];
+            return void 0 === t && (t = ue(e), zn === jn && (zn = 0, qn = {}), zn++, qn[e] = t), 
             t;
         }
         function ue(e) {
@@ -3930,7 +3897,7 @@
             });
         }
         function fe(e) {
-            return !(!e || !e[qn]);
+            return !(!e || !e[Fn]);
         }
         function de(e, t) {
             this.ownerID = e, this.entries = t;
@@ -4078,18 +4045,18 @@
         function ze(e) {
             var t = We();
             if (null === e || void 0 === e) return t;
-            if (Fe(e)) return e;
+            if (qe(e)) return e;
             var n = r(e), o = n.size;
-            return 0 === o ? t : (le(o), o > 0 && o < vn ? Ve(0, o, hn, null, new qe(n.toArray())) : t.withMutations(function(e) {
+            return 0 === o ? t : (le(o), o > 0 && o < vn ? Ve(0, o, hn, null, new Fe(n.toArray())) : t.withMutations(function(e) {
                 e.setSize(o), n.forEach(function(t, n) {
                     return e.set(n, t);
                 });
             }));
         }
-        function Fe(e) {
+        function qe(e) {
             return !(!e || !e[Gn]);
         }
-        function qe(e, t) {
+        function Fe(e, t) {
             this.array = e, this.ownerID = t;
         }
         function Be(e, t) {
@@ -4153,7 +4120,7 @@
             s);
         }
         function Ge(e, t) {
-            return t && e && t === e.ownerID ? e : new qe(e ? e.array.slice() : [], t);
+            return t && e && t === e.ownerID ? e : new Fe(e ? e.array.slice() : [], t);
         }
         function Ye(e, t) {
             if (t >= $e(e._capacity)) return e._tail;
@@ -4167,12 +4134,12 @@
             var r = e.__ownerID || new f(), o = e._origin, i = e._capacity, a = o + t, u = void 0 === n ? i : n < 0 ? i + n : o + n;
             if (a === o && u === i) return e;
             if (a >= u) return e.clear();
-            for (var s = e._level, c = e._root, l = 0; a + l < 0; ) c = new qe(c && c.array.length ? [ void 0, c ] : [], r), 
+            for (var s = e._level, c = e._root, l = 0; a + l < 0; ) c = new Fe(c && c.array.length ? [ void 0, c ] : [], r), 
             s += hn, l += 1 << s;
             l && (a += l, o += l, u += l, i += l);
-            for (var p = $e(i), d = $e(u); d >= 1 << s + hn; ) c = new qe(c && c.array.length ? [ c ] : [], r), 
+            for (var p = $e(i), d = $e(u); d >= 1 << s + hn; ) c = new Fe(c && c.array.length ? [ c ] : [], r), 
             s += hn;
-            var h = e._tail, v = d < p ? Ye(e, u - 1) : d > p ? new qe([], r) : h;
+            var h = e._tail, v = d < p ? Ye(e, u - 1) : d > p ? new Fe([], r) : h;
             if (h && d > p && a < i && h.array.length) {
                 c = Ge(c, r);
                 for (var m = c, y = s; y > hn; y -= hn) {
@@ -4455,7 +4422,7 @@
         }
         function mt(e, t) {
             var r = a(e), o = [ e ].concat(t).map(function(e) {
-                return i(e) ? r && (e = n(e)) : e = r ? z(e) : F(Array.isArray(e) ? e : [ e ]), 
+                return i(e) ? r && (e = n(e)) : e = r ? z(e) : q(Array.isArray(e) ? e : [ e ]), 
                 e;
             }).filter(function(e) {
                 return 0 !== e.size;
@@ -4639,7 +4606,7 @@
             });
         }
         function Lt(e) {
-            return null === e || void 0 === e ? qt() : jt(e) && !c(e) ? e : qt().withMutations(function(t) {
+            return null === e || void 0 === e ? Ft() : jt(e) && !c(e) ? e : Ft().withMutations(function(t) {
                 var n = o(e);
                 le(n.size), n.forEach(function(e) {
                     return t.add(e);
@@ -4652,12 +4619,12 @@
         function zt(e, t) {
             return e.__ownerID ? (e.size = t.size, e._map = t, e) : t === e._map ? e : 0 === t.size ? e.__empty() : e.__make(t);
         }
-        function Ft(e, t) {
+        function qt(e, t) {
             var n = Object.create(er);
             return n.size = e ? e.size : 0, n._map = e, n.__ownerID = t, n;
         }
-        function qt() {
-            return tr || (tr = Ft(Ee()));
+        function Ft() {
+            return tr || (tr = qt(Ee()));
         }
         function Bt(e) {
             return null === e || void 0 === e ? Ht() : Vt(e) ? e : Ht().withMutations(function(t) {
@@ -4926,7 +4893,7 @@
         Dn && (Nn = new WeakMap());
         var Rn = 0, Un = "__immutablehash__";
         "function" == typeof Symbol && (Un = Symbol(Un));
-        var Ln = 16, jn = 255, zn = 0, Fn = {};
+        var Ln = 16, jn = 255, zn = 0, qn = {};
         e(pe, te), pe.of = function() {
             var e = sn.call(arguments, 0);
             return Ee().withMutations(function(t) {
@@ -5004,8 +4971,8 @@
             return e === this.__ownerID ? this : e ? we(this.size, this._root, e, this.__hash) : (this.__ownerID = e, 
             this.__altered = !1, this);
         }, pe.isMap = fe;
-        var qn = "@@__IMMUTABLE_MAP__@@", Bn = pe.prototype;
-        Bn[qn] = !0, Bn[dn] = Bn.remove, Bn.removeIn = Bn.deleteIn, de.prototype.get = function(e, t, n, r) {
+        var Fn = "@@__IMMUTABLE_MAP__@@", Bn = pe.prototype;
+        Bn[Fn] = !0, Bn[dn] = Bn.remove, Bn.removeIn = Bn.deleteIn, de.prototype.get = function(e, t, n, r) {
             for (var o = this.entries, i = 0, a = o.length; i < a; i++) if (Q(n, o[i][0])) return o[i][1];
             return r;
         }, de.prototype.update = function(e, t, n, r, o, i, a) {
@@ -5162,15 +5129,15 @@
         }, ze.prototype.__ensureOwner = function(e) {
             return e === this.__ownerID ? this : e ? Ve(this._origin, this._capacity, this._level, this._root, this._tail, e, this.__hash) : (this.__ownerID = e, 
             this);
-        }, ze.isList = Fe;
+        }, ze.isList = qe;
         var Gn = "@@__IMMUTABLE_LIST__@@", Yn = ze.prototype;
         Yn[Gn] = !0, Yn[dn] = Yn.remove, Yn.setIn = Bn.setIn, Yn.deleteIn = Yn.removeIn = Bn.removeIn, 
         Yn.update = Bn.update, Yn.updateIn = Bn.updateIn, Yn.mergeIn = Bn.mergeIn, Yn.mergeDeepIn = Bn.mergeDeepIn, 
         Yn.withMutations = Bn.withMutations, Yn.asMutable = Bn.asMutable, Yn.asImmutable = Bn.asImmutable, 
-        Yn.wasAltered = Bn.wasAltered, qe.prototype.removeBefore = function(e, t, n) {
+        Yn.wasAltered = Bn.wasAltered, Fe.prototype.removeBefore = function(e, t, n) {
             if (n === t ? 1 << t : 0 === this.array.length) return this;
             var r = n >>> t & mn;
-            if (r >= this.array.length) return new qe([], e);
+            if (r >= this.array.length) return new Fe([], e);
             var o, i = 0 === r;
             if (t > 0) {
                 var a = this.array[r];
@@ -5180,7 +5147,7 @@
             var u = Ge(this, e);
             if (!i) for (var s = 0; s < r; s++) u.array[s] = void 0;
             return o && (u.array[r] = o), u;
-        }, qe.prototype.removeAfter = function(e, t, n) {
+        }, Fe.prototype.removeAfter = function(e, t, n) {
             if (n === (t ? 1 << t : 0) || 0 === this.array.length) return this;
             var r = n - 1 >>> t & mn;
             if (r >= this.array.length) return this;
@@ -5430,7 +5397,7 @@
         var Zn = "@@__IMMUTABLE_SET__@@", er = Lt.prototype;
         er[Zn] = !0, er[dn] = er.remove, er.mergeDeep = er.merge, er.mergeDeepWith = er.mergeWith, 
         er.withMutations = Bn.withMutations, er.asMutable = Bn.asMutable, er.asImmutable = Bn.asImmutable, 
-        er.__empty = qt, er.__make = Ft;
+        er.__empty = Ft, er.__make = qt;
         var tr;
         e(Bt, Lt), Bt.of = function() {
             return this(arguments);
@@ -6907,10 +6874,10 @@
         this._flags = 0;
     }
     var v = n(2), m = n(5), y = n(133), _ = n(135), g = n(16), b = n(35), w = n(17), E = n(66), C = n(23), x = n(36), S = n(27), k = n(67), I = n(4), T = n(151), M = n(152), N = n(68), O = n(155), P = (n(8), 
-    n(164)), A = n(169), D = (n(11), n(30)), R = (n(1), n(47), n(50), n(49), n(3), k), U = C.deleteListener, L = I.getNodeFromInstance, j = S.listenTo, z = x.registrationNameModules, F = {
+    n(164)), A = n(169), D = (n(11), n(30)), R = (n(1), n(47), n(50), n(49), n(3), k), U = C.deleteListener, L = I.getNodeFromInstance, j = S.listenTo, z = x.registrationNameModules, q = {
         string: !0,
         number: !0
-    }, q = "style", B = "__html", V = {
+    }, F = "style", B = "__html", V = {
         children: null,
         dangerouslySetInnerHTML: null,
         suppressContentEditableWarning: null
@@ -7042,7 +7009,7 @@
             for (var r in t) if (t.hasOwnProperty(r)) {
                 var o = t[r];
                 if (null != o) if (z.hasOwnProperty(r)) o && i(this, r, o, e); else {
-                    r === q && (o && (o = this._previousStyleCopy = m({}, t.style)), o = _.createMarkupForStyles(o, this));
+                    r === F && (o && (o = this._previousStyleCopy = m({}, t.style)), o = _.createMarkupForStyles(o, this));
                     var a = null;
                     null != this._tag && d(this._tag, t) ? V.hasOwnProperty(r) || (a = E.createMarkupForCustomAttribute(r, o)) : a = E.createMarkupForProperty(r, o), 
                     a && (n += " " + a);
@@ -7054,7 +7021,7 @@
         _createContentMarkup: function(e, t, n) {
             var r = "", o = t.dangerouslySetInnerHTML;
             if (null != o) null != o.__html && (r = o.__html); else {
-                var i = F[typeof t.children] ? t.children : null, a = null != i ? null : t.children;
+                var i = q[typeof t.children] ? t.children : null, a = null != i ? null : t.children;
                 if (null != i) r = D(i); else if (null != a) {
                     var u = this.mountChildren(a, e, n);
                     r = u.join("");
@@ -7065,7 +7032,7 @@
         _createInitialChildren: function(e, t, n, r) {
             var o = t.dangerouslySetInnerHTML;
             if (null != o) null != o.__html && g.queueHTML(r, o.__html); else {
-                var i = F[typeof t.children] ? t.children : null, a = null != i ? null : t.children;
+                var i = q[typeof t.children] ? t.children : null, a = null != i ? null : t.children;
                 if (null != i) g.queueText(r, i); else if (null != a) for (var u = this.mountChildren(a, e, n), s = 0; s < u.length; s++) g.queueChild(r, u[s]);
             }
         },
@@ -7107,14 +7074,14 @@
         },
         _updateDOMProperties: function(e, t, n) {
             var r, o, a;
-            for (r in e) if (!t.hasOwnProperty(r) && e.hasOwnProperty(r) && null != e[r]) if (r === q) {
+            for (r in e) if (!t.hasOwnProperty(r) && e.hasOwnProperty(r) && null != e[r]) if (r === F) {
                 var u = this._previousStyleCopy;
                 for (o in u) u.hasOwnProperty(o) && (a = a || {}, a[o] = "");
                 this._previousStyleCopy = null;
             } else z.hasOwnProperty(r) ? e[r] && U(this, r) : d(this._tag, e) ? V.hasOwnProperty(r) || E.deleteValueForAttribute(L(this), r) : (w.properties[r] || w.isCustomAttribute(r)) && E.deleteValueForProperty(L(this), r);
             for (r in t) {
-                var s = t[r], c = r === q ? this._previousStyleCopy : null != e ? e[r] : void 0;
-                if (t.hasOwnProperty(r) && s !== c && (null != s || null != c)) if (r === q) if (s ? s = this._previousStyleCopy = m({}, s) : this._previousStyleCopy = null, 
+                var s = t[r], c = r === F ? this._previousStyleCopy : null != e ? e[r] : void 0;
+                if (t.hasOwnProperty(r) && s !== c && (null != s || null != c)) if (r === F) if (s ? s = this._previousStyleCopy = m({}, s) : this._previousStyleCopy = null, 
                 c) {
                     for (o in c) !c.hasOwnProperty(o) || s && s.hasOwnProperty(o) || (a = a || {}, a[o] = "");
                     for (o in s) s.hasOwnProperty(o) && c[o] !== s[o] && (a = a || {}, a[o] = s[o]);
@@ -7126,7 +7093,7 @@
             a && _.setValueForStyles(L(this), a, this);
         },
         _updateDOMChildren: function(e, t, n, r) {
-            var o = F[typeof e.children] ? e.children : null, i = F[typeof t.children] ? t.children : null, a = e.dangerouslySetInnerHTML && e.dangerouslySetInnerHTML.__html, u = t.dangerouslySetInnerHTML && t.dangerouslySetInnerHTML.__html, s = null != o ? null : e.children, c = null != i ? null : t.children, l = null != o || null != a, p = null != i || null != u;
+            var o = q[typeof e.children] ? e.children : null, i = q[typeof t.children] ? t.children : null, a = e.dangerouslySetInnerHTML && e.dangerouslySetInnerHTML.__html, u = t.dangerouslySetInnerHTML && t.dangerouslySetInnerHTML.__html, s = null != o ? null : e.children, c = null != i ? null : t.children, l = null != o || null != a, p = null != i || null != u;
             null != s && null == c ? this.updateChildren(null, n, r) : l && !p && this.updateTextContent(""), 
             null != i ? o !== i && this.updateTextContent("" + i) : null != u ? a !== u && this.updateMarkup("" + u) : null != c && this.updateChildren(c, n, r);
         },

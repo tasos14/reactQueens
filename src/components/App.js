@@ -281,7 +281,6 @@ export default class App extends React.Component {
         <div id="board-container">
           <Board size={this.state.gridSize}
             onTileClick={this.moveQueen}
-            rows={this.state.rows}
             cols={this.state.cols}
             redBlocks={this.state.redBlocks}
             activeQueens={this.state.activeQueens}

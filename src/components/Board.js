@@ -1,81 +1,92 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Tile  from './Tile';
 import GameMessage from './GameMessage';
 
-export default class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    // Operations usually carried out in componentWillMount go here
-  }
-
-  createBoard() {
-    let rows = [];
+const Board = ({
+  size,
+  onTileClick,
+  cols,
+  redBlocks,
+  activeQueens,
+  moves,
+  newGame,
+  highlight,
+  gameOver  }) => {
     let row = [];
-    let queens = [];
-    let size = (this.props.size);
+
+    let board = {
+      rows: [],
+      queens: []
+    };
+
+
 
     for(let i=1; i<size+1; i++){
       for(let j=1; j<size+1; j++){
         // if its a red block
-        if(this.props.redBlocks[size*(i-1)+j-1] == 1 && this.props.highlight){
-          if(this.props.cols[j-1] === i){
+        if(redBlocks[size*(i-1)+j-1] == 1 && highlight){
+          if(cols[j-1] === i){
             row.push(
-              <Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={this.props.onTileClick} hasQueen={true} isRed={true}/>);
+              <Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={onTileClick} hasQueen={true} isRed={true}/>);
           }
           else {
-            row.push(<Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={this.props.onTileClick} isRed={true}/>);
+            row.push(<Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={onTileClick} isRed={true}/>);
           }
         }
         else {
-          if(this.props.cols[j-1] === i){
+          if(cols[j-1] === i){
             row.push(
-              <Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={this.props.onTileClick} hasQueen={true}/>);
+              <Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={onTileClick} hasQueen={true}/>);
           }
           else {
-            row.push(<Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={this.props.onTileClick}/>);
+            row.push(<Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={onTileClick}/>);
           }
         }
 
       }
-      rows.push(
+      board.rows.push(
         <div key={i} className="board-row">{row}</div>
       );
 
-      if(this.props.cols[i-1] != 0){
-        queens.push(
+      if(cols[i-1] != 0){
+        board.queens.push(
           <img key={"Q"+i} src="./img/queen.png" id={"Q"+i} className={"queen-"+size+" fade"} />
         );
       }
       else {
-        queens.push(
+        board.queens.push(
           <img key={"Q"+i} src="./img/queen.png" id={"Q"+i} className={"queen-"+size} />
         );
       }
       row = [];
     }
 
-    return ({
-      rows:   rows,
-      queens: queens
-    });
-  }
-
-  render() {
-    let board = this.createBoard();
-
     return (
       <board>
         {board.rows}
         <GameMessage
-          activeQueens={this.props.activeQueens}
-          gridSize={this.props.size}
-          moves={this.props.moves}
-          newGame={this.props.newGame}
-          visible={this.props.gameOver}
+          activeQueens={activeQueens}
+          gridSize={size}
+          moves={moves}
+          newGame={newGame}
+          visible={gameOver}
         />
         {board.queens}
       </board>
     );
-  }
+};
 
-}
+Board.propTypes = {
+  size: PropTypes.number,
+  onTileClick: PropTypes.func,
+  rows: PropTypes.array,
+  cols: PropTypes.array,
+  redBlocks: PropTypes.array,
+  activeQueens: PropTypes.number,
+  moves: PropTypes.number,
+  newGame: PropTypes.func,
+  highlight: PropTypes.bool,
+  gameOver: PropTypes.bool
+};
+
+export default Board;
