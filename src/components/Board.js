@@ -20,19 +20,19 @@ export default class Board extends React.Component {
         if(this.props.redBlocks[size*(i-1)+j-1] == 1 && this.props.highlight){
           if(this.props.cols[j-1] === i){
             row.push(
-              <Tile key={i+""+j} propId={i+""+j} boardSize={size} onClick={this.props.onTileClick} hasQueen={true} isRed={true}/>);
+              <Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={this.props.onTileClick} hasQueen={true} isRed={true}/>);
           }
           else {
-            row.push(<Tile key={i+""+j} propId={i+""+j} boardSize={size} onClick={this.props.onTileClick} isRed={true}/>);
+            row.push(<Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={this.props.onTileClick} isRed={true}/>);
           }
         }
         else {
           if(this.props.cols[j-1] === i){
             row.push(
-              <Tile key={i+""+j} propId={i+""+j} boardSize={size} onClick={this.props.onTileClick} hasQueen={true}/>);
+              <Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={this.props.onTileClick} hasQueen={true}/>);
           }
           else {
-            row.push(<Tile key={i+""+j} propId={i+""+j} boardSize={size} onClick={this.props.onTileClick}/>);
+            row.push(<Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={this.props.onTileClick}/>);
           }
         }
 

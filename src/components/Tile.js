@@ -1,64 +1,54 @@
 import React from 'react';
 
-export default class Tile extends React.Component {
-  constructor(props) {
-    super(props);
-    // Operations usually carried out in componentWillMount go here
-  }
+const Tile = ({ isRed, hasQueen, propId, boardSize, handleTileClick  }) => {
+  let tile;
 
-  handleClick = (e) => {
-    let id = e.target.id;
-    this.props.onClick(id);
-  }
-
-  render() {
-    let tile;
-
-    if(this.props.isRed){
-      if(this.props.hasQueen){
-        tile = <div id={this.props.propId}
-          className={"tile-"+this.props.boardSize+" red"}
-          onClick={this.handleClick}
-        >
-          <img key={"Q"+this.props.propId}
-            src="./img/queen.png"
-            id={"Q"+this.props.propId}
-            className={"queen-"+this.props.boardSize}
-          />
-        </div>;
-      }
-      else {
-        tile = <div id={this.props.propId}
-          className={"tile-"+this.props.boardSize+" red"}
-          onClick={this.handleClick}
-        >
-
-        </div>;
-      }
+  if(isRed){
+    if(hasQueen){
+      tile = <div id={propId}
+        className={"tile-"+boardSize+" red"}
+        onClick={() => handleTileClick(propId)}
+      >
+        <img key={"Q"+propId}
+          src="./img/queen.png"
+          id={"Q"+propId}
+          className={"queen-"+boardSize}
+        />
+      </div>;
     }
     else {
-      if(this.props.hasQueen){
-        tile = <div id={this.props.propId}
-          className={"tile-"+this.props.boardSize}
-          onClick={this.handleClick}
-        >
-          <img key={"Q"+this.props.propId}
-            src="./img/queen.png"
-            id={"Q"+this.props.propId}
-            className={"queen-"+this.props.boardSize}
-          />
-        </div>;
-      }
-      else {
-        tile = <div id={this.props.propId}
-          className={"tile-"+this.props.boardSize}
-          onClick={this.handleClick}
-        >
+      tile = <div id={propId}
+        className={"tile-"+boardSize+" red"}
+        onClick={() => handleTileClick(propId)}
+      >
 
-        </div>;
-      }
+      </div>;
     }
-
-    return tile;
   }
-}
+  else {
+    if(hasQueen){
+      tile = <div id={propId}
+        className={"tile-"+boardSize}
+        onClick={() => handleTileClick(propId)}
+      >
+        <img key={"Q"+propId}
+          src="./img/queen.png"
+          id={"Q"+propId}
+          className={"queen-"+boardSize}
+        />
+      </div>;
+    }
+    else {
+      tile = <div id={propId}
+        className={"tile-"+boardSize}
+        onClick={() => handleTileClick(propId)}
+      >
+
+      </div>;
+    }
+  }
+
+  return tile;
+};
+
+export default Tile;
