@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 
-const GridSizes = ({ onClick }) => {
+const GridSizes = ({ onClickGrid }) => {
   let elements = [];
 
   for(let i=4; i<9; i++){
-    elements.push(<li key={"grid"+i}><a onClick={() => onClick(i)} id={i}>{i+"x"+i}</a></li>);
+    elements.push(<li key={"grid"+i}><a onClick={() => onClickGrid(i)} id={i}>{i+"x"+i}</a></li>);
   }
 
   return (
@@ -15,7 +15,7 @@ const GridSizes = ({ onClick }) => {
 };
 
 GridSizes.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClickGrid: PropTypes.func.isRequired
 };
 
 export default GridSizes;
