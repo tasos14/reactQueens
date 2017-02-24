@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Moves from '../components/Moves';
@@ -9,7 +10,7 @@ import {
   changeGrid
 } from '../actions';
 
-let Header = ({ dispatch, moves, highlight, gridSize }) => {
+let Header = ({ moves, highlight, gridSize, onClickGrid, toggleSwitch, increaceMoves }) => {
   return (
     <div>
       <div id="heading" className="row">
@@ -24,7 +25,7 @@ let Header = ({ dispatch, moves, highlight, gridSize }) => {
         </div>
 
         <button className="restart-button"
-          onClick={() => {dispatch(increaceMoves());}} >
+          onClick={increaceMoves} >
           Reset<i className="fa fa-repeat" aria-hidden="true"></i>
         </button>
 
@@ -32,10 +33,10 @@ let Header = ({ dispatch, moves, highlight, gridSize }) => {
           <button type="button" className="dropdown-toggle grid-button" data-toggle="dropdown">
             Grid
           </button>
-          <GridSizes onClickGrid={changeGrid}/>
+          <GridSizes onClickGrid={onClickGrid}/>
         </div>
 
-        <Switch on={highlight} onClick={() => {dispatch(toggleSwitch());}}/>
+        <Switch on={highlight} onClick={toggleSwitch}/>
 
       </div>
 
@@ -57,7 +58,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onClickGrid: (grid) => {
       dispatch(changeGrid(grid));
-    }
+    },
+    toggleSwitch: () => {
+      dispatch(toggleSwitch());
+    },
+    increaceMoves: () => {
+      dispatch(increaceMoves());
+    },
   };
 };
 
