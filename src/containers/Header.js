@@ -6,11 +6,11 @@ import GridSizes from '../components/GridSizes';
 import Switch       from '../components/ToggleSwitch';
 import {
   toggleSwitch,
-  increaceMoves,
+  reset,
   changeGrid
 } from '../actions';
 
-let Header = ({ moves, highlight, gridSize, onClickGrid, toggleSwitch, increaceMoves }) => {
+let Header = ({ gridSize, moves, highlight, onClickGrid, toggleSwitch, onResetClick }) => {
   return (
     <div>
       <div id="heading" className="row">
@@ -25,7 +25,7 @@ let Header = ({ moves, highlight, gridSize, onClickGrid, toggleSwitch, increaceM
         </div>
 
         <button className="restart-button"
-          onClick={increaceMoves} >
+          onClick={() => onResetClick(gridSize)} >
           Reset<i className="fa fa-repeat" aria-hidden="true"></i>
         </button>
 
@@ -39,8 +39,6 @@ let Header = ({ moves, highlight, gridSize, onClickGrid, toggleSwitch, increaceM
         <Switch on={highlight} onClick={toggleSwitch}/>
 
       </div>
-
-      <h1>gridSize {gridSize}</h1>
     </div>
   );
 
@@ -48,23 +46,47 @@ let Header = ({ moves, highlight, gridSize, onClickGrid, toggleSwitch, increaceM
 
 const mapStateToProps = (state) => {
   return {
+    gridSize: state.get('gridSize'),
     moves: state.get('moves'),
     highlight: state.get('highlight'),
-    gridSize: state.get('gridSize')
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onClickGrid: (grid) => {
-      dispatch(changeGrid(grid));
+      let cols = [];
+      let rows = [];
+      let redBlocks = [];
+      for(let i=0; i<grid; i++){
+        cols.push(0);
+        rows.push(0);
+        for(let j=0; j<grid; j++){
+          redBlocks.push(0);
+        }
+      }
+
+      dispatch(changeGrid(grid,cols,rows,redBlocks));
     },
     toggleSwitch: () => {
       dispatch(toggleSwitch());
     },
-    increaceMoves: () => {
-      dispatch(increaceMoves());
-    },
+    onResetClick: (gridSize) => {
+      let cols = [];
+      let rows = [];
+      let redBlocks = [];
+
+
+      for(let i=0; i<gridSize; i++){
+        cols.push(0);
+        rows.push(0);
+        for(let j=0; j<gridSize; j++){
+          redBlocks.push(0);
+        }
+      }
+
+      dispatch(reset(cols,rows,redBlocks));
+    }
   };
 };
 

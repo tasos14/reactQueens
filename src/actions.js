@@ -1,7 +1,9 @@
 import {
   TOGGLE_SWITCH,
   CHANGE_GRIDSIZE,
-  INCREASE_MOVES
+  RESET,
+  MOVE_QUEEN,
+  INCREACE_MOVES
 } from './constants';
 
 
@@ -12,15 +14,36 @@ export const toggleSwitch = () => {
   };
 };
 
-export const increaceMoves = () => {
+export const changeGrid = (newGridSize,cols,rows,redBlocks) => {
   return {
-    type: INCREASE_MOVES,
+    type: CHANGE_GRIDSIZE,
+    gridSize: newGridSize,
+    cols: cols,
+    rows: rows,
+    redBlocks: redBlocks
   };
 };
 
-export const changeGrid = (newGridSize) => {
+export const reset = (cols,rows,redBlocks) => {
   return {
-    type: CHANGE_GRIDSIZE,
-    gridSize: newGridSize
+    type: RESET,
+    cols: cols,
+    rows: rows,
+    redBlocks: redBlocks
+  };
+};
+
+export const moveQueen = (rows,cols,redBlocks) => {
+  return {
+    type: MOVE_QUEEN,
+    cols: cols,
+    rows: rows,
+    redBlocks: redBlocks
+  };
+};
+
+export const increaceMoves = () => {
+  return {
+    type: INCREACE_MOVES
   };
 };

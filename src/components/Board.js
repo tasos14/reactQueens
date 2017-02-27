@@ -6,6 +6,7 @@ const Board = ({
   size,
   onTileClick,
   cols,
+  rows,
   redBlocks,
   activeQueens,
   moves,
@@ -27,19 +28,57 @@ const Board = ({
         if(redBlocks[size*(i-1)+j-1] == 1 && highlight){
           if(cols[j-1] === i){
             row.push(
-              <Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={onTileClick} hasQueen={true} isRed={true}/>);
+              <Tile
+                key={i+""+j}
+                propId={i+""+j}
+                boardSize={size}
+                handleTileClick={onTileClick}
+                cols={cols}
+                rows={rows}
+                redBlocks={redBlocks} hasQueen={true} isRed={true}
+              />
+            );
           }
           else {
-            row.push(<Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={onTileClick} isRed={true}/>);
+            row.push(
+              <Tile
+                key={i+""+j}
+                propId={i+""+j}
+                boardSize={size}
+                handleTileClick={onTileClick}
+                cols={cols}
+                rows={rows}
+                redBlocks={redBlocks}
+                isRed={true}
+              />
+            );
           }
         }
         else {
           if(cols[j-1] === i){
             row.push(
-              <Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={onTileClick} hasQueen={true}/>);
+              <Tile
+                key={i+""+j}
+                propId={i+""+j}
+                boardSize={size}
+                handleTileClick={onTileClick}
+                cols={cols}
+                rows={rows}
+                redBlocks={redBlocks} hasQueen={true}/>
+            );
           }
           else {
-            row.push(<Tile key={i+""+j} propId={i+""+j} boardSize={size} handleTileClick={onTileClick}/>);
+            row.push(
+              <Tile
+                key={i+""+j}
+                propId={i+""+j}
+                boardSize={size}
+                handleTileClick={onTileClick}
+                cols={cols}
+                rows={rows}
+                redBlocks={redBlocks}
+              />
+            );
           }
         }
 
