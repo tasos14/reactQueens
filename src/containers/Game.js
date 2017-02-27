@@ -2,7 +2,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Board from '../components/Board';
-import { moveQueen, increaceMoves } from '../actions';
+import {
+  moveQueen,
+  increaceMoves,
+  increaseActiveQueens,
+  decreaseActiveQueens,
+  gameOver
+} from '../actions';
 
 let Game = () => {
   return (
@@ -19,7 +25,7 @@ const mapStateToProps = (state) => {
     redBlocks: state.get('redBlocks'),
     activeQueens: state.get('activeQueens'),
     moves: state.get('moves'),
-    gameOver: state.get('gameOver'),
+    isGameOver: state.get('gameOver'),
   };
 };
 
@@ -66,6 +72,10 @@ const removeRedBlocks = (row,col,gridSize,redBlocks,cols) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    gameOver: () => {
+      dispatch(gameOver());
+    },
+
     onTileClick: (id,cols,rows,gridSize,redBlocks) => {
       let row,col;
       let newRedBlocks = redBlocks.slice(0);
@@ -89,14 +99,14 @@ const mapDispatchToProps = (dispatch) => {
         newRows[row-1] = col;
         dispatch(increaceMoves());
         newRedBlocks = drawRedBlocks(row,col,gridSize,newRedBlocks);
-        // this.state.activeQueens++;
+        dispatch(increaseActiveQueens());
       }
       // when you click a tile with a queen on
       else if(newCols[col-1] === row) {
         newCols[col-1] = 0;
         newRows[row-1] = 0;
         newRedBlocks = removeRedBlocks(row,col,gridSize,newRedBlocks,newCols);
-        // this.state.activeQueens--;
+        dispatch(decreaseActiveQueens());
       }
       // when you have already clicked a tile on that column
       else {

@@ -3,7 +3,10 @@ import {
   CHANGE_GRIDSIZE,
   RESET,
   MOVE_QUEEN,
-  INCREACE_MOVES
+  INCREACE_MOVES,
+  INCREACE_ACTIVE_QUEENS,
+  DECREACE_ACTIVE_QUEENS,
+  GAME_OVER
 } from './constants';
 
 
@@ -45,5 +48,23 @@ export const moveQueen = (rows,cols,redBlocks) => {
 export const increaceMoves = () => {
   return {
     type: INCREACE_MOVES
+  };
+};
+
+export const increaseActiveQueens = () => {
+  return {
+    type: INCREACE_ACTIVE_QUEENS
+  };
+};
+
+export const decreaseActiveQueens = () => {
+  return {
+    type: DECREACE_ACTIVE_QUEENS
+  };
+};
+
+export const gameOver = () => {
+  return {
+    type: GAME_OVER
   };
 };
