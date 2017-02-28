@@ -7,7 +7,8 @@ import {
   INCREACE_MOVES,
   INCREACE_ACTIVE_QUEENS,
   DECREACE_ACTIVE_QUEENS,
-  GAME_OVER
+  GAME_OVER,
+  NEW_GAME
 } from './constants';
 
 const initialState = Map({
@@ -38,16 +39,13 @@ const queensApp = (state = initialState, action) => {
       return state
         .set('cols', action.cols)
         .set('rows', action.rows)
-        .set('redBlocks', action.redBlocks)
-        .set('moves', 0)
-        .set('activeQueens', 0)
-        .set('gameOver', false);
+        .set('redBlocks', action.redBlocks);
 
     case MOVE_QUEEN:
       return state
-      .set('cols', action.cols)
-      .set('rows', action.rows)
-      .set('redBlocks', action.redBlocks);
+        .set('cols', action.cols)
+        .set('rows', action.rows)
+        .set('redBlocks', action.redBlocks);
 
     case INCREACE_MOVES:
       return state.set('moves', state.get('moves')+1);
@@ -60,6 +58,15 @@ const queensApp = (state = initialState, action) => {
 
     case GAME_OVER:
       return state.set('gameOver', !state.get('gameOver'));
+
+    case NEW_GAME:
+    return state
+      .set('cols', action.cols)
+      .set('rows', action.rows)
+      .set('redBlocks', action.redBlocks)
+      .set('moves', 0)
+      .set('activeQueens', 0)
+      .set('gameOver', false);
 
     default:
       return state;

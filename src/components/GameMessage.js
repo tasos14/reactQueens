@@ -15,7 +15,7 @@ const GameMessage = ({ gridSize, moves, newGame,visible }) => {
           <span className="star" >★</span>
         </div>
         <div className="text-center">
-          <button className="new-game" onClick={newGame}>New Game</button>
+          <button className="new-game" onClick={() => newGame(gridSize)}>New Game</button>
         </div>
       </div>;
     }
@@ -28,7 +28,7 @@ const GameMessage = ({ gridSize, moves, newGame,visible }) => {
           <span className="star inactive" >★</span>
         </div>
         <div className="text-center">
-          <button className="new-game" onClick={newGame}>New Game</button>
+          <button className="new-game" onClick={() => newGame(gridSize)}>New Game</button>
         </div>
       </div>;
     }
@@ -41,7 +41,7 @@ const GameMessage = ({ gridSize, moves, newGame,visible }) => {
           <span className="star inactive" >★</span>
         </div>
         <div className="text-center">
-          <button className="new-game" onClick={newGame}>New Game</button>
+          <button className="new-game" onClick={() => newGame(gridSize)}>New Game</button>
         </div>
       </div>;
     }

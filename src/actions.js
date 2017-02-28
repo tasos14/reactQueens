@@ -6,7 +6,8 @@ import {
   INCREACE_MOVES,
   INCREACE_ACTIVE_QUEENS,
   DECREACE_ACTIVE_QUEENS,
-  GAME_OVER
+  GAME_OVER,
+  NEW_GAME
 } from './constants';
 
 
@@ -66,5 +67,14 @@ export const decreaseActiveQueens = () => {
 export const gameOver = () => {
   return {
     type: GAME_OVER
+  };
+};
+
+export const newGame = (cols,rows,redBlocks) => {
+  return {
+    type: NEW_GAME,
+    cols: cols,
+    rows: rows,
+    redBlocks: redBlocks
   };
 };

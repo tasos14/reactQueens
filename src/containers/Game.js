@@ -9,7 +9,8 @@ import {
   increaceMoves,
   increaseActiveQueens,
   decreaseActiveQueens,
-  gameOver
+  gameOver,
+  newGame
 } from '../actions';
 
 class Game extends React.Component {
@@ -96,6 +97,22 @@ const removeRedBlocks = (row,col,gridSize,redBlocks,cols) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    newGame: (gridSize) => {
+      let cols = [];
+      let rows = [];
+      let redBlocks = [];
+
+
+      for(let i=0; i<gridSize; i++){
+        cols.push(0);
+        rows.push(0);
+        for(let j=0; j<gridSize; j++){
+          redBlocks.push(0);
+        }
+      }
+      dispatch(newGame(cols,rows,redBlocks));
+    },
+
     gameOver: () => {
       dispatch(gameOver());
     },
