@@ -10,7 +10,7 @@ const Footer = () => (
       <hr></hr>
 
       <p>
-        <strong>Note:</strong> This game was built using React and SWI-Prolog Pengines.
+        <strong>Note:</strong> This game was built using React, Redux and SWI-Prolog Pengines.
       </p>
 
       <hr></hr>
