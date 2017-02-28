@@ -1,6 +1,8 @@
 /* eslint react/prop-types: 0 */
+/* eslint no-class-assign: 0 */
 import React from 'react';
 import { connect } from 'react-redux';
+import axios        from 'axios';
 import Board from '../components/Board';
 import {
   moveQueen,
@@ -10,11 +12,33 @@ import {
   gameOver
 } from '../actions';
 
-let Game = () => {
-  return (
-    <Board />
-  );
-};
+class Game extends React.Component {
+
+  componentDidUpdate = () => {
+    let data;
+    let { size, cols,activeQueens, isGameOver, gameOver } = this.props;
+    if (activeQueens == size && !isGameOver){
+      axios.post('/', {
+        size:   size,
+        queens: cols
+      })
+      .then(function (response) {
+        data = response.data;
+        if (data && !isGameOver) {
+          gameOver();
+        }
+      })
+      .catch(function (error) {
+        console.log("Error: \n"+error);
+      });
+    }
+  }
+
+
+  render() {
+    return  <Board {...this.props} />;
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -123,6 +147,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-Game = connect(mapStateToProps,mapDispatchToProps)(Board);
+Game = connect(mapStateToProps,mapDispatchToProps)(Game);
 
 export default Game;

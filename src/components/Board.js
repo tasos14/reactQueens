@@ -1,55 +1,24 @@
 import React, { PropTypes } from 'react';
-import axios        from 'axios';
 import Tile  from './Tile';
 import GameMessage from './GameMessage';
 
-export default class Board extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Board = ({
+  size,
+  highlight,
+  onTileClick,
+  cols,
+  rows,
+  redBlocks,
+  activeQueens,
+  moves,
+  isGameOver,
+  newGame}) => {
 
-  componentDidUpdate = () => {
-    let data;
-    let that = this;
-    let { size, cols,activeQueens, isGameOver, gameOver } = this.props;
-    if (activeQueens == size && !isGameOver){
-      console.log("making post");
-      axios.post('/', {
-        size:   size,
-        queens: cols
-      })
-      .then(function (response) {
-        data = response.data;
-        if (data && !isGameOver) {
-          gameOver();
-        }
-      })
-      .catch(function (error) {
-        console.log("Error: \n"+error);
-      });
-    }
-
-
-  }
-
-  render() {
     let row = [];
     let board = {
       rows: [],
       queens: []
     };
-    let {
-      size,
-      highlight,
-      onTileClick,
-      cols,
-      rows,
-      redBlocks,
-      activeQueens,
-      moves,
-      isGameOver,
-      newGame
-    } = this.props;
 
     for(let i=1; i<size+1; i++){
       for(let j=1; j<size+1; j++){
@@ -129,6 +98,7 @@ export default class Board extends React.Component {
       row = [];
     }
 
+
     return (
       <board>
         {board.rows}
@@ -143,9 +113,7 @@ export default class Board extends React.Component {
       </board>
     );
 
-  }
-
-}
+};
 
 
 Board.propTypes = {
@@ -161,3 +129,5 @@ Board.propTypes = {
   isGameOver: PropTypes.bool,
   gameOver: PropTypes.func
 };
+
+export default Board;
