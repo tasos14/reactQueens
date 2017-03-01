@@ -8,8 +8,6 @@ import bodyParser from 'body-parser';
 // initialize the server and configure support for ejs templates
 const app = new Express();
 const server = new Server(app);
-app.set('view enmgine', 'ejs');
-app.set('views', path.join(__dirname,'views'));
 
 // define the folder that will be used for static assets
 app.use(Express.static(path.join(__dirname, 'static')));
@@ -34,7 +32,7 @@ app.post('/', (req, res) => {
   let query = "queens(".concat(size+",["+queens+"])");
 
   // create pengine
-  let pengine = new Pengines({
+  new Pengines({
     server: "http://localhost:3030/pengine",
     application: 'queens',
     destroy: true,
@@ -53,8 +51,6 @@ app.post('/', (req, res) => {
     }).on('destroy', function() {
       console.info("pengine destroyed.\n---------------------------");
     });
-
-  // res.json(answer);
 });
 
 // start the server

@@ -2,8 +2,8 @@ import React        from 'react';
 import Header       from '../containers/Header';
 import Game         from '../containers/Game';
 import Footer       from './Footer';
-export default class App extends React.Component {
 
+export default class App extends React.Component {
 
   render() {
     return (
