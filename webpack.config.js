@@ -41,7 +41,7 @@ module.exports = {
       compress: { warnings: false },
       mangle: true,
       sourcemap: false,
-      beautify: true,
+      beautify: false,
       dead_code: true
     }),
 ]
