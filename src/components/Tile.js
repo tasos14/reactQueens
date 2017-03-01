@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-const Tile = ({ isRed, hasQueen, propId, boardSize, handleTileClick, cols, rows, redBlocks  }) => {
+const Tile = ({
+  isRed,
+  hasQueen,
+  propId,
+  boardSize,
+  handleTileClick,
+  cols,
+  rows,
+  redBlocks
+}) => {
   let tile;
 
   if(isRed){
@@ -49,6 +58,17 @@ const Tile = ({ isRed, hasQueen, propId, boardSize, handleTileClick, cols, rows,
   }
 
   return tile;
+};
+
+Tile.PropTypes = {
+  isRed: PropTypes.bool.isRequired,
+  hasQueen: PropTypes.bool.isRequired,
+  propId: PropTypes.string.isRequired,
+  boardSize: PropTypes.number.isRequired,
+  handleTileClick: PropTypes.func.isRequired,
+  cols: PropTypes.array.isRequired,
+  rows: PropTypes.array.isRequired,
+  redBlocks: PropTypes.array.isRequired
 };
 
 export default Tile;

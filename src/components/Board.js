@@ -117,17 +117,17 @@ const Board = ({
 
 
 Board.propTypes = {
-  size: PropTypes.number,
-  onTileClick: PropTypes.func,
-  rows: PropTypes.array,
-  cols: PropTypes.array,
-  redBlocks: PropTypes.array,
-  activeQueens: PropTypes.number,
-  moves: PropTypes.number,
-  newGame: PropTypes.func,
-  highlight: PropTypes.bool,
-  isGameOver: PropTypes.bool,
-  gameOver: PropTypes.func
+  size: PropTypes.number.isRequired,
+  onTileClick: PropTypes.func.isRequired,
+  rows: PropTypes.array.isRequired,
+  cols: PropTypes.array.isRequired,
+  redBlocks: PropTypes.array.isRequired,
+  activeQueens: PropTypes.number.isRequired,
+  moves: PropTypes.number.isRequired,
+  newGame: PropTypes.func.isRequired,
+  highlight: PropTypes.bool.isRequired,
+  isGameOver: PropTypes.bool.isRequired,
+  gameOver: PropTypes.func.isRequired
 };
 
 export default Board;

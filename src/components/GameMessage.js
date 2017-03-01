@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-const GameMessage = ({ gridSize, moves, newGame,visible }) => {
+const GameMessage = ({ gridSize, moves, newGame, visible }) => {
   let gameMessage;
   let size = gridSize;
   let score = moves-size;
@@ -52,7 +52,13 @@ const GameMessage = ({ gridSize, moves, newGame,visible }) => {
   }
 
   return gameMessage;
+};
 
+GameMessage.propTypes = {
+  gridSize: PropTypes.number.isRequired,
+  moves: PropTypes.number.isRequired,
+  newGame: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired
 };
 
 export default GameMessage;

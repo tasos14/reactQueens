@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const ToggleSwitch = ({ on, onClick }) => {
   let toggleSwitch;
@@ -15,6 +15,11 @@ const ToggleSwitch = ({ on, onClick }) => {
   }
 
   return (toggleSwitch);
+};
+
+ToggleSwitch.PropTypes = {
+  on: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default ToggleSwitch;
