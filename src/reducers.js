@@ -33,7 +33,10 @@ const queensApp = (state = initialState, action) => {
         .set('gridSize', action.gridSize)
         .set('cols', action.cols)
         .set('rows', action.rows)
-        .set('redBlocks', action.redBlocks);
+        .set('redBlocks', action.redBlocks)
+        .set('activeQueens', 0)
+        .set('gameOver', false)
+        .set('moves', 0);
 
     case RESET:
       return state
