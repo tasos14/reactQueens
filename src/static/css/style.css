@@ -297,8 +297,8 @@ board .board-row:nth-of-type(even) > div:nth-child(odd){
 }
 
 .red{
-
   filter: saturate(50%) brightness(63%);
+  -webkit-filter: saturate(50%) brightness(63%);
 }
 
 .tile-4{
@@ -369,12 +369,6 @@ board .board-row:nth-of-type(even) > div:nth-child(odd){
 .fade{
   opacity: 0.3;
 }
-
-.red{
-  background-color: #ff704d;
-}
-
-
 
 .game-over {
   position: absolute;
