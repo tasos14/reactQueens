@@ -6,9 +6,9 @@ import queensApp from './reducers';
 import App from './components/App';
 import { loadState, saveState } from './localStorage';
 
-let localState = loadState();
+const localState = loadState();
 
-let store = createStore(queensApp, localState);
+const store = createStore(queensApp, localState);
 
 store.subscribe(() => {
   saveState(store.getState());
@@ -18,7 +18,7 @@ render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );
 
 module.hot.accept();

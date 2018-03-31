@@ -1,3 +1,4 @@
+/* eslint-disable  no-lonely-if */
 import React, { PropTypes } from 'react';
 
 const Tile = ({
@@ -8,49 +9,46 @@ const Tile = ({
   handleTileClick,
   cols,
   rows,
-  redBlocks
+  redBlocks,
 }) => {
   let tile;
 
-  if(isRed){
-    if(hasQueen){
+  if (isRed) {
+    if (hasQueen) {
       tile = <div id={propId}
-        className={"tile-"+boardSize+" red"}
-        onClick={() => handleTileClick(propId,cols,rows,boardSize,redBlocks)}
+        className={`tile-${boardSize} red`}
+        onClick={() => handleTileClick(propId, cols, rows, boardSize, redBlocks)}
       >
-        <img key={"Q"+propId}
+        <img key={`Q${propId}`}
           src="./img/queen.png"
-          id={"Q"+propId}
-          className={"queen-"+boardSize}
+          id={`Q${propId}`}
+          className={`queen-${boardSize}`}
         />
       </div>;
-    }
-    else {
+    } else {
       tile = <div id={propId}
-        className={"tile-"+boardSize+" red"}
-        onClick={() => handleTileClick(propId,cols,rows,boardSize,redBlocks)}
+        className={`tile-${boardSize} red`}
+        onClick={() => handleTileClick(propId, cols, rows, boardSize, redBlocks)}
       >
 
       </div>;
     }
-  }
-  else {
-    if(hasQueen){
+  } else {
+    if (hasQueen) {
       tile = <div id={propId}
-        className={"tile-"+boardSize}
-        onClick={() => handleTileClick(propId,cols,rows,boardSize,redBlocks)}
+        className={`tile-${boardSize}`}
+        onClick={() => handleTileClick(propId, cols, rows, boardSize, redBlocks)}
       >
-        <img key={"Q"+propId}
+        <img key={`Q${propId}`}
           src="./img/queen.png"
-          id={"Q"+propId}
-          className={"queen-"+boardSize}
+          id={`Q${propId}`}
+          className={`queen-${boardSize}`}
         />
       </div>;
-    }
-    else {
+    } else {
       tile = <div id={propId}
-        className={"tile-"+boardSize}
-        onClick={() => handleTileClick(propId,cols,rows,boardSize,redBlocks)}
+        className={`tile-${boardSize}`}
+        onClick={() => handleTileClick(propId, cols, rows, boardSize, redBlocks)}
       >
 
       </div>;
@@ -68,7 +66,7 @@ Tile.PropTypes = {
   handleTileClick: PropTypes.func.isRequired,
   cols: PropTypes.array.isRequired,
   rows: PropTypes.array.isRequired,
-  redBlocks: PropTypes.array.isRequired
+  redBlocks: PropTypes.array.isRequired,
 };
 
 export default Tile;

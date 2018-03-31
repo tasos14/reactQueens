@@ -1,47 +1,53 @@
 /* eslint react/prop-types: 0 */
 /* eslint no-class-assign: 0 */
+/* eslint-disable no-param-reassign */
 import React from 'react';
 import { connect } from 'react-redux';
-import axios        from 'axios';
+import axios from 'axios';
 import Board from '../components/Board';
 import {
   moveQueen,
   increaceMoves,
   increaseActiveQueens,
   decreaseActiveQueens,
-  gameOver,
-  newGame
+  gameOver as gameOverAction,
+  newGame,
 } from '../actions';
 
 class Game extends React.Component {
 
   componentDidUpdate = () => {
-    let data;
-    let { size, cols,activeQueens, isGameOver, gameOver } = this.props;
-    if (activeQueens == size && !isGameOver){
+    const {
+      size,
+      cols,
+      activeQueens,
+      isGameOver,
+      gameOver,
+    } = this.props;
+    if (activeQueens === size && !isGameOver) {
       axios.post('/', {
-        size:   size,
-        queens: cols
+        size,
+        queens: cols,
       })
-      .then(function (response) {
-        data = response.data;
-        if (data && !isGameOver) {
-          gameOver();
-        }
-      })
-      .catch(function (error) {
-        console.log("Error: \n"+error);
-      });
+        .then((response) => {
+          const { data } = response;
+          if (data && !isGameOver) {
+            gameOver();
+          }
+        })
+        .catch((error) => {
+          console.log("Error: \n"+error); // eslint-disable-line
+        });
     }
   }
 
 
   render() {
-    return  <Board {...this.props} />;
+    return <Board {...this.props} />;
   }
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
   return {
     size: state.get('gridSize'),
     highlight: state.get('highlight'),
@@ -52,118 +58,108 @@ const mapStateToProps = (state) => {
     moves: state.get('moves'),
     isGameOver: state.get('gameOver'),
   };
-};
+}
 
-const drawRedBlocks = (row,col,gridSize,redBlocks) => {
+function drawRedBlocks(row, col, gridSize, redBlocks) {
   let absDist;
   row--;
   col--;
-  for(let i=0; i<gridSize; i++){
-    absDist = Math.abs(i-col);
+  for (let i = 0; i < gridSize; i++) {
+    absDist = Math.abs(i - col);
 
-    redBlocks[gridSize*row+i] = 1;
-    redBlocks[gridSize*i+col] = 1;
-    for(let j=0; j<gridSize; j++){
-      if(j === row-absDist || j === row+absDist){
-        redBlocks[gridSize*j+i] = 1;
+    redBlocks[gridSize * row + i] = 1;
+    redBlocks[gridSize * i + col] = 1;
+    for (let j = 0; j < gridSize; j++) {
+      if (j === row - absDist || j === row + absDist) {
+        redBlocks[gridSize * j + i] = 1;
       }
     }
   }
-  redBlocks[gridSize*row+col] = 0;
+  redBlocks[gridSize * row + col] = 0;
 
   return redBlocks;
+}
 
-};
-
-const removeRedBlocks = (row,col,gridSize,redBlocks,cols) => {
+function removeRedBlocks(row, col, gridSize, redBlocks, cols) {
   row--;
   col--;
-  for(let i=0; i<gridSize; i++){
-    redBlocks[gridSize*row+i] = 0;
-    redBlocks[gridSize*i+col] = 0;
-    for(let j=0; j<gridSize; j++){
-      redBlocks[gridSize*j+i] = 0;
+  for (let i = 0; i < gridSize; i++) {
+    redBlocks[gridSize * row + i] = 0;
+    redBlocks[gridSize * i + col] = 0;
+    for (let j = 0; j < gridSize; j++) {
+      redBlocks[gridSize * j + i] = 0;
     }
   }
 
-  for(let i=0; i<gridSize; i++){
-    if(cols[i] !== 0){
-      redBlocks = drawRedBlocks(cols[i],i+1,gridSize,redBlocks);
+  for (let i = 0; i < gridSize; i++) {
+    if (cols[i] !== 0) {
+      redBlocks = drawRedBlocks(cols[i], i + 1, gridSize, redBlocks);
     }
   }
 
   return redBlocks;
-};
+}
 
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch) {
   return {
     newGame: (gridSize) => {
-      let cols = [];
-      let rows = [];
-      let redBlocks = [];
+      const cols = [];
+      const rows = [];
+      const redBlocks = [];
 
 
-      for(let i=0; i<gridSize; i++){
+      for (let i = 0; i < gridSize; i++) {
         cols.push(0);
         rows.push(0);
-        for(let j=0; j<gridSize; j++){
+        for (let j = 0; j < gridSize; j++) {
           redBlocks.push(0);
         }
       }
-      dispatch(newGame(cols,rows,redBlocks));
+      dispatch(newGame(cols, rows, redBlocks));
     },
 
     gameOver: () => {
-      dispatch(gameOver());
+      dispatch(gameOverAction());
     },
 
-    onTileClick: (id,cols,rows,gridSize,redBlocks) => {
-      let row,col;
+    onTileClick: (id, cols, rows, gridSize, redBlocks) => {
+      let row;
+      let col;
       let newRedBlocks = redBlocks.slice(0);
-      let newRows = rows.slice(0);
-      let newCols = cols.slice(0);
+      const newRows = rows.slice(0);
+      const newCols = cols.slice(0);
 
-
-
-      if(id.length === 2){
+      if (id.length === 2) {
         row = Number(id.charAt(0));
         col = Number(id.charAt(1));
-      }
-      else{
+      } else {
         row = Number(id.charAt(1));
         col = Number(id.charAt(2));
       }
 
       // when you click a tile for the first time on a column
-      if(newCols[col-1] === 0){
-        newCols[col-1] = row;
-        newRows[row-1] = col;
+      if (newCols[col - 1] === 0) {
+        newCols[col - 1] = row;
+        newRows[row - 1] = col;
         dispatch(increaceMoves());
-        newRedBlocks = drawRedBlocks(row,col,gridSize,newRedBlocks);
+        newRedBlocks = drawRedBlocks(row, col, gridSize, newRedBlocks);
         dispatch(increaseActiveQueens());
-      }
-      // when you click a tile with a queen on
-      else if(newCols[col-1] === row) {
-        newCols[col-1] = 0;
-        newRows[row-1] = 0;
-        newRedBlocks = removeRedBlocks(row,col,gridSize,newRedBlocks,newCols);
+      } else if (newCols[col - 1] === row) { // when you click a tile with a queen on
+        newCols[col - 1] = 0;
+        newRows[row - 1] = 0;
+        newRedBlocks = removeRedBlocks(row, col, gridSize, newRedBlocks, newCols);
         dispatch(decreaseActiveQueens());
-      }
-      // when you have already clicked a tile on that column
-      else {
-        let prev_row = newCols[col-1];
-        newCols[col-1] = row;
-        newRows[row-1] = col;
+      } else { // when you have already clicked a tile on that column
+        const prevRow = newCols[col - 1];
+        newCols[col - 1] = row;
+        newRows[row - 1] = col;
         dispatch(increaceMoves());
-        newRedBlocks = removeRedBlocks(prev_row,col,gridSize,newRedBlocks,newCols);
+        newRedBlocks = removeRedBlocks(prevRow, col, gridSize, newRedBlocks, newCols);
       }
 
-      dispatch(moveQueen(newRows,newCols,newRedBlocks));
-    }
-
+      dispatch(moveQueen(newRows, newCols, newRedBlocks));
+    },
   };
-};
+}
 
-Game = connect(mapStateToProps,mapDispatchToProps)(Game);
-
-export default Game;
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

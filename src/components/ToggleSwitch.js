@@ -7,8 +7,7 @@ const ToggleSwitch = ({ on, onClick }) => {
     toggleSwitch = <div className="switch" onClick={onClick}>
       <div className="slider on"></div>
     </div>;
-  }
-  else {
+  } else {
     toggleSwitch = <div className="switch" onClick={onClick}>
       <div className="slider"></div>
     </div>;
@@ -19,7 +18,7 @@ const ToggleSwitch = ({ on, onClick }) => {
 
 ToggleSwitch.PropTypes = {
   on: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ToggleSwitch;

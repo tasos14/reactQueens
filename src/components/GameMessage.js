@@ -1,12 +1,13 @@
+/* eslint-disable object-curly-newline */
 import React, { PropTypes } from 'react';
 
 const GameMessage = ({ gridSize, moves, newGame, visible }) => {
   let gameMessage;
-  let size = gridSize;
-  let score = moves-size;
+  const size = gridSize;
+  const score = moves - size;
 
   if (visible) {
-    if (score == 0) {
+    if (score === 0) {
       gameMessage = <div className="game-over visible">
         <p>Excellent !!!</p>
         <div className="rating" >
@@ -18,8 +19,7 @@ const GameMessage = ({ gridSize, moves, newGame, visible }) => {
           <button className="new-game" onClick={() => newGame(gridSize)}>New Game</button>
         </div>
       </div>;
-    }
-    else if (score > 0 && score < 3) {
+    } else if (score > 0 && score < 3) {
       gameMessage = <div className="game-over visible">
         <p>Great !!</p>
         <div className="rating" >
@@ -31,8 +31,7 @@ const GameMessage = ({ gridSize, moves, newGame, visible }) => {
           <button className="new-game" onClick={() => newGame(gridSize)}>New Game</button>
         </div>
       </div>;
-    }
-    else {
+    } else {
       gameMessage = <div className="game-over visible">
         <p>Good</p>
         <div className="rating" >
@@ -45,9 +44,7 @@ const GameMessage = ({ gridSize, moves, newGame, visible }) => {
         </div>
       </div>;
     }
-
-  }
-  else {
+  } else {
     gameMessage = <div className="game-over"></div>;
   }
 
@@ -58,7 +55,7 @@ GameMessage.propTypes = {
   gridSize: PropTypes.number.isRequired,
   moves: PropTypes.number.isRequired,
   newGame: PropTypes.func.isRequired,
-  visible: PropTypes.bool.isRequired
+  visible: PropTypes.bool.isRequired,
 };
 
 export default GameMessage;

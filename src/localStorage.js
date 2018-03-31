@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Map } from 'immutable';
 
 export const loadState = () => {
@@ -7,7 +8,6 @@ export const loadState = () => {
       return undefined;
     }
     return Map(JSON.parse(serializedState));
-
   } catch (err) {
     return undefined;
   }

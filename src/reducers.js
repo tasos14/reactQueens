@@ -1,4 +1,4 @@
-import {  Map } from 'immutable';
+import { Map } from 'immutable';
 import {
   TOGGLE_SWITCH,
   CHANGE_GRIDSIZE,
@@ -8,15 +8,15 @@ import {
   INCREACE_ACTIVE_QUEENS,
   DECREACE_ACTIVE_QUEENS,
   GAME_OVER,
-  NEW_GAME
+  NEW_GAME,
 } from './constants';
 
 const initialState = Map({
   gridSize: 4,
   moves: 0,
-  cols: [0,0,0,0],
-  rows: [0,0,0,0],
-  redBlocks: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  cols: [0, 0, 0, 0],
+  rows: [0, 0, 0, 0],
+  redBlocks: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   activeQueens: 0,
   gameOver: false,
   highlight: true,
@@ -51,29 +51,28 @@ const queensApp = (state = initialState, action) => {
         .set('redBlocks', action.redBlocks);
 
     case INCREACE_MOVES:
-      return state.set('moves', state.get('moves')+1);
+      return state.set('moves', state.get('moves') + 1);
 
     case INCREACE_ACTIVE_QUEENS:
-      return state.set('activeQueens', state.get('activeQueens')+1);
+      return state.set('activeQueens', state.get('activeQueens') + 1);
 
     case DECREACE_ACTIVE_QUEENS:
-      return state.set('activeQueens', state.get('activeQueens')-1);
+      return state.set('activeQueens', state.get('activeQueens') - 1);
 
     case GAME_OVER:
       return state.set('gameOver', !state.get('gameOver'));
 
     case NEW_GAME:
-    return state
-      .set('cols', action.cols)
-      .set('rows', action.rows)
-      .set('redBlocks', action.redBlocks)
-      .set('moves', 0)
-      .set('activeQueens', 0)
-      .set('gameOver', false);
+      return state
+        .set('cols', action.cols)
+        .set('rows', action.rows)
+        .set('redBlocks', action.redBlocks)
+        .set('moves', 0)
+        .set('activeQueens', 0)
+        .set('gameOver', false);
 
     default:
       return state;
-
   }
 };
 
