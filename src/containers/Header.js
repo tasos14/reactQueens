@@ -1,7 +1,8 @@
 /* eslint react/prop-types: 0 */
 /* eslint-disable no-plusplus */
 /* eslint-disable object-curly-newline */
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moves from '../components/Moves';
 import GridSizes from '../components/GridSizes';

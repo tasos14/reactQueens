@@ -1,6 +1,7 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable  no-lonely-if */
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Tile from './Tile';
 import GameMessage from './GameMessage';
 

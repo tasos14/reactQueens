@@ -15,7 +15,6 @@ import {
 } from '../actions';
 
 class Game extends React.Component {
-
   componentDidUpdate = () => {
     const {
       size,

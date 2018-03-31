@@ -1,5 +1,6 @@
 /* eslint-disable object-curly-newline */
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const GameMessage = ({ gridSize, moves, newGame, visible }) => {
   let gameMessage;
