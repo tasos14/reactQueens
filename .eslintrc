@@ -1,36 +1,17 @@
 {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "jsx": true
-        },
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        "indent": [
-            "off",
-            "tab"
-        ],
-        "linebreak-style": [
-            "off",
-            "unix"
-        ],
-        "quotes": [
-            "off",
-            "double"
-        ],
-        "semi": [
-            "off",
-            "always"
-        ]
-    }
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "es6": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {},
+  "extends": [
+    "airbnb-base",
+    "plugin:react/recommended"
+  ]
 }
