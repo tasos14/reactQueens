@@ -2,3 +2,5 @@ node_modules
 src/static
 
 _server\.js
+
+passwd
