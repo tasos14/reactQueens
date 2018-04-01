@@ -91,8 +91,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-Header.PropTypes = {
-  dispatch: PropTypes.func.isRequired,
+Header.propTypes = {
   moves: PropTypes.number.isRequired,
   highlight: PropTypes.bool.isRequired,
   gridSize: PropTypes.number.isRequired,

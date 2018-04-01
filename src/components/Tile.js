@@ -2,64 +2,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Tile = ({
-  isRed,
-  hasQueen,
-  propId,
-  boardSize,
-  handleTileClick,
-  cols,
-  rows,
-  redBlocks,
-}) => {
-  let tile;
-
-  if (isRed) {
-    if (hasQueen) {
-      tile = <div id={propId}
-        className={`tile-${boardSize} red`}
-        onClick={() => handleTileClick(propId, cols, rows, boardSize, redBlocks)}
-      >
-        <img key={`Q${propId}`}
+function Tile(props) {
+  return (
+    <div
+      id={props.propId}
+      className={props.isRed ? `tile-${props.boardSize} red` : `tile-${props.boardSize}`}
+      onClick={() => props.handleTileClick(props.propId, props.cols, props.rows, props.boardSize, props.redBlocks)} // eslint-disable-line
+    >
+      {
+        props.hasQueen &&
+        <img key={`Q${props.propId}`}
           src="./img/queen.png"
-          id={`Q${propId}`}
-          className={`queen-${boardSize}`}
+          id={`Q${props.propId}`}
+          className={`queen-${props.boardSize}`}
         />
-      </div>;
-    } else {
-      tile = <div id={propId}
-        className={`tile-${boardSize} red`}
-        onClick={() => handleTileClick(propId, cols, rows, boardSize, redBlocks)}
-      >
+      }
+    </div>
+  );
+}
 
-      </div>;
-    }
-  } else {
-    if (hasQueen) {
-      tile = <div id={propId}
-        className={`tile-${boardSize}`}
-        onClick={() => handleTileClick(propId, cols, rows, boardSize, redBlocks)}
-      >
-        <img key={`Q${propId}`}
-          src="./img/queen.png"
-          id={`Q${propId}`}
-          className={`queen-${boardSize}`}
-        />
-      </div>;
-    } else {
-      tile = <div id={propId}
-        className={`tile-${boardSize}`}
-        onClick={() => handleTileClick(propId, cols, rows, boardSize, redBlocks)}
-      >
-
-      </div>;
-    }
-  }
-
-  return tile;
-};
-
-Tile.PropTypes = {
+Tile.propTypes = {
   isRed: PropTypes.bool.isRequired,
   hasQueen: PropTypes.bool.isRequired,
   propId: PropTypes.string.isRequired,
