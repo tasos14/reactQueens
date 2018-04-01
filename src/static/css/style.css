@@ -14,107 +14,6 @@ html, body{
   font-size: 18px;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
-
-@media screen and (max-width: 555px) and (max-height: 640px){
-  #board-container{
-   /* margin: 40px -8px !important;*/
-  }
-
-  .txt{
-    display: none;
-  }
-}
-
-@media screen and (max-width: 460px){
-  #board-container{
-    margin-left: -1px !important;
-  }
-
-  h1.title {
-    font-size: 50px !important;
-  }
-
-  #instructions {
-    margin-top: 5px;
-  }
-
-  .txt {
-    display: none;
-  }
-}
-
 #heading {
   margin-top: 1em;
 }
@@ -127,7 +26,6 @@ html, body{
   min-height: 2.5em;
   min-width: 5em;
   position: relative;
-  display: inline-block;
   background: #C0A58B;
   /*padding: 15px 25px; */
   font-size: 25px;
@@ -151,13 +49,6 @@ h1.title {
   float: left;
 }
 
-#instructions{
-
-}
-  /*#instructions .restart-button{
-    margin-top: -0.5em;
-  }*/
-
 .txt{
   float: left;
 }
@@ -165,7 +56,6 @@ h1.title {
 /*toggle switch*/
 .switch {
   position: relative;
-  display: inline-block;
   width: 60px;
   height: 34px;
   float: right;
@@ -272,25 +162,25 @@ h1.title {
   margin: 40px auto;
 }
 
-board .board-row:nth-of-type(odd) > div:nth-child(odd){
+#board .board-row:nth-of-type(odd) > div:nth-child(odd){
   background-color: #D6E4D6;
   color: white;
   cursor: pointer;
 }
 
-board .board-row:nth-of-type(odd) > div:nth-child(even){
+#board .board-row:nth-of-type(odd) > div:nth-child(even){
   background-color: #C0A58B;
   color: black;
   cursor: pointer;
 }
 
-board .board-row:nth-of-type(even) > div:nth-child(even){
+#board .board-row:nth-of-type(even) > div:nth-child(even){
   background-color: #D6E4D6;
   color: white;
   cursor: pointer;
 }
 
-board .board-row:nth-of-type(even) > div:nth-child(odd){
+#board .board-row:nth-of-type(even) > div:nth-child(odd){
   background-color: #C0A58B;
   color: black;
   cursor: pointer;
@@ -436,10 +326,6 @@ board .board-row:nth-of-type(even) > div:nth-child(odd){
   margin-top: 10%;
 }
 
-.how-to{
-
-}
-
 hr{
   border-top: 1px solid #d8d4d0;
 }
@@ -450,12 +336,40 @@ a {
   cursor: pointer;
   font-weight: 500;
 }
-  a:hover{
-    color: #776E65;
-  }
+
+a:hover{
+  color: #776E65;
+}
 
 @media screen and (max-width: 845px) {
   .github-corner {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+
+@media screen and (max-width: 555px) and (max-height: 640px) {
+  .txt {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  #board-container {
+    margin-left: -1px !important;
+  }
+  h1.title {
+    font-size: 50px !important;
+  }
+  #instructions {
+    margin-top: 5px;
+  }
+  .txt {
     display: none;
   }
 }
