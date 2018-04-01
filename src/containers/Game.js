@@ -24,7 +24,7 @@ class Game extends React.Component {
       gameOver,
     } = this.props;
     if (activeQueens === size && !isGameOver) {
-      axios.post('/', {
+      axios.post('http://localhost:3000/', {
         size,
         queens: cols,
       })

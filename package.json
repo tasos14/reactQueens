@@ -4,9 +4,8 @@
   "description": "n-Queens puzzle.",
   "main": "index.js",
   "scripts": {
-    "start-dev": "webpack-dev-server",
     "build": "NODE_ENV=production webpack",
-    "build-server": "babel src/server.js -o src/_server.js",
+    "build-server": "babel server.js -o _server.js",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development"
   },
   "repository": {
@@ -37,6 +36,7 @@
     "redux": "^3.6.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",

@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: [
@@ -20,7 +21,7 @@ module.exports = {
     ],
   },
   output: {
-    path: __dirname + 'src' + 'static' + 'js',
+    path: path.join(__dirname, 'src', 'static', 'js'),
     publicPath: '/js/',
     filename: 'bundle.js',
   },
