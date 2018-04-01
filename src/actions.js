@@ -7,74 +7,54 @@ import {
   INCREACE_ACTIVE_QUEENS,
   DECREACE_ACTIVE_QUEENS,
   GAME_OVER,
-  NEW_GAME
+  NEW_GAME,
 } from './constants';
 
+export const toggleSwitch = () => ({
+  type: TOGGLE_SWITCH,
+});
 
+export const changeGrid = (newGridSize, cols, rows, redBlocks) => ({
+  type: CHANGE_GRIDSIZE,
+  gridSize: newGridSize,
+  cols,
+  rows,
+  redBlocks,
+});
 
-export const toggleSwitch = () => {
-  return {
-    type: TOGGLE_SWITCH,
-  };
-};
+export const reset = (cols, rows, redBlocks) => ({
+  type: RESET,
+  cols,
+  rows,
+  redBlocks,
+});
 
-export const changeGrid = (newGridSize,cols,rows,redBlocks) => {
-  return {
-    type: CHANGE_GRIDSIZE,
-    gridSize: newGridSize,
-    cols: cols,
-    rows: rows,
-    redBlocks: redBlocks
-  };
-};
+export const moveQueen = (rows, cols, redBlocks) => ({
+  type: MOVE_QUEEN,
+  cols,
+  rows,
+  redBlocks,
+});
 
-export const reset = (cols,rows,redBlocks) => {
-  return {
-    type: RESET,
-    cols: cols,
-    rows: rows,
-    redBlocks: redBlocks
-  };
-};
+export const increaceMoves = () => ({
+  type: INCREACE_MOVES,
+});
 
-export const moveQueen = (rows,cols,redBlocks) => {
-  return {
-    type: MOVE_QUEEN,
-    cols: cols,
-    rows: rows,
-    redBlocks: redBlocks
-  };
-};
+export const increaseActiveQueens = () => ({
+  type: INCREACE_ACTIVE_QUEENS,
+});
 
-export const increaceMoves = () => {
-  return {
-    type: INCREACE_MOVES
-  };
-};
+export const decreaseActiveQueens = () => ({
+  type: DECREACE_ACTIVE_QUEENS,
+});
 
-export const increaseActiveQueens = () => {
-  return {
-    type: INCREACE_ACTIVE_QUEENS
-  };
-};
+export const gameOver = () => ({
+  type: GAME_OVER,
+});
 
-export const decreaseActiveQueens = () => {
-  return {
-    type: DECREACE_ACTIVE_QUEENS
-  };
-};
-
-export const gameOver = () => {
-  return {
-    type: GAME_OVER
-  };
-};
-
-export const newGame = (cols,rows,redBlocks) => {
-  return {
-    type: NEW_GAME,
-    cols: cols,
-    rows: rows,
-    redBlocks: redBlocks
-  };
-};
+export const newGame = (cols, rows, redBlocks) => ({
+  type: NEW_GAME,
+  cols,
+  rows,
+  redBlocks,
+});

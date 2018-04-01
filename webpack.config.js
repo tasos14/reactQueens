@@ -1,48 +1,40 @@
-"use strict";
-
-const debug = process.env.NODE_ENV !== "production";
-
+require('babel-polyfill');
 const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  devtool: debug ? 'inline-sourcemap' : null,
-  entry: path.join(__dirname, 'src', 'app-client.js'),
-  devServer: {
-    inline: true,
-    port: 3333,
-    contentBase: "src/static/",
-    historyApiFallback: {
-      index: '/index-static.html'
-    }
+  entry: [
+    'babel-polyfill',
+    'react-hot-loader/patch',
+    './src/app-client.js',
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader', 'eslint-loader'],
+      },
+    ],
   },
   output: {
     path: path.join(__dirname, 'src', 'static', 'js'),
-    publicPath: "/js/",
-    filename: 'bundle.js'
+    publicPath: '/js/',
+    filename: 'bundle.js',
   },
-  module: {
-    loaders: [{
-      test: path.join(__dirname, 'src'),
-      loader: ['babel-loader'],
-      query: {
-        cacheDirectory: true,
-        presets: debug ? ['react', 'es2015', 'react-hmre'] : ['react', 'es2015','stage-2']
-      }
-    }]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+  devServer: {
+    contentBase: 'src/static/',
+    hot: true,
+    historyApiFallback: {
+      index: '/index-static.html',
+    },
   },
-  plugins: debug ? [] : [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false },
-      mangle: true,
-      sourcemap: false,
-      beautify: false,
-      dead_code: true
-    }),
-]
 };

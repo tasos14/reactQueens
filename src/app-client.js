@@ -1,14 +1,24 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import queensApp from './reducers';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import queensReducer from './reducers';
 import App from './components/App';
 import { loadState, saveState } from './localStorage';
+import rootSaga from './sagas';
 
-let localState = loadState();
+const localState = loadState();
 
-let store = createStore(queensApp, localState);
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  queensReducer,
+  localState,
+  applyMiddleware(sagaMiddleware),
+);
+
+sagaMiddleware.run(rootSaga);
 
 store.subscribe(() => {
   saveState(store.getState());
@@ -18,5 +28,7 @@ render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );
+
+module.hot.accept();
