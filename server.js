@@ -37,8 +37,7 @@ app.post('/', (req, res) => {
 
   const query = `queens(${size}, [${queens}])`;
 
-  // create pengine
-  new Pengines({
+  const peng = Pengines({
     server: 'http://localhost:3030/pengine',
     application: 'queens',
     destroy: true,
@@ -46,12 +45,13 @@ app.post('/', (req, res) => {
   }).on('create', () => {
     console.info('---------------------------\nPengine created.');
   }).on('success', () => {
-    const answer = true;
-    res.json(answer);
+    const result = true;
+    res.json({ result });
+    peng.destroy();
   }).on('failure', () => {
     console.info('failed..');
-    const answer = false;
-    res.json(answer);
+    const result = false;
+    res.json({ result });
   })
     .on('error', (err) => {
       console.info(`Error: ${err}`);
