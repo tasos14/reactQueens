@@ -1,8 +1,10 @@
+require('babel-polyfill');
 const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
   entry: [
+    'babel-polyfill',
     'react-hot-loader/patch',
     './src/app-client.js',
   ],

@@ -3,7 +3,6 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import Board from '../components/Board';
 import {
   moveQueen,
@@ -15,32 +14,6 @@ import {
 } from '../actions';
 
 class Game extends React.Component {
-  componentDidUpdate = () => {
-    const {
-      size,
-      cols,
-      activeQueens,
-      isGameOver,
-      gameOver,
-    } = this.props;
-    if (activeQueens === size && !isGameOver) {
-      axios.post('http://localhost:3000/', {
-        size,
-        queens: cols,
-      })
-        .then((response) => {
-          const { data } = response;
-          if (data && !isGameOver) {
-            gameOver();
-          }
-        })
-        .catch((error) => {
-          console.log("Error: \n"+error); // eslint-disable-line
-        });
-    }
-  }
-
-
   render() {
     return <Board {...this.props} />;
   }

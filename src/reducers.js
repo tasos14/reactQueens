@@ -23,7 +23,7 @@ const initialState = Map({
 });
 
 
-const queensApp = (state = initialState, action) => {
+const queensReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_SWITCH:
       return state.set('highlight', !state.get('highlight'));
@@ -76,4 +76,4 @@ const queensApp = (state = initialState, action) => {
   }
 };
 
-export default queensApp;
+export default queensReducer;

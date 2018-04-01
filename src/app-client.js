@@ -1,14 +1,24 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import queensApp from './reducers';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import queensReducer from './reducers';
 import App from './components/App';
 import { loadState, saveState } from './localStorage';
+import rootSaga from './sagas';
 
 const localState = loadState();
 
-const store = createStore(queensApp, localState);
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  queensReducer,
+  localState,
+  applyMiddleware(sagaMiddleware),
+);
+
+sagaMiddleware.run(rootSaga);
 
 store.subscribe(() => {
   saveState(store.getState());
