@@ -272,25 +272,25 @@ h1.title {
   margin: 40px auto;
 }
 
-board .board-row:nth-of-type(odd) > div:nth-child(odd){
+#board .board-row:nth-of-type(odd) > div:nth-child(odd){
   background-color: #D6E4D6;
   color: white;
   cursor: pointer;
 }
 
-board .board-row:nth-of-type(odd) > div:nth-child(even){
+#board .board-row:nth-of-type(odd) > div:nth-child(even){
   background-color: #C0A58B;
   color: black;
   cursor: pointer;
 }
 
-board .board-row:nth-of-type(even) > div:nth-child(even){
+#board .board-row:nth-of-type(even) > div:nth-child(even){
   background-color: #D6E4D6;
   color: white;
   cursor: pointer;
 }
 
-board .board-row:nth-of-type(even) > div:nth-child(odd){
+#board .board-row:nth-of-type(even) > div:nth-child(odd){
   background-color: #C0A58B;
   color: black;
   cursor: pointer;
