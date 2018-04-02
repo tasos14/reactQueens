@@ -12,7 +12,6 @@ For the UI
 
 ```sh
 $ npm install
-$ npm run build
 $ npm run start
 ```
 
@@ -22,12 +21,6 @@ Then start the Pengine server:
 $ cd pengines
 $ swipl run.pl
 ```
-
-
-### Todos
-
- - Convert es5 to es6
- - Improve game rules
 
 License
 ----
