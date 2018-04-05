@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-import path from 'path';
-import { Server } from 'http';
-import Express from 'express';
-import Pengines from 'pengines';
-import bodyParser from 'body-parser';
+const path = require('path');
+const { Server } = require('http');
+const Express = require('express');
+const Pengines = require('pengines');
+const bodyParser = require('body-parser');
 
 
 // initialize the server and configure support for ejs templates
@@ -24,13 +24,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'src', 'static/index.html'));
-// });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src', 'static/index.html'));
+});
 
-// app.get('/report', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'src', 'static/report.html'));
-// });
+app.get('/report', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src', 'static/report.html'));
+});
 
 app.post('/', (req, res) => {
   const { size, queens } = req.body;

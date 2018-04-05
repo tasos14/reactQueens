@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import queensReducer from './reducers';
 import App from './components/App';
-import { loadState, saveState } from './localStorage';
+import { loadState, saveState } from './utils/localStorage';
 import rootSaga from './sagas';
 
 const localState = loadState();
