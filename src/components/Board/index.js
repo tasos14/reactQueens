@@ -2,8 +2,10 @@
 /* eslint-disable  no-lonely-if */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Tile from './Tile';
-import GameMessage from './GameMessage';
+import Tile from 'components/Tile';
+import Queen from 'components/Queen';
+import GameMessage from 'components/GameMessage';
+import * as Styles from 'components/Board/styles';
 
 function Board(props) {
   let row = [];
@@ -33,14 +35,21 @@ function Board(props) {
     }
     const fade = props.cols[i - 1] !== 0;
 
-    board.rows.push(<div key={i} className="board-row">{row}</div>);
-    board.queens.push(<img key={`Q${i}`} src="./img/queen.png" id={`Q${i}`} className={fade ? `queen-${props.size} fade` : `queen-${props.size}`} />);
+    board.rows.push(<Styles.BoardRow key={i}>{row}</Styles.BoardRow>);
+    board.queens.push(
+      <Queen
+        key={`Q${i}`}
+        src="./img/queen.png"
+        id={`Q${i}`}
+        boardSize={props.size}
+        fade={fade}
+      />);
     row = [];
   }
 
 
   return (
-    <div id="board">
+    <Styles.Board>
       {board.rows}
       <GameMessage
         activeQueens={props.activeQueens}
@@ -50,7 +59,7 @@ function Board(props) {
         visible={props.isGameOver}
       />
       {board.queens}
-    </div>
+    </Styles.Board>
   );
 }
 

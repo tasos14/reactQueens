@@ -3,7 +3,8 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
 import { connect } from 'react-redux';
-import Board from '../components/Board';
+import Board from 'components/Board';
+import Wrapper from 'containers/Game/styles';
 import {
   moveQueen,
   increaceMoves,
@@ -11,11 +12,15 @@ import {
   decreaseActiveQueens,
   gameOver as gameOverAction,
   newGame,
-} from '../actions';
+} from 'actions';
 
 class Game extends React.Component {
   render() {
-    return <Board {...this.props} />;
+    return (
+      <Wrapper>
+        <Board {...this.props} />
+      </Wrapper>
+    );
   }
 }
 
@@ -79,7 +84,6 @@ function mapDispatchToProps(dispatch) {
       const rows = [];
       const redBlocks = [];
 
-
       for (let i = 0; i < gridSize; i++) {
         cols.push(0);
         rows.push(0);
@@ -116,12 +120,14 @@ function mapDispatchToProps(dispatch) {
         dispatch(increaceMoves());
         newRedBlocks = drawRedBlocks(row, col, gridSize, newRedBlocks);
         dispatch(increaseActiveQueens());
-      } else if (newCols[col - 1] === row) { // when you click a tile with a queen on
+      } else if (newCols[col - 1] === row) {
+        // when you click a tile with a queen on
         newCols[col - 1] = 0;
         newRows[row - 1] = 0;
         newRedBlocks = removeRedBlocks(row, col, gridSize, newRedBlocks, newCols);
         dispatch(decreaseActiveQueens());
-      } else { // when you have already clicked a tile on that column
+      } else {
+        // when you have already clicked a tile on that column
         const prevRow = newCols[col - 1];
         newCols[col - 1] = row;
         newRows[row - 1] = col;
