@@ -42,6 +42,7 @@ const queensReducer = (state = initialState, action) => {
       return state
         .set('cols', action.cols)
         .set('rows', action.rows)
+        .set('activeQueens', 0)
         .set('redBlocks', action.redBlocks);
 
     case MOVE_QUEEN:

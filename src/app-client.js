@@ -3,20 +3,17 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import queensReducer from './reducers';
-import App from './components/App';
-import { loadState, saveState } from './utils/localStorage';
-import rootSaga from './sagas';
+import queensReducer from 'reducers';
+import App from 'components/App';
+import { loadState, saveState } from 'utils/localStorage';
+import rootSaga from 'sagas';
+import 'global-styles';
 
 const localState = loadState();
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
-  queensReducer,
-  localState,
-  applyMiddleware(sagaMiddleware),
-);
+const store = createStore(queensReducer, localState, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(rootSaga);
 

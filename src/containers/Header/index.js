@@ -1,47 +1,41 @@
 /* eslint react/prop-types: 0 */
 /* eslint-disable no-plusplus */
 /* eslint-disable object-curly-newline */
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Moves from '../components/Moves';
-import GridSizes from '../components/GridSizes';
-import Switch from '../components/ToggleSwitch';
+import Moves from 'components/Moves';
+import Switch from 'components/Switch';
+import DropDown from 'components/DropDown';
 import {
   toggleSwitch as toggleSwitchAction,
   reset,
   changeGrid,
-} from '../actions';
+} from 'actions';
+import * as Styles from 'containers/Header/styles';
 
 const Header = ({ gridSize, moves, highlight, onClickGrid, toggleSwitch, onResetClick }) => (
-  <div>
-    <div id="heading" className="row">
-      <h1 className="title">n-Queens</h1>
+  <Fragment>
+    <Styles.Heading>
+      <Styles.Title>n-Queens</Styles.Title>
       <Moves moves={moves}/>
-    </div>
+    </Styles.Heading>
 
-    <div id="instructions" className="row">
-      <div className="txt">
+    <Styles.Instructions>
+      <Styles.Text>
         Place all the queens on the board so that <br />
           no two queens threaten each other !
-      </div>
+      </Styles.Text>
 
-      <button className="restart-button"
-        onClick={() => onResetClick(gridSize)} >
+      <Styles.Restart onClick={() => onResetClick(gridSize)} >
         Reset<i className="fa fa-repeat" aria-hidden="true"></i>
-      </button>
+      </Styles.Restart>
 
-      <div className="dropdown">
-        <button type="button" className="dropdown-toggle grid-button" data-toggle="dropdown">
-          Grid
-        </button>
-        <GridSizes onClickGrid={onClickGrid}/>
-      </div>
+      <DropDown onClickGrid={onClickGrid} />
 
       <Switch on={highlight} onClick={toggleSwitch}/>
-
-    </div>
-  </div>
+    </Styles.Instructions>
+  </Fragment>
 );
 
 function mapStateToProps(state) {

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => (
     <footer>
-      <p className="how-to">
-        <strong className="important">How to play:</strong> Click on each tile to place a <strong>queen </strong>
+      <p>
+        <strong>How to play:</strong> Click on each tile to place a <strong>queen </strong>
         on it. The game ends when all queens are placed
         to the board and no two queens share the same
         row, column,or diagonal.

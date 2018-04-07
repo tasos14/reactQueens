@@ -1,23 +1,27 @@
 /* eslint-disable  no-lonely-if */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Queen from 'components/Queen';
+import Wrapper from 'components/Tile/styles';
 
 function Tile(props) {
   return (
-    <div
+    <Wrapper
       id={props.propId}
-      className={props.isRed ? `tile-${props.boardSize} red` : `tile-${props.boardSize}`}
+      boardSize={props.boardSize}
+      isRed={props.isRed}
       onClick={() => props.handleTileClick(props.propId, props.cols, props.rows, props.boardSize, props.redBlocks)} // eslint-disable-line
     >
       {
         props.hasQueen &&
-        <img key={`Q${props.propId}`}
+        <Queen
+          key={`Q${props.propId}`}
           src="./img/queen.png"
           id={`Q${props.propId}`}
-          className={`queen-${props.boardSize}`}
+          boardSize={props.boardSize}
         />
       }
-    </div>
+    </Wrapper>
   );
 }
 

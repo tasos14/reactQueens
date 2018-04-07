@@ -1,19 +1,18 @@
 /* eslint-disable object-curly-newline */
 import React from 'react';
 import PropTypes from 'prop-types';
-import GameOverMessage from './GameOverMessage';
+import GameOverMessage from 'components/GameMessage/GameOverMessage';
+import * as Styles from 'components/GameMessage/styles';
 
 const GameMessage = ({ gridSize, moves, newGame, visible }) => {
   const size = gridSize;
   const score = moves - size;
 
   return (
-    <div className={visible ? 'game-over visible' : 'game-over'}>
+    <Styles.Wrapper visible={visible}>
       <GameOverMessage score={score} />
-      <div className="text-center">
-        <button className="new-game" onClick={() => newGame(gridSize)}>New Game</button>
-      </div>
-    </div>
+      <Styles.NewGame onClick={() => newGame(gridSize)}>New Game</Styles.NewGame>
+    </Styles.Wrapper>
   );
 };
 
