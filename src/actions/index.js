@@ -1,21 +1,11 @@
-import {
-  TOGGLE_SWITCH,
-  CHANGE_GRIDSIZE,
-  RESET,
-  MOVE_QUEEN,
-  INCREACE_MOVES,
-  INCREACE_ACTIVE_QUEENS,
-  DECREACE_ACTIVE_QUEENS,
-  GAME_OVER,
-  NEW_GAME,
-} from './constants';
+import * as actionTypes from 'actions/actionTypes';
 
 export const toggleSwitch = () => ({
-  type: TOGGLE_SWITCH,
+  type: actionTypes.TOGGLE_SWITCH,
 });
 
 export const changeGrid = (newGridSize, cols, rows, redBlocks) => ({
-  type: CHANGE_GRIDSIZE,
+  type: actionTypes.CHANGE_GRIDSIZE,
   gridSize: newGridSize,
   cols,
   rows,
@@ -23,37 +13,37 @@ export const changeGrid = (newGridSize, cols, rows, redBlocks) => ({
 });
 
 export const reset = (cols, rows, redBlocks) => ({
-  type: RESET,
+  type: actionTypes.RESET,
   cols,
   rows,
   redBlocks,
 });
 
 export const moveQueen = (rows, cols, redBlocks) => ({
-  type: MOVE_QUEEN,
+  type: actionTypes.MOVE_QUEEN,
   cols,
   rows,
   redBlocks,
 });
 
 export const increaceMoves = () => ({
-  type: INCREACE_MOVES,
+  type: actionTypes.INCREACE_MOVES,
 });
 
 export const increaseActiveQueens = () => ({
-  type: INCREACE_ACTIVE_QUEENS,
+  type: actionTypes.INCREACE_ACTIVE_QUEENS,
 });
 
 export const decreaseActiveQueens = () => ({
-  type: DECREACE_ACTIVE_QUEENS,
+  type: actionTypes.DECREACE_ACTIVE_QUEENS,
 });
 
 export const gameOver = () => ({
-  type: GAME_OVER,
+  type: actionTypes.GAME_OVER,
 });
 
 export const newGame = (cols, rows, redBlocks) => ({
-  type: NEW_GAME,
+  type: actionTypes.NEW_GAME,
   cols,
   rows,
   redBlocks,
