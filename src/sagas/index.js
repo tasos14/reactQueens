@@ -1,7 +1,7 @@
 import { put, call, select, all, takeEvery } from 'redux-saga/effects';
-import { MOVE_QUEEN } from './constants';
-import request from './utils/request';
-import { gameOver as gameOverAction } from './actions';
+import { MOVE_QUEEN } from 'actions/actionTypes';
+import request from 'utils/request';
+import { gameOver as gameOverAction } from 'actions';
 
 const getState = state => state.toJS(); // selector for the state
 

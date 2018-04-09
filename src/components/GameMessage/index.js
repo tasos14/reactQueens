@@ -11,7 +11,7 @@ const GameMessage = ({ gridSize, moves, newGame, visible }) => {
   return (
     <Styles.Wrapper visible={visible}>
       <GameOverMessage score={score} />
-      <Styles.NewGame onClick={() => newGame(gridSize)}>New Game</Styles.NewGame>
+      <Styles.NewGame onClick={newGame}>New Game</Styles.NewGame>
     </Styles.Wrapper>
   );
 };

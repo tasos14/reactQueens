@@ -4,7 +4,7 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: ['babel-polyfill', 'react-hot-loader/patch', './src/app-client.js'],
+  entry: ['babel-polyfill', 'react-hot-loader/patch', './src/index.js'],
   resolve: {
     modules: [path.resolve(process.cwd(), 'src'), path.resolve(process.cwd(), 'node_modules')],
   },

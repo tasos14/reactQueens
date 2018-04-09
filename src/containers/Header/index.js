@@ -14,7 +14,7 @@ import {
 } from 'actions';
 import * as Styles from 'containers/Header/styles';
 
-const Header = ({ gridSize, moves, highlight, onClickGrid, toggleSwitch, onResetClick }) => (
+const Header = ({ moves, highlight, onClickGrid, toggleSwitch, onResetClick }) => (
   <Fragment>
     <Styles.Heading>
       <Styles.Title>n-Queens</Styles.Title>
@@ -27,7 +27,7 @@ const Header = ({ gridSize, moves, highlight, onClickGrid, toggleSwitch, onReset
           no two queens threaten each other !
       </Styles.Text>
 
-      <Styles.Restart onClick={() => onResetClick(gridSize)} >
+      <Styles.Restart onClick={onResetClick} >
         Reset<i className="fa fa-repeat" aria-hidden="true"></i>
       </Styles.Restart>
 
@@ -40,7 +40,6 @@ const Header = ({ gridSize, moves, highlight, onClickGrid, toggleSwitch, onReset
 
 function mapStateToProps(state) {
   return {
-    gridSize: state.get('gridSize'),
     moves: state.get('moves'),
     highlight: state.get('highlight'),
   };
@@ -49,38 +48,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onClickGrid: (grid) => {
-      const cols = [];
-      const rows = [];
-      const redBlocks = [];
-
-      for (let i = 0; i < grid; i++) {
-        cols.push(0);
-        rows.push(0);
-        for (let j = 0; j < grid; j++) {
-          redBlocks.push(0);
-        }
-      }
-
-      dispatch(changeGrid(grid, cols, rows, redBlocks));
+      dispatch(changeGrid(grid));
     },
     toggleSwitch: () => {
       dispatch(toggleSwitchAction());
     },
-    onResetClick: (gridSize) => {
-      const cols = [];
-      const rows = [];
-      const redBlocks = [];
-
-
-      for (let i = 0; i < gridSize; i++) {
-        cols.push(0);
-        rows.push(0);
-        for (let j = 0; j < gridSize; j++) {
-          redBlocks.push(0);
-        }
-      }
-
-      dispatch(reset(cols, rows, redBlocks));
+    onResetClick: () => {
+      dispatch(reset());
     },
   };
 }
@@ -88,7 +62,6 @@ function mapDispatchToProps(dispatch) {
 Header.propTypes = {
   moves: PropTypes.number.isRequired,
   highlight: PropTypes.bool.isRequired,
-  gridSize: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
