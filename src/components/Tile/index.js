@@ -10,7 +10,7 @@ function Tile(props) {
       id={props.propId}
       boardSize={props.boardSize}
       isRed={props.isRed}
-      onClick={() => props.handleTileClick(props.propId, props.cols, props.rows, props.boardSize, props.redBlocks)} // eslint-disable-line
+      onClick={() => props.handleTileClick(props.propId)}
     >
       {
         props.hasQueen &&
