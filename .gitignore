@@ -1,6 +1,7 @@
 node_modules
-src/static
+src/static/js/*
 sslcert
 _server\.js
+package-lock.json
 
 passwd
