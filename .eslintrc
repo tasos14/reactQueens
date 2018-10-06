@@ -15,10 +15,10 @@
   },
   "extends": ["airbnb-base", "plugin:react/recommended"],
   "settings": {
+    "react": {
+      "version": "16.5.2"
+    },
     "import/resolver": {
-      "react": {
-        "version": "16.5.2"
-      },
       "webpack": {
         "config": "webpack.config.dev.js"
       }
