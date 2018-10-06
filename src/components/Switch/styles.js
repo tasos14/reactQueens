@@ -32,9 +32,8 @@ export const Slider = styled.div`
     -webkit-transition: 0.4s;
     transition: 0.4s;
 
-    ${props =>
-    props.on &&
-      css`
+    ${props => props.on
+      && css`
         transform: translateX(26px);
       `};
   }

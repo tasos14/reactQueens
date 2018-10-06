@@ -1,4 +1,6 @@
-import { put, call, select, all, takeEvery } from 'redux-saga/effects';
+import {
+  put, call, select, all, takeEvery,
+} from 'redux-saga/effects';
 import { MOVE_QUEEN } from 'actions/actionTypes';
 import request from 'utils/request';
 import { gameOver as gameOverAction } from 'actions';
@@ -9,10 +11,7 @@ const getState = state => state.toJS(); // selector for the state
 export function* checkIfGameOver() {
   const state = yield select(getState);
   const {
-    gridSize,
-    cols,
-    activeQueens,
-    gameOver,
+    gridSize, cols, activeQueens, gameOver,
   } = state;
 
   if (activeQueens === gridSize && !gameOver) {
@@ -27,7 +26,7 @@ export function* checkIfGameOver() {
         yield put(gameOverAction());
       }
     } catch (err) {
-      console.log("Error: \n" + err); // eslint-disable-line
+      console.log('Error: \n' + err); // eslint-disable-line
     }
   }
 }
@@ -38,7 +37,5 @@ export function* watchCheckIfGameOver() {
 }
 
 export default function* rootSaga() {
-  yield all([
-    watchCheckIfGameOver(),
-  ]);
+  yield all([watchCheckIfGameOver()]);
 }

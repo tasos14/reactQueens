@@ -13,7 +13,7 @@ function GameOverMessage({ score }) {
         <Styles.Star>★</Styles.Star>
       </Fragment>
     );
-  } else if (score > 0 && score < 3) {
+  } if (score > 0 && score < 3) {
     return (
       <Fragment>
         <Styles.P>Great !!</Styles.P>
@@ -25,13 +25,13 @@ function GameOverMessage({ score }) {
     );
   }
   return (
-    <Fragment>
-      <Styles.P>Good</Styles.P>
+      <Fragment>
+        <Styles.P>Good</Styles.P>
 
-      <Styles.Star>★</Styles.Star>
-      <Styles.Star inactive>★</Styles.Star>
-      <Styles.Star inactive>★</Styles.Star>
-    </Fragment>
+        <Styles.Star>★</Styles.Star>
+        <Styles.Star inactive>★</Styles.Star>
+        <Styles.Star inactive>★</Styles.Star>
+      </Fragment>
   );
 }
 

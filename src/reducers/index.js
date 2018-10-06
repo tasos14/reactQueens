@@ -112,7 +112,7 @@ const queensReducer = (state = initialState, action) => {
           .set('redBlocks', newRedBlocks)
           .set('activeQueens', state.get('activeQueens') + 1)
           .set('moves', state.get('moves') + 1);
-      } else if (cols[col - 1] === row) {
+      } if (cols[col - 1] === row) {
         // when you click a tile with a queen on
         cols[col - 1] = 0;
         rows[row - 1] = 0;
@@ -136,15 +136,6 @@ const queensReducer = (state = initialState, action) => {
         .set('redBlocks', newRedBlocks)
         .set('moves', state.get('moves') + 1);
     }
-
-    case actionTypes.INCREACE_MOVES:
-      return state.set('moves', state.get('moves') + 1);
-
-    case actionTypes.INCREACE_ACTIVE_QUEENS:
-      return state.set('activeQueens', state.get('activeQueens') + 1);
-
-    case actionTypes.DECREACE_ACTIVE_QUEENS:
-      return state.set('activeQueens', state.get('activeQueens') - 1);
 
     case actionTypes.GAME_OVER:
       return state.set('gameOver', !state.get('gameOver'));
