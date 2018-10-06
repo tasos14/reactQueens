@@ -12,15 +12,14 @@ function Tile(props) {
       isRed={props.isRed}
       onClick={() => props.handleTileClick(props.propId)}
     >
-      {
-        props.hasQueen &&
+      {props.hasQueen && (
         <Queen
           key={`Q${props.propId}`}
           src="./img/queen.png"
           id={`Q${props.propId}`}
           boardSize={props.boardSize}
         />
-      }
+      )}
     </Wrapper>
   );
 }
