@@ -16,7 +16,7 @@ export function* checkIfGameOver() {
 
   if (activeQueens === gridSize && !gameOver) {
     try {
-      const response = yield call(request, 'http://localhost:3000/', 'POST', {
+      const response = yield call(request, process.env.PENGINE_URL, 'POST', {
         size: gridSize,
         queens: cols,
       });
