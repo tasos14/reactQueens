@@ -28,4 +28,6 @@ render(
   document.getElementById('app'),
 );
 
-module.hot.accept();
+if (process.env.NODE_ENV !== 'production') {
+  module.hot.accept();
+}
