@@ -6,6 +6,12 @@ const Express = require('express');
 const Pengines = require('pengines');
 const bodyParser = require('body-parser');
 const https = require('https');
+const ReactDOMServer = require('react-dom/server');
+const React = require('react');
+const styledComponents = require('styled-components');
+const Html = require('utils/html');
+const App = require('components/App');
+
 
 const options = {
   cert: fs.readFileSync('./sslcert/fullchain.pem'),
@@ -31,7 +37,18 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src', 'static/index.html'));
+  const sheet = new styledComponents.ServerStyleSheet();
+
+  const body = ReactDOMServer.renderToString(sheet.collectStyles(<App />));
+  const styles = sheet.getStyleTags();
+
+  res.send(
+    Html({
+      body,
+      styles,
+    }),
+  );
+  // res.sendFile(path.join(__dirname, 'src', 'static/index.html'));
 });
 
 app.get('/report', (req, res) => {
