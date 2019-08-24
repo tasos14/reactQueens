@@ -47,7 +47,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onClickGrid: (grid) => {
+    onClickGrid: grid => {
       dispatch(changeGrid(grid));
     },
     toggleSwitch: () => {

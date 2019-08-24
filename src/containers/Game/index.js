@@ -41,7 +41,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(gameOverAction());
     },
 
-    onTileClick: (id) => {
+    onTileClick: id => {
       dispatch(moveQueen(id));
     },
   };
