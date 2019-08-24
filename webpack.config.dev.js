@@ -1,7 +1,7 @@
 require('babel-polyfill');
 const webpack = require('webpack');
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const dotenv = require('dotenv');
 
 module.exports = () => {
@@ -37,7 +37,9 @@ module.exports = () => {
       filename: 'bundle.js',
     },
     plugins: [
-      new CleanWebpackPlugin([path.join(__dirname, 'src', 'static', 'js', 'bundle.js')]),
+      new CleanWebpackPlugin({
+        cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'src', 'static', 'js', 'bundle.js')]
+      }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin(envKeys),
     ],
