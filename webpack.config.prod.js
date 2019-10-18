@@ -1,4 +1,4 @@
-require('babel-polyfill');
+require('@babel/polyfill');
 const webpack = require('webpack');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -15,7 +15,7 @@ module.exports = () => {
   envKeys['process.env.NODE_ENV'] = JSON.stringify('production');
 
   return {
-    entry: ['babel-polyfill', 'react-hot-loader/patch', './src/index.js'],
+    entry: ['@babel/polyfill', 'react-hot-loader/patch', './src/index.js'],
     resolve: {
       modules: [path.resolve(process.cwd(), 'src'), path.resolve(process.cwd(), 'node_modules')],
     },
