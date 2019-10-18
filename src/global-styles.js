@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   html, body{ 
     margin: 0;
     padding: 0;
@@ -53,3 +53,5 @@ injectGlobal`
     }
   }
 `;
+
+export default GlobalStyle;

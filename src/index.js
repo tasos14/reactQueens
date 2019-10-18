@@ -7,7 +7,7 @@ import queensReducer from 'reducers';
 import App from 'components/App';
 import { loadState, saveState } from 'utils/localStorage';
 import rootSaga from 'sagas';
-import 'global-styles';
+import GlobalStyle from 'global-styles';
 
 const localState = loadState();
 
@@ -24,6 +24,7 @@ store.subscribe(() => {
 render(
   <Provider store={store}>
     <App />
+    <GlobalStyle />
   </Provider>,
   document.getElementById('app'),
 );

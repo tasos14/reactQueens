@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 const slideUp = keyframes`
   0% {
@@ -11,6 +11,10 @@ const slideUp = keyframes`
   }
 `;
 
+const slideUpRule = css`
+  1s ${slideUp} ease-in-out 250ms forwards;
+`;
+
 export const Wrapper = styled.div`
   position: absolute;
   display: ${props => (props.visible ? 'block' : 'none')};
@@ -18,7 +22,7 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 420px;
   background: rgba(238, 228, 218, 0.73);
-  animation: 1s ${slideUp} ease-in-out 250ms forwards;
+  animation: ${slideUpRule};
   opacity: 0;
 `;
 
