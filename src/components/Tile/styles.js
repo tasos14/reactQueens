@@ -24,7 +24,7 @@ const sizes = {
 };
 
 const Wrapper = styled.div`
-  float: left
+  float: left;
   width: ${props => `${sizes[props.boardSize].width}px`};
   height: ${props => `${sizes[props.boardSize].height}px`};
   filter: ${props => (props.isRed ? 'saturate(50%) brightness(63%)' : 'none')};
