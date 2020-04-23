@@ -21,14 +21,17 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: ['babel-loader'],
-        },
-        {
           test: /\.js$/,
           exclude: /node_modules/,
-          use: ['babel-loader', 'eslint-loader'],
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                envName: 'development',
+              },
+            },
+            'eslint-loader',
+          ],
         },
       ],
     },
