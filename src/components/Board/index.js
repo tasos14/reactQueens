@@ -43,6 +43,7 @@ function Board(props) {
         id={`Q${i}`}
         boardSize={props.size}
         fade={fade}
+        alt="queen"
       />);
     row = [];
   }

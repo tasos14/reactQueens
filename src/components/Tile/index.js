@@ -18,6 +18,7 @@ function Tile(props) {
           src="./img/queen.png"
           id={`Q${props.propId}`}
           boardSize={props.boardSize}
+          alt="queen"
         />
       )}
     </Wrapper>
