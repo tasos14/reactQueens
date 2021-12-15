@@ -18,17 +18,17 @@ const store = createStore(queensReducer, localState, applyMiddleware(sagaMiddlew
 sagaMiddleware.run(rootSaga);
 
 store.subscribe(() => {
-  saveState(store.getState());
+    saveState(store.getState());
 });
 
 render(
-  <Provider store={store}>
-    <App />
-    <GlobalStyle />
-  </Provider>,
-  document.getElementById('app'),
+    <Provider store={store}>
+        <App />
+        <GlobalStyle />
+    </Provider>,
+    document.getElementById('app')
 );
 
 if (process.env.NODE_ENV !== 'production') {
-  module.hot.accept();
+    module.hot.accept();
 }

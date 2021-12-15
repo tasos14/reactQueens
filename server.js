@@ -8,8 +8,8 @@ const bodyParser = require('body-parser');
 const https = require('https');
 
 const options = {
-  cert: fs.readFileSync('./sslcert/fullchain.pem'),
-  key: fs.readFileSync('./sslcert/privkey.pem'),
+    cert: fs.readFileSync('./sslcert/fullchain.pem'),
+    key: fs.readFileSync('./sslcert/privkey.pem'),
 };
 
 // initialize the server and configure support for ejs templates
@@ -25,49 +25,49 @@ app.use(bodyParser.json());
 
 // allow CORS
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src', 'static/index.html'));
+    res.sendFile(path.join(__dirname, 'src', 'static/index.html'));
 });
 
 app.get('/report', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src', 'static/report.html'));
+    res.sendFile(path.join(__dirname, 'src', 'static/report.html'));
 });
 
 app.post('/', (req, res) => {
-  const { size, queens } = req.body;
+    const { size, queens } = req.body;
 
-  const query = `queens(${size}, [${queens}])`;
+    const query = `queens(${size}, [${queens}])`;
 
-  const peng = Pengines({
-    server: 'http://localhost:3030/pengine',
-    application: 'queens',
-    destroy: true,
-    ask: query,
-  })
-    .on('create', () => {
-      console.info('---------------------------\nPengine created.');
+    const peng = Pengines({
+        server: 'http://localhost:3030/pengine',
+        application: 'queens',
+        destroy: true,
+        ask: query,
     })
-    .on('success', () => {
-      const result = true;
-      res.json({ result });
-      peng.destroy();
-    })
-    .on('failure', () => {
-      console.info('failed..');
-      const result = false;
-      res.json({ result });
-    })
-    .on('error', (err) => {
-      console.info(`Error: ${err}`);
-    })
-    .on('destroy', () => {
-      console.info('pengine destroyed.\n---------------------------');
-    });
+        .on('create', () => {
+            console.info('---------------------------\nPengine created.');
+        })
+        .on('success', () => {
+            const result = true;
+            res.json({ result });
+            peng.destroy();
+        })
+        .on('failure', () => {
+            console.info('failed..');
+            const result = false;
+            res.json({ result });
+        })
+        .on('error', (err) => {
+            console.info(`Error: ${err}`);
+        })
+        .on('destroy', () => {
+            console.info('pengine destroyed.\n---------------------------');
+        });
 });
 
 // start the server
@@ -80,5 +80,5 @@ const env = process.env.NODE_ENV || 'production';
 
 // https
 https.createServer(options, app).listen(port, () => {
-  console.info(`Server running on https://localhost:${port} [${env}]`);
+    console.info(`Server running on https://localhost:${port} [${env}]`);
 });

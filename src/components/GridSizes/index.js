@@ -3,25 +3,33 @@ import PropTypes from 'prop-types';
 import List from 'components/GridSizes/styles';
 
 const GridSizes = ({ onClickGrid, open, toggle }) => {
-  const elements = [];
+    const elements = [];
 
-  for (let i = 4; i < 9; i++) {
-    elements.push(<li key={`grid${i}`}>
-        <a onClick={() => { onClickGrid(i); toggle(); }} id={i}>{`${i}x${i}`}</a>
-      </li>);
-  }
+    for (let i = 4; i < 9; i++) {
+        elements.push(
+            <li key={`grid${i}`}>
+                <a
+                    onClick={() => {
+                        onClickGrid(i);
+                        toggle();
+                    }}
+                    id={i}
+                >{`${i}x${i}`}</a>
+            </li>
+        );
+    }
 
-  return <List open={open}>{elements}</List>;
+    return <List open={open}>{elements}</List>;
 };
 
 GridSizes.propTypes = {
-  onClickGrid: PropTypes.func.isRequired,
-  toggle: PropTypes.func.isRequired,
-  open: PropTypes.bool,
+    onClickGrid: PropTypes.func.isRequired,
+    toggle: PropTypes.func.isRequired,
+    open: PropTypes.bool,
 };
 
 GridSizes.defaultProps = {
-  open: false,
+    open: false,
 };
 
 export default GridSizes;
