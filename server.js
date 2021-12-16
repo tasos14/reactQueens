@@ -45,7 +45,7 @@ const program = `
         select(Col-Vars, [C|Cs], Board),
         arg(Row, Vars, Row-Row),
         queens(Board, Row, Solution).
-        `;
+`;
 
 app.use('/', Express.static(path.join(__dirname, 'public')));
 
