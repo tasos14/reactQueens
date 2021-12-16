@@ -33,7 +33,7 @@ export const Slider = styled.div`
         transition: 0.4s;
 
         ${(props) =>
-            props.on &&
+        props.on &&
             css`
                 transform: translateX(26px);
             `};
