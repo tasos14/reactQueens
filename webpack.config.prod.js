@@ -4,6 +4,7 @@ const path = require('path'); // eslint-disable-line
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const dotenv = require('dotenv');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = () => {
     const env = dotenv.config().parsed;
@@ -31,19 +32,19 @@ module.exports = () => {
                                 envName: 'production',
                             },
                         },
-                        'eslint-loader',
                     ],
                 },
             ],
         },
         output: {
-            path: path.join(__dirname, 'src', 'static', 'js'),
+            path: path.join(__dirname, 'public', 'js'),
             publicPath: '/js/',
             filename: 'bundle.js',
         },
         plugins: [
+            new ESLintPlugin(),
             new CleanWebpackPlugin({
-                cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'src', 'static', 'js', 'bundle.js')],
+                cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'public', 'js', 'bundle.js')],
             }),
             new UglifyJSPlugin(),
             new webpack.DefinePlugin(envKeys),

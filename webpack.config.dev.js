@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const path = require('path'); // eslint-disable-line
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const dotenv = require('dotenv');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = () => {
     const env = dotenv.config().parsed;
@@ -30,25 +31,25 @@ module.exports = () => {
                                 envName: 'development',
                             },
                         },
-                        'eslint-loader',
                     ],
                 },
             ],
         },
         output: {
-            path: path.join(__dirname, 'src', 'static', 'js'),
+            path: path.join(__dirname, 'public', 'js'),
             publicPath: '/js/',
             filename: 'bundle.js',
         },
         plugins: [
+            new ESLintPlugin(),
             new CleanWebpackPlugin({
-                cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'src', 'static', 'js', 'bundle.js')],
+                cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'public', 'js', 'bundle.js')],
             }),
             new webpack.HotModuleReplacementPlugin(),
             new webpack.DefinePlugin(envKeys),
         ],
         devServer: {
-            contentBase: 'src/static/',
+            contentBase: 'public/',
             hot: true,
             historyApiFallback: {
                 index: '/index-static.html',
