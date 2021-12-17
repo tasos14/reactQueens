@@ -1,6 +1,7 @@
 node_modules
-src/static/js/*
+public/js/*
 sslcert
 _server\.js
 .env
 passwd
+
