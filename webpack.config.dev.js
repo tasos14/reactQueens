@@ -42,8 +42,10 @@ module.exports = () => {
             }),
             new webpack.HotModuleReplacementPlugin(),
             new webpack.DefinePlugin({
-                PORT: JSON.stringify(process.env.PORT),
-                PENGINE_URL: JSON.stringify(process.env.PENGINE_URL),
+                'process.env': {
+                    PORT: JSON.stringify(process.env.PORT),
+                    PENGINE_URL: JSON.stringify(process.env.PENGINE_URL),
+                },
             }),
         ],
         devServer: {

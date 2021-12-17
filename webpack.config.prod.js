@@ -42,9 +42,11 @@ module.exports = () => {
             }),
             new UglifyJSPlugin(),
             new webpack.DefinePlugin({
-                NODE_ENV: 'production',
-                PORT: JSON.stringify(process.env.PORT),
-                PENGINE_URL: JSON.stringify(process.env.PENGINE_URL),
+                'process.env': {
+                    NODE_ENV: 'production',
+                    PORT: JSON.stringify(process.env.PORT),
+                    PENGINE_URL: JSON.stringify(process.env.PENGINE_URL),
+                },
             }),
         ],
         devServer: {
