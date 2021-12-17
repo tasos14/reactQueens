@@ -6,15 +6,9 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const dotenv = require('dotenv');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
+dotenv.config();
+
 module.exports = () => {
-    const env = dotenv.config().parsed;
-
-    const envKeys = Object.keys(env).reduce((prev, next) => {
-        prev[`process.env.${next}`] = JSON.stringify(env[next]); // eslint-disable-line
-        return prev;
-    }, {});
-    envKeys['process.env.NODE_ENV'] = JSON.stringify('production');
-
     return {
         entry: ['@babel/polyfill', 'react-hot-loader/patch', './src/index.js'],
         resolve: {
@@ -47,7 +41,11 @@ module.exports = () => {
                 cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'public', 'js', 'bundle.js')],
             }),
             new UglifyJSPlugin(),
-            new webpack.DefinePlugin(envKeys),
+            new webpack.DefinePlugin({
+                NODE_ENV: 'production',
+                PORT: JSON.stringify(process.env.PORT),
+                PENGINE_URL: JSON.stringify(process.env.PENGINE_URL),
+            }),
         ],
         devServer: {
             contentBase: 'src/static/',
