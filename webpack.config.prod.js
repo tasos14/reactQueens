@@ -43,7 +43,7 @@ module.exports = () => {
             new UglifyJSPlugin(),
             new webpack.DefinePlugin({
                 'process.env': {
-                    NODE_ENV: 'production',
+                    NODE_ENV: JSON.stringify('production'),
                     PORT: JSON.stringify(process.env.PORT),
                     PENGINE_URL: JSON.stringify(process.env.PENGINE_URL),
                 },
