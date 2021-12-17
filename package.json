@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --config ./webpack.config.dev.js --mode development",
     "build": "webpack --config ./webpack.config.prod.js --mode production",
     "watch-server": "nodemon server.js",
+    "start-server": "node server.js",
     "prettier": "prettier --write .",
     "lint": "eslint --fix --ext .js,.jsx ."
   },
