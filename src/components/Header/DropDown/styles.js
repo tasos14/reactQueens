@@ -1,6 +1,29 @@
 import styled from 'styled-components';
 
-const List = styled.ul`
+export const Wrapper = styled.div`
+    position: relative;
+    display: block;
+    float: right;
+    margin-right: 0.1em;
+`;
+
+export const GridButton = styled.button`
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #f9f6f2;
+    height: 40px;
+    line-height: 42px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    float: right;
+    border: none;
+    font-size: inherit;
+`;
+
+export const List = styled.ul`
     margin-top: 1px;
     position: absolute;
     display: ${(props) => (props.open ? 'block' : 'none')};
@@ -20,7 +43,7 @@ const List = styled.ul`
     border-radius: 4px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 
-    & li a {
+    & li div {
         cursor: pointer;
         text-decoration: none;
         display: block;
@@ -33,5 +56,3 @@ const List = styled.ul`
         }
     }
 `;
-
-export default List;

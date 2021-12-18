@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import * as Styles from 'components/GameMessage/styles';
+import * as Styles from './styles';
 
 function GameOverMessage({ score }) {
     if (score === 0) {

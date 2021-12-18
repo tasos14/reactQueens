@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
+import { useQueensContext } from 'components/App/context';
 
 const Wrapper = styled.div`
     min-height: 2.5em;
@@ -16,4 +18,16 @@ const Wrapper = styled.div`
     float: right;
 `;
 
-export default Wrapper;
+const Moves = () => {
+    const { moves } = useQueensContext();
+    return (
+        <Wrapper>
+            <h4>Moves</h4>
+            <h4>{moves}</h4>
+        </Wrapper>
+    );
+};
+
+Moves.propTypes = {};
+
+export default Moves;
