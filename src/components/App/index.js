@@ -4,7 +4,7 @@ import Header from 'components/Header';
 import Board from 'components/Board';
 import Footer from 'components/Footer';
 import { QueensContextProvider } from './context';
-import GlobalStyle from './global-styles';
+import GlobalStyle from './globalStyles';
 
 const Wrapper = styled.div`
     padding-right: 15px;
