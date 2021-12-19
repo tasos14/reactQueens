@@ -11,7 +11,11 @@ const Footer = () => (
         <hr></hr>
 
         <p>
-            <strong>Note:</strong> This game was built using React, Redux and SWI-Prolog Pengines.
+            <strong>Note:</strong> This game was built using React and{' '}
+            <a href="http://tau-prolog.org/" target="_blank" rel="noopener noreferrer">
+                Tau Prolog
+            </a>{' '}
+            to handle the logic.
         </p>
 
         <hr></hr>
