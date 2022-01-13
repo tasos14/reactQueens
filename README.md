@@ -1,10 +1,9 @@
 # reactQueens
 
-The famous N-Queens puzzle build with [React][react], [Redux][redux] and SWI-Prolog Pengines.
+The famous N-Queens puzzle build with [React][react] and [Tau Prolog][tau].
 
 -   [8 Queens puzzle][8q]
 -   [SWI-Prolog][swi]
--   [Pengines][pengines]
 
 ### Installation
 
@@ -15,11 +14,10 @@ $ npm install
 $ npm run start
 ```
 
-Then start the Pengine server:
+Then start the server:
 
 ```sh
-$ cd pengines
-$ swipl run.pl
+$ npm run watch-server
 ```
 
 ## License
@@ -28,6 +26,4 @@ MIT
 
 [8q]: https://en.wikipedia.org/wiki/Eight_queens_puzzle
 [react]: https://facebook.github.io/react/
-[redux]: http://redux.js.org/
-[swi]: http://swi-prolog.org/
-[pengines]: http://pengines.swi-prolog.org/docs/index.html
+[tau]: http://tau-prolog.org/
