@@ -27,3 +27,4 @@ MIT
 [8q]: https://en.wikipedia.org/wiki/Eight_queens_puzzle
 [react]: https://facebook.github.io/react/
 [tau]: http://tau-prolog.org/
+[swi]: http://swi-prolog.org/
