@@ -1,15 +1,31 @@
 import React from 'react';
-import Header from 'containers/Header';
-import Game from 'containers/Game';
+import styled from 'styled-components';
+import Header from 'components/Header';
+import Board from 'components/Board';
 import Footer from 'components/Footer';
-import Container from 'components/App/styles';
+import { QueensContextProvider } from './context';
+import GlobalStyle from './globalStyles';
+
+const Wrapper = styled.div`
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+    @media screen and (min-width: 768px) {
+        max-width: 730px;
+    }
+`;
 
 export default function App() {
-  return (
-    <Container>
-      <Header />
-      <Game />
-      <Footer />
-    </Container>
-  );
+    return (
+        <QueensContextProvider>
+            <GlobalStyle />
+            <Wrapper>
+                <Header />
+                <Board />
+                <Footer />
+            </Wrapper>
+        </QueensContextProvider>
+    );
 }

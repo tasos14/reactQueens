@@ -1,84 +1,76 @@
-/* eslint-disable no-console */
-const path = require('path');
-const fs = require('fs');
-// const { Server } = require('http');
 const Express = require('express');
-const Pengines = require('pengines');
-const bodyParser = require('body-parser');
-const https = require('https');
+const dotenv = require('dotenv');
+const http = require('http');
+const path = require('path');
+const pl = require('tau-prolog');
+require('tau-prolog/modules/lists.js')(pl);
+require('tau-prolog/modules/promises.js')(pl);
 
-const options = {
-  cert: fs.readFileSync('./sslcert/fullchain.pem'),
-  key: fs.readFileSync('./sslcert/privkey.pem'),
-};
+dotenv.config();
 
-// initialize the server and configure support for ejs templates
 const app = new Express();
-// const server = new Server(app);
-
-// define the folder that will be used for static assets
-app.use(Express.static(path.join(__dirname, 'src', 'static')));
-
-// use body-parser as middle-ware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
 // allow CORS
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Set-Cookie', 'HttpOnly;Secure;SameSite=Strict');
+    next();
+});
+app.use(Express.json({ limit: '50mb' }));
+
+const program = `
+    :- use_module(library(lists)).
+
+    queens(N, Queens) :-
+        length(Queens, N),
+        board(Queens, Board, 0, N, _, _),
+        queens(Board, 0, Queens).
+
+    board([], [], N, N, _, _).
+    board([_|Queens], [Col-Vars|Board], Col0, N, [_|VR], VC) :-
+        Col is Col0+1,
+        functor(Vars, f, N),
+        constraints(N, Vars, VR, VC),
+        board(Queens, Board, Col, N, VR, [_|VC]).
+
+    constraints(0, _, _, _) :- !.
+    constraints(N, Row, [R|Rs], [C|Cs]) :-
+        arg(N, Row, R-C),
+        M is N-1,
+        constraints(M, Row, Rs, Cs).
+
+    queens([], _, []).
+    queens([C|Cs], Row0, [Col|Solution]) :-
+        Row is Row0+1,
+        select(Col-Vars, [C|Cs], Board),
+        arg(Row, Vars, Row-Row),
+        queens(Board, Row, Solution).
+`;
+
+app.use('/', Express.static(path.join(__dirname, 'public')));
+
+app.post('/', async (req, res) => {
+    try {
+        const { size, queens } = req.body;
+
+        const query = `queens(${size}, [${queens}]).`;
+
+        const session = pl.create();
+        await session.promiseConsult(program);
+        await session.promiseQuery(query);
+
+        const a = [];
+
+        // eslint-disable-next-line no-restricted-syntax
+        for await (const answer of session.promiseAnswers()) {
+            a.push(session.format_answer(answer));
+        }
+        res.send({ result: a.length > 0 });
+    } catch (error) {
+        console.log(error);
+    }
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src', 'static/index.html'));
-});
-
-app.get('/report', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src', 'static/report.html'));
-});
-
-app.post('/', (req, res) => {
-  const { size, queens } = req.body;
-
-  const query = `queens(${size}, [${queens}])`;
-
-  const peng = Pengines({
-    server: 'http://localhost:3030/pengine',
-    application: 'queens',
-    destroy: true,
-    ask: query,
-  })
-    .on('create', () => {
-      console.info('---------------------------\nPengine created.');
-    })
-    .on('success', () => {
-      const result = true;
-      res.json({ result });
-      peng.destroy();
-    })
-    .on('failure', () => {
-      console.info('failed..');
-      const result = false;
-      res.json({ result });
-    })
-    .on('error', (err) => {
-      console.info(`Error: ${err}`);
-    })
-    .on('destroy', () => {
-      console.info('pengine destroyed.\n---------------------------');
-    });
-});
-
-// start the server
-const port = process.env.PORT || 3000;
-const env = process.env.NODE_ENV || 'production';
-
-// server.listen(port, () => {
-//   console.info(`Server running on http://localhost:${port} [${env}]`);
-// });
-
-// https
-https.createServer(options, app).listen(port, () => {
-  console.info(`Server running on https://localhost:${port} [${env}]`);
+http.createServer(app).listen(process.env.PORT || 3000, () => {
+    console.log(`Listening on port ${process.env.PORT || 3000}!`);
 });
