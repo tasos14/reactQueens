@@ -7,37 +7,45 @@ import GameMessage from './GameMessage';
 import * as Styles from './styles';
 import { useQueensContext } from 'components/App/context';
 
+function generateId(index, size) {
+    if (index % size === 0) {
+        return `${Math.ceil(index / size)}${size}`;
+    }
+    return `${Math.ceil(index / size)}${index % size}`;
+}
 function Board() {
     const { gridSize, highlight, cols, redBlocks } = useQueensContext();
-    let row = [];
-    const board = {
-        rows: [],
-        queens: [],
+
+    const hasQueen = (index, size) => {
+        const [i, j] = generateId(index, size).split('');
+        return cols[Number(j) - 1] === Number(i);
     };
-
-    for (let i = 1; i < gridSize + 1; i++) {
-        for (let j = 1; j < gridSize + 1; j++) {
-            const isRed = highlight && redBlocks[gridSize * (i - 1) + j - 1] === 1;
-            const hasQueen = cols[j - 1] === i;
-
-            row.push(<Tile key={`${i}${j}`} tileId={`${i}${j}`} isRed={isRed} hasQueen={hasQueen} />);
-        }
-        const fade = cols[i - 1] !== 0;
-
-        board.rows.push(<Styles.BoardRow key={i}>{row}</Styles.BoardRow>);
-        board.queens.push(
-            <Queen key={`Q${i}`} src="./img/queen.png" id={`Q${i}`} boardSize={gridSize} fade={fade} alt="queen" />
-        );
-        row = [];
-    }
 
     return (
         <Styles.Wrapper>
-            <Styles.Board>
-                {board.rows}
-                <GameMessage />
-                {board.queens}
+            <Styles.Board size={gridSize}>
+                {[...Array(gridSize * gridSize)].map((_, i) => (
+                    <Tile
+                        key={`${i}`}
+                        tileId={generateId(i + 1, gridSize)}
+                        isRed={highlight && redBlocks[i] === 1}
+                        hasQueen={hasQueen(i + 1, gridSize)}
+                    />
+                ))}
             </Styles.Board>
+            <GameMessage />
+            <Styles.QueensWrapper size={gridSize}>
+                {[...Array(gridSize)].map((_, i) => (
+                    <Queen
+                        key={`Q${i + 1}`}
+                        src="./img/queen.png"
+                        id={`Q${i + 1}`}
+                        boardSize={gridSize}
+                        fade={cols[i] !== 0}
+                        alt="queen"
+                    />
+                ))}
+            </Styles.QueensWrapper>
         </Styles.Wrapper>
     );
 }
