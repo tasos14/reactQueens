@@ -7,13 +7,11 @@ import { QueensContextProvider } from './context';
 import GlobalStyle from './globalStyles';
 
 const Wrapper = styled.div`
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: auto;
+    max-width: 730px;
 
-    @media screen and (min-width: 768px) {
-        max-width: 730px;
+    @media(max-width: 730px) {
+        padding: 0 5px;
     }
 `;
 

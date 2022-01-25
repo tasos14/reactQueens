@@ -6,10 +6,10 @@ import Switch from './Switch';
 import * as Styles from './styles';
 
 function Header() {
-    const {reset} = useQueensContext();
+    const { reset } = useQueensContext();
 
     return (
-        <>
+        <Styles.Header>
             <Styles.Heading>
                 <Styles.Title>n-Queens</Styles.Title>
                 <Moves />
@@ -21,15 +21,17 @@ function Header() {
                     no two queens threaten each other !
                 </Styles.Text>
 
-                <Styles.Restart onClick={() => reset()}>
-                    Reset<i className="fa fa-repeat" aria-hidden="true"></i>
-                </Styles.Restart>
+                <Styles.Actions>
+                    <Styles.Restart onClick={() => reset()}>
+                        Reset<i className="fa fa-repeat" aria-hidden="true"></i>
+                    </Styles.Restart>
 
-                <DropDown />
+                    <DropDown />
 
-                <Switch />
+                    <Switch />
+                </Styles.Actions>
             </Styles.Instructions>
-        </>
+        </Styles.Header>
     );
 }
 

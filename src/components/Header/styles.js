@@ -1,19 +1,17 @@
 import styled from 'styled-components';
 
+export const Header = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
 export const Heading = styled.div`
-    margin-top: 1em;
-    margin-right: -15px;
-    margin-left: -15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    &::after {
-        clear: both;
-        display: table;
-        content: ' ';
-    }
-
-    &::before {
-        display: table;
-        content: ' ';
+    @media (max-width: 470px) {
+        flex-direction: column;
     }
 `;
 
@@ -24,41 +22,37 @@ export const Title = styled.h1`
     display: block;
     float: left;
 
-    @media screen and(max-width: 460px) {
+    @media (max-width: 460px) {
         font-size: 50px !important;
     }
 `;
 
 export const Instructions = styled.div`
-    margin-top: 1em;
-    margin-right: -15px;
-    margin-left: -15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    &::after {
-        clear: both;
-        display: table;
-        content: ' ';
-    }
-
-    &::before {
-        display: table;
-        content: ' ';
-    }
-
-    @media screen and(max-width: 460px) {
+    @media (max-width: 600px) {
         margin-top: 5px;
+        justify-content: flex-end;
     }
 `;
 
 export const Text = styled.div`
     float: left;
 
-    @media screen and (max-width: 555px) and (max-height: 640px) {
+    @media  (max-width: 600px) {
         display: none;
     }
+`;
 
-    @media screen and (max-width: 555px) {
-        display: none;
+export const Actions = styled.div`
+    @media  (max-width: 555px) and (max-height: 640px) {
+        align-self: flex-end;
+    }
+
+    @media  (max-width: 555px) {
+        align-self: flex-end;
     }
 `;
 

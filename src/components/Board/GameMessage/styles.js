@@ -2,11 +2,11 @@ import styled, { keyframes, css } from 'styled-components';
 
 const slideUp = keyframes`
   0% {
-    margin-top: 75%;
+    top: 75%;
     opacity: 0;
   }
   100% {
-    margin-top: 0%;
+    top: 0%;
     opacity: 1;
   }
 `;

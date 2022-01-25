@@ -13,9 +13,11 @@ const Wrapper = styled.div`
     font-weight: 700;
     border-radius: 3px;
     color: #fff;
-    margin-top: 8px;
     text-align: center;
-    float: right;
+
+    @media (max-width: 470px) {
+        align-self: flex-end;
+    }
 `;
 
 const Moves = () => {
