@@ -47,7 +47,7 @@ const program = `
         queens(Board, Row, Solution).
 `;
 
-app.use('/', Express.static(path.join(__dirname, 'public')));
+app.use('/', Express.static(path.join(__dirname, 'dist')));
 
 app.post('/', async (req, res) => {
     try {
@@ -61,7 +61,6 @@ app.post('/', async (req, res) => {
 
         const a = [];
 
-        // eslint-disable-next-line no-restricted-syntax
         for await (const answer of session.promiseAnswers()) {
             a.push(session.format_answer(answer));
         }
