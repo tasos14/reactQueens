@@ -70,6 +70,8 @@ app.post('/', async (req, res) => {
     }
 });
 
-http.createServer(app).listen(process.env.PORT || 3000, () => {
-    console.log(`Listening on port ${process.env.PORT || 3000}!`);
+app.listen(process.env.PORT || 3333, () => {
+    console.log(`Listening on port ${process.env.PORT || 3333}!`);
 });
+
+module.exports = app;
