@@ -9,6 +9,7 @@ interface QueensContextProps {
     activeQueens: number;
     gameOver: boolean;
     highlight: boolean;
+    isCalculating: boolean;
     setGridSize: React.Dispatch<React.SetStateAction<number>>;
     setMoves: React.Dispatch<React.SetStateAction<number>>;
     setCols: React.Dispatch<React.SetStateAction<number[]>>;

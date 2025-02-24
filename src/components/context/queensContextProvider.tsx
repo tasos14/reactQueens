@@ -63,11 +63,12 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
     const [cols, setCols] = React.useState(loadFromStorage('cols', [0, 0, 0, 0]));
     const [rows, setRows] = React.useState(loadFromStorage('rows', [0, 0, 0, 0]));
     const [redBlocks, setRedBlocks] = React.useState(
-        loadFromStorage('redBlocks', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+        loadFromStorage('redBlocks', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
     );
     const [activeQueens, setActiveQueens] = React.useState(loadFromStorage('activeQueens', 0));
     const [gameOver, setGameOver] = React.useState(loadFromStorage('gameOver', false));
     const [highlight, setHighlight] = React.useState(loadFromStorage('highlight', true));
+    const [isCalculating, setIsCalculating] = React.useState(false);
 
     const reset = () => {
         setCols([...Array(gridSize)].map(() => 0));
@@ -96,6 +97,8 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
     };
 
     const moveQueen = (id: string) => {
+        if (isCalculating) return; // Prevent clicks while calculating
+
         let row;
         let col;
         if (id.length === 2) {
@@ -150,7 +153,8 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
     };
 
     useEffect(() => {
-        if (activeQueens === gridSize && !gameOver) {
+        if (activeQueens === gridSize && !gameOver && !isCalculating) {
+            setIsCalculating(true);
             axios
                 .post(import.meta.env.VITE_PENGINE_URL || 'http://localhost:3000/', {
                     size: gridSize,
@@ -161,7 +165,8 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
                         setGameOver(true);
                     }
                 })
-                .catch((err) => console.log('Error: \n' + err));
+                .catch((err) => console.log('Error: \n' + err))
+                .finally(() => setIsCalculating(false));
         }
         localStorage.setItem(
             'state',
@@ -174,9 +179,9 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
                 activeQueens,
                 gameOver,
                 highlight,
-            })
+            }),
         );
-    });
+    }, [gridSize, moves, cols, rows, redBlocks, activeQueens, gameOver, highlight]);
 
     return (
         <QueensContext.Provider
@@ -189,6 +194,7 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
                 activeQueens,
                 gameOver,
                 highlight,
+                isCalculating,
                 setGridSize,
                 setMoves,
                 setCols,
