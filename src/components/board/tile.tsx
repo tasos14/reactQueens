@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useQueensContext from '../context/useQueensContext';
 
 export const Wrapper = styled.div<{ $isRed: boolean; $boardSize: number; $isCalculating: boolean }>`
-    cursor: ${(props) => (props.$isCalculating ? 'not-allowed' : 'pointer')};
+    cursor: ${(props) => (props.$isCalculating ? 'progress' : 'pointer')};
     pointer-events: ${(props) => (props.$isCalculating ? 'none' : 'auto')};
     display: flex;
     align-items: center;
