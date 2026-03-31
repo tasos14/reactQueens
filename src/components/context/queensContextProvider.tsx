@@ -69,6 +69,32 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
     const [gameOver, setGameOver] = React.useState(loadFromStorage('gameOver', false));
     const [highlight, setHighlight] = React.useState(loadFromStorage('highlight', true));
     const [isCalculating, setIsCalculating] = React.useState(false);
+    const isCalculatingRef = React.useRef(false);
+
+    const checkGameOver = (nextCols: number[], nextActiveQueens: number) => {
+        if (nextActiveQueens !== gridSize || gameOver || isCalculatingRef.current) {
+            return;
+        }
+
+        isCalculatingRef.current = true;
+        setIsCalculating(true);
+
+        axios
+            .post(import.meta.env.VITE_PENGINE_URL || 'http://localhost:3000/', {
+                size: gridSize,
+                queens: nextCols,
+            })
+            .then(({ data: { result } }) => {
+                if (result) {
+                    setGameOver(true);
+                }
+            })
+            .catch((err) => console.log('Error: \n' + err))
+            .finally(() => {
+                isCalculatingRef.current = false;
+                setIsCalculating(false);
+            });
+    };
 
     const reset = () => {
         setCols([...Array(gridSize)].map(() => 0));
@@ -109,11 +135,13 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
             col = Number(id.charAt(2));
         }
 
-        const newRows = rows;
-        const newCols = cols;
+        const newRows = rows.slice();
+        const newCols = cols.slice();
         let newRedBlocks;
         // when you click a tile for the first time on a column
         if (cols[col - 1] === 0) {
+            const nextActiveQueens = activeQueens + 1;
+
             newCols[col - 1] = row;
             newRows[row - 1] = col;
             newRedBlocks = drawRedBlocks(row - 1, col - 1, gridSize, redBlocks);
@@ -121,8 +149,9 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
             setCols(newCols);
             setRows(newRows);
             setRedBlocks(newRedBlocks);
-            setActiveQueens(activeQueens + 1);
+            setActiveQueens(nextActiveQueens);
             setMoves(moves + 1);
+            checkGameOver(newCols, nextActiveQueens);
 
             return;
         }
@@ -143,31 +172,18 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
         // when you have already clicked a tile on that column
         const prevRow = cols[col - 1];
         newCols[col - 1] = row;
+        newRows[prevRow - 1] = 0;
         newRows[row - 1] = col;
-        newRedBlocks = removeRedBlocks(prevRow - 1, col - 1, gridSize, redBlocks, cols);
+        newRedBlocks = removeRedBlocks(prevRow - 1, col - 1, gridSize, redBlocks, newCols);
 
         setCols(newCols);
         setRows(newRows);
         setRedBlocks(newRedBlocks);
         setMoves(moves + 1);
+        checkGameOver(newCols, activeQueens);
     };
 
     useEffect(() => {
-        if (activeQueens === gridSize && !gameOver && !isCalculating) {
-            setIsCalculating(true);
-            axios
-                .post(import.meta.env.VITE_PENGINE_URL || 'http://localhost:3000/', {
-                    size: gridSize,
-                    queens: cols,
-                })
-                .then(({ data: { result } }) => {
-                    if (result && !gameOver) {
-                        setGameOver(true);
-                    }
-                })
-                .catch((err) => console.log('Error: \n' + err))
-                .finally(() => setIsCalculating(false));
-        }
         localStorage.setItem(
             'state',
             JSON.stringify({
@@ -181,7 +197,7 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
                 highlight,
             }),
         );
-    }, [gridSize, moves, cols, rows, redBlocks, activeQueens, gameOver, highlight]);
+    }, [gridSize, moves, cols, rows, redBlocks, activeQueens, gameOver, highlight, isCalculating]);
 
     return (
         <QueensContext.Provider

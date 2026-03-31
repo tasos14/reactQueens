@@ -31,3 +31,12 @@ export const Board = styled.div<{ size: number }>`
         height: 360px;
     }
 `;
+
+export const TitleWrapper = styled.div<{ $isRed: boolean; $boardSize: number; $isCalculating: boolean }>`
+    cursor: ${(props) => (props.$isCalculating ? 'progress' : 'pointer')};
+    pointer-events: ${(props) => (props.$isCalculating ? 'none' : 'auto')};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: ${(props) => (props.$isRed ? 'saturate(50%) brightness(63%)' : 'none')};
+`;
