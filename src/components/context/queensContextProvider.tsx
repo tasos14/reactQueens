@@ -160,7 +160,7 @@ export const QueensContextProvider: React.FC<QueensContextProviderProps> = ({ ch
         if (cols[col - 1] === row) {
             newCols[col - 1] = 0;
             newRows[row - 1] = 0;
-            newRedBlocks = removeRedBlocks(row - 1, col - 1, gridSize, redBlocks, cols);
+            newRedBlocks = removeRedBlocks(row - 1, col - 1, gridSize, redBlocks, newCols);
 
             setCols(newCols);
             setRows(newRows);
