@@ -26,5 +26,5 @@ createRoot(document.getElementById('root')!).render(
                 <Footer />
             </Wrapper>
         </QueensContextProvider>
-    </StrictMode>
+    </StrictMode>,
 );

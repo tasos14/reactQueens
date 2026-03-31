@@ -2,8 +2,8 @@
 
 The famous N-Queens puzzle build with [React][react] and [Tau Prolog][tau].
 
--   [8 Queens puzzle][8q]
--   [SWI-Prolog][swi]
+- [8 Queens puzzle][8q]
+- [SWI-Prolog][swi]
 
 ### Installation
 
